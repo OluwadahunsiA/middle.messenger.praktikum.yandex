@@ -1,0 +1,31 @@
+{{!< index}}
+
+<div class='content'>
+  <div class='chats'>
+
+    <a class='chats__user'>Profile ></a>
+
+    <div class='chats__input'>
+      <input  name="search" placeholder='search' />
+    </div>
+
+    <div class='chats__content'>
+
+  {{#each messages}}
+  {{> 'chat-list/chat-list'}}
+  {{/each}}
+
+    </div>
+
+  </div>
+
+  <div class='messages'>
+    <div class='messages__display'>
+      Select a chat to start messaging
+    </div>
+    <div class='messages__input'>
+      <input name='message' id='message' placeholder="message" />
+    </div>
+  </div>
+
+</div>

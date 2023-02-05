@@ -1,0 +1,30 @@
+[
+  {
+    "field": "email",
+    "fieldValue": "user@mail.com"
+  },
+  {
+    "field": "login",
+    "fieldValue": "james05"
+  },
+  {
+    "field": "first_name",
+    "fieldValue": "James"
+  },
+  {
+    "field": "second_name",
+    "fieldValue": "Rodrigues"
+  },
+  {
+    "field": "phone",
+    "fieldValue": "+7 (904) 123 44 44"
+  },
+  {
+    "field": "password",
+    "fieldValue": "890902948"
+  },
+  {
+    "field": "repeat password",
+    "fieldValue": "890902948"
+  }
+]

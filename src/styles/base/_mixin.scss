@@ -1,0 +1,60 @@
+@mixin container($margin, $height, $width) {
+  border-radius: 10px;
+  margin: $margin auto;
+  border: 2px solid $dark-grey;
+  box-shadow: 0 0 5px 5px $light-grey;
+  height: $height;
+  width: $width;
+}
+
+@mixin containerContent() {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  &__title {
+    font-size: 30px;
+    color: $deep-green;
+  }
+}
+
+@mixin inputContainer($margin, $height, $width) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: $width;
+  height: $height;
+  margin-top: $margin;
+
+  input {
+    height: 30px;
+    padding: 3px 4px;
+    border: 1px solid $light-green;
+    border-radius: 4px;
+    transition: 180ms box-shadow ease-in-out;
+
+    &:focus {
+      border-color: $input-focus;
+      box-shadow: $input-focus;
+      outline: 3px solid transparent;
+      box-shadow: 0 0 2px 3px $input-focus;
+    }
+  }
+}
+
+@mixin buttonStyle() {
+  height: 30px;
+  width: 100%;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 30px;
+  border-radius: 8px;
+  background-color: $deep-green;
+}
+
+@mixin clampText($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,51 @@
+.content {
+  display: flex;
+  font-size: $text-font-size;
+  height: calc(100% - $layout-underline-height);
+
+  .chats {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border-right: 1px solid $dark-grey;
+
+    &__user {
+      align-self: flex-end;
+      margin: 20px 10px 0px 0px;
+
+      cursor: pointer;
+      right: 10px;
+      top: 10px;
+    }
+
+    &__input {
+      @include inputContainer(10px, 30px, 90%);
+      align-self: center;
+
+      input::placeholder {
+        padding-left: 5px;
+      }
+    }
+
+    &__content {
+      overflow: scroll;
+    }
+  }
+  .messages {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__display {
+      height: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__input {
+      align-self: center;
+      @include inputContainer(10px, 30px, 90%);
+    }
+  }
+}

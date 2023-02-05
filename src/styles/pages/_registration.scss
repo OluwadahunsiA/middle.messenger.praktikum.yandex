@@ -1,0 +1,17 @@
+.registration {
+  overflow-y: scroll;
+  @include container(10px, 80%, 30%);
+  @include containerContent();
+  font-size: $text-font-size;
+
+  &__form {
+    margin-top: 2px;
+    width: 90%;
+    &-button {
+      @include buttonStyle();
+    }
+  }
+  a {
+    margin-bottom: 20px;
+  }
+}

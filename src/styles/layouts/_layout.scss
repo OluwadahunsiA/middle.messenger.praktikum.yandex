@@ -1,0 +1,10 @@
+.layout {
+  @include container(80px, 600px, 80%);
+  &__underline {
+    height: $layout-underline-height;
+    width: 100%;
+    border-top-left-radius: $radius-value;
+    border-top-right-radius: $radius-value;
+    outline: 1px solid $dark-grey;
+  }
+}
