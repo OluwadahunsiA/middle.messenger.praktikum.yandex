@@ -1,9 +1,23 @@
 
 
-<div>
-  {{#each profile}}
-  {{> 'input-field/input-field'}}
-  {{/each}}
+<div class='profile-container'>
+  {{> 'exit-button/exit-button'}}
+  <div class='profile-container__content'>
+    <div class='profile-container__content-box'>
 
+      <div>
+        {{#each profile}}
+        {{> 'input-field/input-field'}}
+        {{/each}}
+        </div>
+
+      <div class='profile-container__content-box-actions'>
+        {{> @partial-block }}
+
+      </div>
+
+
+    </div>
+  </div>
 </div>
 

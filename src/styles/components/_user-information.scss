@@ -1,0 +1,33 @@
+.profile-container {
+  display: flex;
+  height: $innerheight;
+
+  &__exit {
+    @include flexCenter();
+    border-right: 1px solid $light-grey;
+    cursor: pointer;
+    width: 5%;
+  }
+
+  &__content {
+    @include flexCenter();
+    width: 100%;
+
+    &-box {
+      height: $innerheight;
+      width: 50%;
+      padding: 12px;
+      overflow: scroll;
+
+      &-actions {
+        font-size: $text-font-size;
+        margin: 20px 0px;
+        height: 100px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+}
