@@ -1,7 +1,8 @@
 [
   {
     "field": "email",
-    "fieldValue": "user@mail.com"
+    "fieldValue": "user@mail.com",
+    "value": "test_calue"
   },
   {
     "field": "login",

@@ -1,0 +1,26 @@
+[
+  {
+    "field": "email",
+    "value": "nick@gmail.com"
+  },
+  {
+    "field": "login",
+    "value": "nick"
+  },
+  {
+    "field": "name",
+    "value": "nicholas"
+  },
+  {
+    "field": "surname",
+    "value": "shrimp"
+  },
+  {
+    "field": "chat name",
+    "value": "shrimpnick"
+  },
+  {
+    "field": "telephone",
+    "value": "+7 (906) 123 32 32"
+  }
+]

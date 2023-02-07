@@ -1,7 +1,7 @@
 .content {
   display: flex;
   font-size: $text-font-size;
-  height: calc(100% - $layout-underline-height);
+  height: $innerheight;
 
   .chats {
     display: flex;
@@ -12,6 +12,8 @@
     &__user {
       align-self: flex-end;
       margin: 20px 10px 0px 0px;
+      text-decoration: none;
+      color: $dark-grey;
 
       cursor: pointer;
       right: 10px;

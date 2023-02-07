@@ -10,3 +10,4 @@ $font-family: 'Rubik', sans-serif;
 $layout-underline-height: 20px;
 $text-font-size: 16px;
 $chat-demacator: 1px solid $light-green;
+$innerheight: calc(100% - $layout-underline-height);

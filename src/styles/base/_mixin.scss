@@ -7,6 +7,12 @@
   width: $width;
 }
 
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin containerContent() {
   display: flex;
   align-items: center;
