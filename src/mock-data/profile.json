@@ -1,26 +1,26 @@
 [
   {
     "field": "email",
-    "value": "nick@gmail.com"
+    "fieldValue": "nick@gmail.com"
   },
   {
     "field": "login",
-    "value": "nick"
+    "fieldValue": "nick"
   },
   {
     "field": "name",
-    "value": "nicholas"
+    "fieldValue": "nicholas"
   },
   {
     "field": "surname",
-    "value": "shrimp"
+    "fieldValue": "shrimp"
   },
   {
     "field": "chat name",
-    "value": "shrimpnick"
+    "fieldValue": "shrimpnick"
   },
   {
     "field": "telephone",
-    "value": "+7 (906) 123 32 32"
+    "fieldValue": "+7 (906) 123 32 32"
   }
 ]

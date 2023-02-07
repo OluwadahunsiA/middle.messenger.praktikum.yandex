@@ -6,13 +6,32 @@
  
     <div class='profile-container__content-box'>
          {{#each avatar}}
-         <img class='profile-container__content-box-image' src='{{avatar}}'/>
+         <img class='profile-container__content-box-image' src='{{avatar}}'/>         
          {{/each}}
-    
+
+        {{#if name}}
+         <b class='profile-container__content-box-name'>{{name}}</b>
+        {{/if}}
+
       <div>
-        {{#each profile}}
-        {{> 'input-field/input-field'}}
+
+        {{#if name}}
+
+        {{#each profile }}
+
+        <input class="profile-container__content-box-uneditable"  id='{{field}}' type='{{field}} ' placeholder='{{fieldValue}}' disabled/>   
+
         {{/each}}
+
+        {{else}}
+
+        {{#each profile}}
+
+        {{> 'input-field/input-field' }}
+         
+        {{/each}}
+
+        {{/if}}
         </div>
 
       <div class='profile-container__content-box-actions'>

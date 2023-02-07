@@ -1,6 +1,6 @@
 .profile-container {
   display: flex;
-  padding:2px;
+  padding: 2px;
   height: calc($innerheight - $correct-overflow);
 
   &__exit {
@@ -27,7 +27,12 @@
         height: 200px;
         width: 200px;
         border-radius: 50%;
-        text-align: center;
+      }
+
+      &-name {
+        align-self: center;
+        font-size: $text-font-size;
+        margin-top:20px;
       }
 
       &-actions {
@@ -38,6 +43,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+      }
+
+      &-uneditable{
+        @include inputContainer(20px, 30px, 100%);
       }
     }
   }
