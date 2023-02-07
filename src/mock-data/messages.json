@@ -1,64 +1,63 @@
 [
   {
     "name": "Mark",
-    "src": "",
     "message": "Hello, this is Mark.",
-    "time": "8:00"
+    "time": "8:00",
+    "avatar": "../assets/images/avatar.avif"
   },
   {
     "name": "Alex",
-    "src": "",
     "message": "Hello, this is Alex. I am writing to let you know that I got your last message",
     "quantity": "2",
-    "time": "7:00"
+    "time": "7:00",
+    "avatar": "../assets/images/avatar2.avif"
   },
   {
     "name": "Randy",
-    "src": "",
     "message": "What do you plan to do after lunch?",
-
-    "time": "6:00"
+    "time": "6:00",
+    "avatar": "../assets/images/avatar.avif"
   },
   {
     "name": "Snikter",
-    "src": "",
     "message": "Hello, this is Alex. I am writing to let you know that I got your last message",
     "quantity": "1",
-    "time": "5:00"
+    "time": "5:00",
+    "avatar": "../assets/images/avatar2.avif"
   },
   {
     "name": "Rovin",
-    "src": "",
     "message": "Hello, this is Alex. I am writing to let you know that I got your last message",
     "quantity": "1",
-    "time": "Sat"
+    "time": "Sat",
+    "avatar": "../assets/images/avatar2.avif"
   },
   {
     "name": "Alex",
-    "src": "",
     "message": "Hello, this is Alex. I am writing to let you know that I got your last message",
     "quantity": "1",
-    "time": "Fri"
+    "time": "Fri",
+    "avatar": "../assets/images/avatar.avif"
   },
   {
     "name": "Alex",
-    "src": "",
     "message": "Hello, this is Alex. I am writing to let you know that I got your last message",
     "quantity": "1",
-    "time": "Thur"
+    "time": "Thur",
+    "avatar": "../assets/images/avatar2.avif"
   },
   {
     "name": "Alex",
-    "src": "",
     "message": "Hello, this is Alex. I am writing to let you know that I got your last message",
 
-    "time": "Wed"
+    "time": "Wed",
+    "avatar": "../assets/images/avatar.avif"
   },
   {
     "name": "Alex",
-    "src": "",
     "message": "Hello, this is Alex. I am writing to let you know that I got your last message",
 
-    "time": "Tue"
+    "time": "Tue",
+    "avatar": "../assets/images/avatar2.avif"
   }
 ]

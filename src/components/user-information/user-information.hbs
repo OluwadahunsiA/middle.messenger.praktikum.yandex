@@ -3,8 +3,12 @@
 <div class='profile-container'>
   {{> 'exit-button/exit-button' href = url}}
   <div class='profile-container__content'>
+ 
     <div class='profile-container__content-box'>
-
+         {{#each avatar}}
+         <img class='profile-container__content-box-image' src='{{avatar}}'/>
+         {{/each}}
+    
       <div>
         {{#each profile}}
         {{> 'input-field/input-field'}}
