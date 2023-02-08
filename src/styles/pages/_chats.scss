@@ -23,6 +23,11 @@
     &__content {
       overflow: scroll;
     }
+
+    &__input{
+      @include inputContainer(20px, 60px, 90%);
+      align-self: center;
+    }
   }
   .messages {
     width: 100%;
