@@ -22,8 +22,12 @@
       padding: 12px;
       overflow: scroll;
 
+      &-link {
+        display: flex;
+        justify-content: center;
+      }
+
       &-image {
-        align-self: center;
         height: 200px;
         width: 200px;
         border-radius: 50%;

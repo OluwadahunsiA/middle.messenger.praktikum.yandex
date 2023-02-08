@@ -2,8 +2,11 @@
   {{> "exit-button/exit-button" href = url}}
   <div class="profile-container__content">
     <div class="profile-container__content-box">
+
       {{#each avatar}}
+        <a class= "profile-container__content-box-link" href="{{picture}}">
         <img class="profile-container__content-box-image" src="{{avatar}}" />
+        </a>
       {{/each}}
 
       {{#if name}}
@@ -46,7 +49,9 @@
       </div>
 
       <div class="profile-container__content-box-actions">
+
         {{> @partial-block }}
+
       </div>
 
     </div>
