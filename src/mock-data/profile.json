@@ -8,19 +8,19 @@
     "fieldValue": "nick"
   },
   {
-    "field": "name",
+    "field": "first_name",
     "fieldValue": "nicholas"
   },
   {
-    "field": "surname",
+    "field": "second_name",
     "fieldValue": "shrimp"
   },
   {
-    "field": "chat name",
+    "field": "display_name",
     "fieldValue": "shrimpnick"
   },
   {
-    "field": "telephone",
+    "field": "phone",
     "fieldValue": "+7 (906) 123 32 32"
   }
 ]
