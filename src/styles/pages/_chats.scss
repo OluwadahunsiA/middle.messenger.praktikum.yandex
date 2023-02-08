@@ -20,11 +20,20 @@
       top: 10px;
     }
 
+    &__input {
+      @include inputContainer(10px, 30px, 90%);
+      align-self: center;
+
+      input::placeholder {
+        padding-left: 5px;
+      }
+    }
+
     &__content {
       overflow: scroll;
     }
 
-    &__input{
+    &__input {
       @include inputContainer(20px, 60px, 90%);
       align-self: center;
     }
