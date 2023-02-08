@@ -23,6 +23,14 @@
 
         {{/each}}
 
+        {{else if change}}
+
+        {{#each changePassword}}
+
+        {{> 'input-field/input-field' }}
+         
+        {{/each}}
+
         {{else}}
 
         {{#each profile}}
