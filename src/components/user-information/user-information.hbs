@@ -1,54 +1,54 @@
+<div class="profile-container">
+  {{> "exit-button/exit-button" href = url}}
+  <div class="profile-container__content">
+    <div class="profile-container__content-box">
+      {{#each avatar}}
+        <img class="profile-container__content-box-image" src="{{avatar}}" />
+      {{/each}}
 
-
-<div class='profile-container'>
-  {{> 'exit-button/exit-button' href = url}}
-  <div class='profile-container__content'>
- 
-    <div class='profile-container__content-box'>
-         {{#each avatar}}
-         <img class='profile-container__content-box-image' src='{{avatar}}'/>         
-         {{/each}}
-
-        {{#if name}}
-         <b class='profile-container__content-box-name'>{{name}}</b>
-        {{/if}}
+      {{#if name}}
+        <b class="profile-container__content-box-name">{{name}}</b>
+      {{/if}}
 
       <div>
 
         {{#if name}}
 
-        {{#each profile }}
+          {{#each profile}}
 
-        <input class="profile-container__content-box-uneditable"  id='{{field}}' type='{{field}} ' placeholder='{{fieldValue}}' disabled/>   
+            <input
+              class="profile-container__content-box-uneditable"
+              id="{{field}}"
+              type="{{field}} "
+              placeholder="{{fieldValue}}"
+              disabled
+            />
 
-        {{/each}}
+          {{/each}}
 
         {{else if change}}
 
-        {{#each changePassword}}
+          {{#each changePassword}}
 
-        {{> 'input-field/input-field' }}
-         
-        {{/each}}
+            {{> "input-field/input-field" }}
+
+          {{/each}}
 
         {{else}}
 
-        {{#each profile}}
+          {{#each profile}}
 
-        {{> 'input-field/input-field' }}
-         
-        {{/each}}
+            {{> "input-field/input-field" }}
+
+          {{/each}}
 
         {{/if}}
-        </div>
-
-      <div class='profile-container__content-box-actions'>
-        {{> @partial-block }}
-
       </div>
 
+      <div class="profile-container__content-box-actions">
+        {{> @partial-block }}
+      </div>
 
     </div>
   </div>
 </div>
-

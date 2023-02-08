@@ -1,15 +1,15 @@
-@import './base/variables';
-@import './base/mixin';
-@import './components/input-field';
-@import './components/chat-list';
-@import './components/user-information';
-@import 'pages/registration';
-@import 'layouts/layout';
-@import 'pages/login';
-@import 'pages/chats';
-@import 'pages/user-profile';
-@import 'pages/edit-profile';
-@import 'pages/error';
+@import "./base/variables";
+@import "./base/mixin";
+@import "./components/input-field";
+@import "./components/chat-list";
+@import "./components/user-information";
+@import "pages/registration";
+@import "layouts/layout";
+@import "pages/login";
+@import "pages/chats";
+@import "pages/user-profile";
+@import "pages/edit-profile";
+@import "pages/error";
 
 body {
   background-color: $background-color;

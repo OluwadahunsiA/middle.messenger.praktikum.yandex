@@ -1,26 +1,26 @@
 {{!< index}}
 
-<div class='content'>
-  <div class='chats'>
+<div class="content">
+  <div class="chats">
 
-    <a class='chats__user' href="./user-profile.hbs">Profile ></a>
-    
-    <div class='chats__input'>
-      <input  name="search" placeholder='search' />
+    <a class="chats__user" href="./user-profile.hbs">Profile ></a>
+
+    <div class="chats__input">
+      <input name="search" placeholder="search" />
     </div>
 
-    <div class='chats__content'>
+    <div class="chats__content">
 
-  {{#each messages}}
-  {{> 'chat-list/chat-list'}}
-  {{/each}}
+      {{#each messages}}
+      {{> "chat-list/chat-list"}}
+      {{/each}}
 
     </div>
 
   </div>
 
-  <div class='messages'>
-    <div class='messages__display'>
+  <div class="messages">
+    <div class="messages__display">
       Select a chat to start messaging
     </div>
   </div>
