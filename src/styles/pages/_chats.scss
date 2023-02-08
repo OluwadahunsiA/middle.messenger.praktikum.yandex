@@ -46,8 +46,52 @@
     &__display {
       height: 90%;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
+
+      &-heading {
+        display: flex;
+        justify-content: space-between;
+        height: 75px;
+        width: 100%;
+        border-bottom: 1px solid $dark-grey;
+
+        &-info {
+          display: flex;
+          justify-content: space-between;
+          width: 90px;
+          margin: 20px;
+          img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+          }
+        }
+
+        &-dots{
+          cursor:pointer;
+          align-self: center;
+          justify-self: end;
+          margin-right: 20px;
+        }
+      }
+
+      &-date {
+        color: $dark-grey;
+        align-self: center;
+        margin-top: 300px;
+      }
+
+      &-text {
+        margin-left: 10px;
+        width: 250px;
+        padding:10px;
+        display: flex;
+
+        span{
+          align-self: flex-end;
+          color:$dark-grey;
+        }
+      }
     }
 
     &__input {
