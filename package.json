@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "express": "^4.18.2",
     "handlebars": "^4.7.7"
   }
 }
