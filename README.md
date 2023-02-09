@@ -1,6 +1,6 @@
 This is a chat app.
 
-Site autodeploy can be found <a href="https://fancy-sfogliatella-7f9139.netlify.app/">here</a>
+Site autodeploy can be found <a href="https://fancy-sfogliatella-7f9139.netlify.app/">"https://fancy-sfogliatella-7f9139.netlify.app/</a>
 
 
 Starting this app leads you to the log in page where you can enter your details. 
