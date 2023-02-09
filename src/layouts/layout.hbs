@@ -14,30 +14,32 @@
     <title>Messenger App</title>
   </head>
   <body>
-    <a href="../pages/index.hbs"> login</a>
-    <span>|</span>
-    <a href="../pages/registration.hbs">registration</a>
-    <span>|</span>
-    <a href="../pages/user-profile.hbs"> profile</a>
-    <span>|</span>
-    <a href="../pages/edit-profile.hbs"> edit profile</a>
-    <span>|</span>
-    <a href="../pages/change-password.hbs"> change password</a>
-    <span>|</span>
-    <a href="../pages/change-avatar.hbs"> change picture</a>
-    <span>|</span>
-    <a href="../pages/chats.hbs"> chats</a>
-    <span>|</span>
-    <a href="../pages/error404.hbs"> 404</a>
-    <span>|</span>
-    <a href="../pages/error500.hbs"> 500</a>
+    <nav>
+      <a href="../pages/index.hbs"> login</a>
+      <span>|</span>
+      <a href="../pages/registration.hbs">registration</a>
+      <span>|</span>
+      <a href="../pages/user-profile.hbs"> profile</a>
+      <span>|</span>
+      <a href="../pages/edit-profile.hbs"> edit profile</a>
+      <span>|</span>
+      <a href="../pages/change-password.hbs"> change password</a>
+      <span>|</span>
+      <a href="../pages/change-avatar.hbs"> change picture</a>
+      <span>|</span>
+      <a href="../pages/chats.hbs"> chats</a>
+      <span>|</span>
+      <a href="../pages/error404.hbs"> 404</a>
+      <span>|</span>
+      <a href="../pages/error500.hbs"> 500</a>
+    </nav>
 
-    <div class="layout" id="root">
+    <main class="layout" id="root">
       <div class="layout__underline"></div>
 
       {{{body}}}
 
-    </div>
+    </main>
     <script src="../index.js" type="module"></script>
 
   </body>

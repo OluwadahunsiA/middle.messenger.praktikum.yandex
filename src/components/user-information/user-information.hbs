@@ -5,7 +5,7 @@
 
       {{#each avatar}}
         <a class= "profile-container__content-box-link" href="{{picture}}">
-        <img class="profile-container__content-box-image" src="{{avatar}}" />
+        <img class="profile-container__content-box-image" src="{{avatar}}" alt="user picture" />
         </a>
       {{/each}}
 
@@ -13,7 +13,7 @@
         <b class="profile-container__content-box-name">{{name}}</b>
       {{/if}}
 
-      <div>
+      <form>
 
         {{#if name}}
 
@@ -23,6 +23,7 @@
               class="profile-container__content-box-uneditable"
               id="{{field}}"
               type="{{field}} "
+              name="{{field}}"
               placeholder="{{fieldValue}}"
               disabled
             />
@@ -46,13 +47,15 @@
           {{/each}}
 
         {{/if}}
-      </div>
 
-      <div class="profile-container__content-box-actions">
+        <div class="profile-container__content-box-actions">
 
-        {{> @partial-block }}
+          {{> @partial-block }}
 
-      </div>
+        </div>
+      </form>
+
+    
 
     </div>
   </div>
