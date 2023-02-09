@@ -1,23 +1,22 @@
 .change-avatar {
   display: flex;
   flex-direction: column;
-  margin-top:100px;
+  margin-top: 100px;
   height: $innerheight;
   align-items: center;
   color: $dark-grey;
 
-  &__text{
+  &__text {
     margin-bottom: 20px;
   }
 
   &__container {
     text-align: center;
     width: 30%;
-    height:max-content;
+    height: max-content;
   }
 
   button {
     @include buttonStyle();
-    
   }
 }

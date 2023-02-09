@@ -67,8 +67,8 @@
           }
         }
 
-        &-dots{
-          cursor:pointer;
+        &-dots {
+          cursor: pointer;
           align-self: center;
           justify-self: end;
           margin-right: 20px;
@@ -84,12 +84,12 @@
       &-text {
         margin-left: 10px;
         width: 250px;
-        padding:10px;
+        padding: 10px;
         display: flex;
 
-        span{
+        span {
           align-self: flex-end;
-          color:$dark-grey;
+          color: $dark-grey;
         }
       }
     }
