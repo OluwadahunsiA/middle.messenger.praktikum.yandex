@@ -1,0 +1,15 @@
+.edit-link {
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  color: $dark-grey;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    outline: 1px solid $dark-grey;
+  }
+}

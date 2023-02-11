@@ -1,0 +1,20 @@
+@import "./base/variables";
+@import "./base/mixin";
+@import "./components/input-field";
+@import "./components/chat-list";
+@import "./components/user-information";
+@import "pages/registration";
+@import "layouts/layout";
+@import "pages/index";
+@import "pages/chats";
+@import "pages/user-profile";
+@import "pages/edit-profile";
+@import "pages/error";
+@import "pages/change-avatar";
+
+body {
+  background-color: $background-color;
+  font-family: $font-family;
+  font-size: 12px;
+  box-sizing: border-box;
+}
