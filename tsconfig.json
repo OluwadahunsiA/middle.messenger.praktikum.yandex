@@ -6,9 +6,11 @@
     "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
 
     /* Modules */
+    
     "module": "commonjs",                                /* Specify what module code is generated. */
-    "rootDir": "./src",                                  /* Specify the root folder within your source files. */
-    "baseUrl": "./src",                                  /* Specify the base directory to resolve non-relative module names. */
+    //"rootDir": "./src",                                  /* Specify the root folder within your source files. */
+    "outDir": "dist",
+    //"baseUrl": "./src",                                  /* Specify the base directory to resolve non-relative module names. */
     "typeRoots": ["node_modules/@types", "typings/app.d.ts"],                                  /* Specify multiple folders that act like './node_modules/@types'. */
 
     /* Emit */
@@ -21,5 +23,7 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  },
+  "include":["src/**/*"],
+  "exclude": ["node_modules"]
 }
