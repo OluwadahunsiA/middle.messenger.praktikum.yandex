@@ -4,9 +4,9 @@
   "description": "### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main.  ### ВАЖНО: pull request должен называться “Sprint i” (i — номер спринта).",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel build src/pages/index.hbs && node ./server.js --no-cache",
-    "dev": "parcel src/pages/index.hbs --no-cache",
-    "build": "parcel build src/pages/index.hbs"
+    "start": "parcel build static/index.html && node ./server.js --no-cache",
+    "dev": "parcel static/index.html --no-cache",
+    "build": "parcel build static/index.html"
   },
   "repository": {
     "type": "git",
