@@ -1,3 +1,6 @@
-const samle = "hello";
+import renderDOM from "./core/renderDOM";
+import Registration from "./pages/Registration";
 
-console.log(samle);
+const registration = new Registration();
+
+renderDOM(registration, "root");

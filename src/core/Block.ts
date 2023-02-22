@@ -1,7 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// /* eslint-disable @typescript-eslint/no-explicit-any */
+// /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Handlebars from "handlebars";
 import EventBus from "./EventBus";
+import { nanoid } from "nanoid";
 
 type PropsType = Record<string, any>;
 
@@ -13,30 +18,33 @@ export default class Block {
     FLOW_RENDER: "flow:render",
   };
 
-  eventBus: () => EventBus;
-  children: PropsType;
-  props: PropsType;
+  id = nanoid(6);
 
   _element: HTMLElement | null = null;
 
-  _meta: string;
+  props: PropsType;
 
-  protected references: { [key: string]: HTMLElement } = {};
+  children: PropsType;
+
+  eventBus: () => EventBus;
+
+  references: { [key: string]: HTMLElement } = {};
+
+  tagName: string;
 
   public constructor(allProps?: PropsType, tagName = "div") {
-    const eventBus = new EventBus();
-    this.eventBus = () => eventBus;
-
-    this._meta = tagName;
-
     allProps = allProps ?? ({} as PropsType);
-    const { children, props } = this._filterChildrenFromProps(allProps);
-
-    //check
+    const { children, props } = this._filterChildrenFromAllProps(allProps);
     this.children = children;
     this.props = props;
 
+    this.tagName = tagName;
+
+    const eventBus = new EventBus();
+    this.eventBus = () => eventBus;
+
     this.props = this._makePropsProxy(props || ({} as PropsType));
+
     this.children = this._makePropsProxy(this.children);
 
     this._registerEvents(eventBus);
@@ -44,7 +52,7 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT, this.props);
   }
 
-  _filterChildrenFromProps(allProps?: PropsType) {
+  _filterChildrenFromAllProps(allProps?: PropsType) {
     const children: any = {};
     const props: any = {};
 
@@ -67,7 +75,7 @@ export default class Block {
   }
 
   _createResources() {
-    this._element = this._createDocumentElement(this._meta);
+    this._element = this._createDocumentElement(this.tagName);
   }
 
   init() {
@@ -79,25 +87,22 @@ export default class Block {
     this.componentDidMount(props);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  componentDidMount(props: PropsType) {}
-
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  componentDidUpdate(_oldProps: PropsType, _newProps: PropsType) {
-    return true;
-  }
+  componentDidMount(_props: PropsType) {}
 
   _componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
     const response = this.componentDidUpdate(oldProps, newProps);
-
     if (!response) {
       return;
     }
     this._render();
+  }
+
+  componentDidUpdate(_oldProps: PropsType, _newProps: PropsType) {
+    return true;
   }
 
   setProps = (nextProps: PropsType) => {
@@ -112,24 +117,32 @@ export default class Block {
     return this._element;
   }
 
-  render() {}
-
   _render() {
-    const renderedFragment: any = this.render();
+    const renderResult: any = this.render();
     this._removeEvents();
-    const newElement = renderedFragment.firstElementChild;
+    const newElement = renderResult.firstElementChild;
     this._element?.replaceWith(newElement);
     this._element = newElement as HTMLElement;
-
     this._addEvents();
   }
 
+  render() {}
+
   getContent(): HTMLElement {
+    // if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+    //   setTimeout(() => {
+    //     if (
+    //       this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE
+    //     ) {
+    //       this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    //     }
+    //   }, 100);
+    // }
+
     return this.element!;
   }
 
   _makePropsProxy(props: PropsType): any {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     return new Proxy(props, {
@@ -137,15 +150,13 @@ export default class Block {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-
       set(target: Record<string, unknown>, prop: string, value: unknown) {
         target[prop] = value;
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
         return true;
       },
-
       deleteProperty() {
-        throw new Error("You do not have access");
+        throw new Error("You do not have access to this");
       },
     });
   }
@@ -154,30 +165,22 @@ export default class Block {
     return document.createElement(tagName);
   }
 
-  show() {
-    this.getContent().style.display = "block";
-  }
-
-  hide() {
-    this.getContent().style.display = "none";
-  }
-
   _removeEvents() {
-    const { events } = this.props;
+    const { events } = this.props as PropsType;
 
     if (!events || !this._element) {
       return;
     }
 
-    Object.keys(events).forEach((eventName) => {
+    Object.keys(events).forEach((event) => {
       if (this._element) {
-        this._element?.removeEventListener(eventName, events[eventName]);
+        this._element?.removeEventListener(event, events[event]);
       }
     });
   }
 
   _addEvents() {
-    const { events } = this.props;
+    const { events } = this.props as PropsType;
 
     if (!events) {
       return;
@@ -190,46 +193,51 @@ export default class Block {
     });
   }
 
-  compile(template: string): DocumentFragment {
-    const props = { ...this.props };
+  show() {
+    this.getContent().style.display = "block";
+  }
+
+  hide() {
+    this.getContent().style.display = "none";
+  }
+
+  compile(Incomingtemplate: string): DocumentFragment {
+    const properties: any = { ...this.props };
     Object.entries(this.children).forEach(([key, value]) => {
-      props[key] = `<div data-id="${value.id}"> </div>`;
+      properties[key] = `<div data-id="${value.id}"></div>`;
     });
+    const createdTemplate = document.createElement("template");
 
-    const createdElement = document.createElement("template");
-
-    const compiledTemplate = Handlebars.compile(template);
-
-    createdElement.innerHTML = compiledTemplate({
+    const compiledTemplate = Handlebars.compile(Incomingtemplate);
+    createdTemplate.innerHTML = compiledTemplate({
       ...this.props,
       children: this.children,
       refs: this.references,
-      ...props,
+      ...properties,
     });
 
     Object.entries(this.children).forEach(([, child]) => {
-      const compStub = createdElement.content.querySelector(
-        `[data-id="${child.id}]`
+      const selectedElement = createdTemplate.content.querySelector(
+        `[data-id="${child.id}"]`
       );
 
-      if (!compStub) {
+      if (!selectedElement) {
         return;
       }
 
-      const compStubChildren = compStub.childNodes.length
-        ? compStub.childNodes
+      const selectedElementChildren = selectedElement.childNodes.length
+        ? selectedElement.childNodes
         : [];
 
-      const componentContent = child.getcomponentContent();
-      compStub.replaceWith(componentContent);
+      const content = child.getContent();
+      selectedElement.replaceWith(content);
 
-      const layoutContent = componentContent.querySelector('[data-layout="1"');
-
-      if (layoutContent && compStubChildren.length) {
-        layoutContent.append(...compStubChildren);
+      const layoutContent = content.querySelector('[data-layout="1"]');
+      if (layoutContent && selectedElementChildren.length) {
+        layoutContent.append(...selectedElementChildren);
       }
     });
 
-    return createdElement.content;
+    return createdTemplate.content;
   }
 }
