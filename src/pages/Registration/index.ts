@@ -60,8 +60,25 @@ export default class Registration extends Block {
       value: "",
       error: "",
     });
+    const repeatPassword = new Input({
+      name: "password",
+      id: "repeatPassword",
+      type: "repeatPassword",
+      label: "Repeat password",
+      placeholder: "password",
+      value: "",
+      error: "",
+    });
 
-    super({ email, login, firstName, secondName, phone, password });
+    super({
+      email,
+      login,
+      firstName,
+      secondName,
+      phone,
+      password,
+      repeatPassword,
+    });
   }
 
   render() {

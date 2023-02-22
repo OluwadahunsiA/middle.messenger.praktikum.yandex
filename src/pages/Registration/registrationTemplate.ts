@@ -9,7 +9,7 @@ export default `
     {{{secondName}}}
     {{{phone}}}
     {{{password}}}
-    {{{password}}}
+    {{{repeatPassword}}}
       <button class="registration__form-button" type="submit">Create account</button>
     </form>
   <a href="../index.hbs">Sign In</a>
