@@ -31,22 +31,23 @@ export default `
 
           {{/each}}
 
-        {{else if change}}
+        {{else if changePassword}}
 
-          {{#each changePassword}}
-
-            {{> "input-field/input-field" }}
-
-          {{/each}}
+        <div>
+          {{{oldPassword}}}
+          {{{newPassword}}}
+          {{{repeatNewPassword}}}
+        </div>   
 
         {{else}}
-        
+        <div>
            {{{email}}}
            {{{login}}}
            {{{firstName}}}
            {{{secondName}}}
            {{{displayName}}}
            {{{phone}}}
+        <div>
 
         {{/if}}
 

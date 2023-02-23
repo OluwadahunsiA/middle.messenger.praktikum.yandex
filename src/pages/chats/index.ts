@@ -1,5 +1,5 @@
 import Block from "../../core/Block";
-import template from "./chatsTemplate";
+import template from './ChatTemplate'
 import ChatList from "../../components/ChatListComponent";
 import { messages } from "../../mock-data/messages";
 import userPicture from "../../assets/images/avatar.avif";
