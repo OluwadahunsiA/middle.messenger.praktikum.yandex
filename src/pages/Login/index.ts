@@ -1,9 +1,15 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import Block from "../../core/Block";
 import template from "./LoginTemplate";
 import Input from "../../components/InputComponent";
+import { formEvents } from "../../core/formEvents";
+import Button from "../../components/ButtonComponent";
 
 export default class Login extends Block {
   constructor() {
+    const state = {};
+
     const login = new Input({
       name: "login",
       id: "login",
@@ -23,7 +29,23 @@ export default class Login extends Block {
       value: "",
       error: "",
     });
-    super({ login, password });
+
+    const button = new Button({
+      type: "submit",
+      name: "Enter",
+    });
+
+    super({
+      login,
+      button,
+      password,
+      events: {
+        input: (event: Event) => formEvents.input(event, state),
+        submit: (event: Event) => formEvents.submit(event, self),
+      },
+    });
+
+    const self = this;
   }
 
   render() {

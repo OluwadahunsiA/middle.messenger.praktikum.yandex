@@ -5,9 +5,7 @@ export default `
   
     {{{login}}}
     {{{password}}}
-
-    <button class="login__form-button" type="submit">
-      <a href="./chats.hbs">Enter</a></button>
+    {{{button}}}
 
   </form>
   <p>New here? <a href="./registration.hbs">Sign up</a> </p>

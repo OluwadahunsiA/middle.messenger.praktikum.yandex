@@ -12,10 +12,10 @@
 
     &-button {
       @include buttonStyle();
+      color: $general-white;
+      font-size: $text-font-size;
       a {
         text-decoration: none;
-        font-size: $text-font-size;
-        color: $general-white;
       }
     }
   }
