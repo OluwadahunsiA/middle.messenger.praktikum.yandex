@@ -120,7 +120,7 @@ export default class Block {
   _render() {
     const renderResult: any = this.render();
     this._removeEvents();
-    const newElement = renderResult.firstElementChild;
+    const newElement = renderResult?.firstElementChild;
     this._element?.replaceWith(newElement);
     this._element = newElement as HTMLElement;
     this._addEvents();
@@ -231,8 +231,8 @@ export default class Block {
 
       const content = child.getContent();
       selectedElement.replaceWith(content);
-
-      const layoutContent = content.querySelector('[data-layout="1"]');
+      
+      const layoutContent = content?.querySelector('[data-layout="1"]');
       if (layoutContent && selectedElementChildren.length) {
         layoutContent.append(...selectedElementChildren);
       }
