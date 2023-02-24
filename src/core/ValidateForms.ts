@@ -26,7 +26,7 @@ export default class ValidateForm {
   static regularExpresssions = {
     login: /^(?!\d+$)[A-Za-z-_0-9]{3,20}$/,
     email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-    password: /\w{8,40}/,
+    password: /^(?=[^A-Z]*[A-Z])(?=\D*\d)[A-Za-z0-9!#%]{8,40}$/,
     name: /^[A-ZА-ЯЁ][а-яА-ЯёЁa-zA-Z-]+$/,
     phone: /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/,
     message: /.+/,
@@ -100,7 +100,11 @@ export default class ValidateForm {
   static validatePhoneNumber(value: string) {
     const expression = ValidateForm.regularExpresssions.phone;
 
-    return CheckValidity(value, expression, "Incorrect phone number. Number can start with a +");
+    return CheckValidity(
+      value,
+      expression,
+      "Incorrect phone number. Number can start with a +"
+    );
   }
 
   static validateSubmit(form: HTMLFormElement) {
@@ -109,6 +113,8 @@ export default class ValidateForm {
     let valid = true;
 
     for (const element of elements) {
+      
+    
       if (element.nodeName === "INPUT") {
         //@ts-ignore
         const { error } = ValidateForm.verifyElement(element);
@@ -116,7 +122,7 @@ export default class ValidateForm {
         if (error.length > 0) {
           valid = false;
         }
-      }
+      } 
     }
 
     return valid;

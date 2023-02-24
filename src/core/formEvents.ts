@@ -21,7 +21,7 @@ export const formEvents = {
 
     if (element.nodeName === "INPUT") {
       const { value, error } = ValidateForm.verifyElement(element);
-      element.nextElementSibling!.textContent = '';
+      element.nextElementSibling!.textContent = "";
       self.setProps({
         value,
         error,
@@ -42,6 +42,11 @@ export const formEvents = {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const validateFormContent = ValidateForm.validateSubmit(form);
+
+    Array.from(form.children).forEach((child) => {
+      child.querySelector("input")?.focus();
+    });
+
     console.log(
       "formSubmissionStatus:",
       validateFormContent,

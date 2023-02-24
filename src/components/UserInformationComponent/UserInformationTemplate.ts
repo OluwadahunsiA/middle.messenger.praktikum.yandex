@@ -33,21 +33,21 @@ export default `
 
         {{else if changePassword}}
 
-        <div>
+       
           {{{oldPassword}}}
           {{{newPassword}}}
           {{{repeatNewPassword}}}
-        </div>   
+        
 
         {{else}}
-        <div>
+       
            {{{email}}}
            {{{login}}}
            {{{firstName}}}
            {{{secondName}}}
            {{{displayName}}}
            {{{phone}}}
-        <div>
+       
 
         {{/if}}
 
