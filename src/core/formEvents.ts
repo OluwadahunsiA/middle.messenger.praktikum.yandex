@@ -42,10 +42,39 @@ export const formEvents = {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const validateFormContent = ValidateForm.validateSubmit(form);
+    let passwordValue = "";
+    let repeatPasswordValue = "";
+    let passwordId = "";
+    let repeatPasswordId = "";
 
     Array.from(form.children).forEach((child) => {
-      child.querySelector("input")?.focus();
+      const input = child.querySelector("input");
+      input?.focus();
+
+      if (input?.id === "password" || input?.id === "newPassword") {
+        passwordValue = input.value;
+        passwordId = input.id;
+      }
+      if (input?.id === "repeatPassword" || input?.id === "repeatNewPassword") {
+        repeatPasswordValue = input.value;
+        repeatPasswordId = input.id;
+      }
     });
+
+    if (
+      passwordValue &&
+      repeatPasswordValue &&
+      passwordValue !== repeatPasswordValue
+    ) {
+      //@ts-ignore
+      document.getElementById(passwordId).nextElementSibling!.textContent =
+        "passwords do not match";
+
+      //@ts-ignore
+      document.getElementById(
+        repeatPasswordId
+      ).nextElementSibling!.textContent = "passwords do not match";
+    }
 
     console.log(
       "formSubmissionStatus:",

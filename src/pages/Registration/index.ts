@@ -65,7 +65,7 @@ export default class Registration extends Block {
     const repeatPassword = new Input({
       name: "password",
       id: "repeatPassword",
-      type: "repeatPassword",
+      type: "password",
       label: "Repeat password",
       placeholder: "password",
       value: "",
