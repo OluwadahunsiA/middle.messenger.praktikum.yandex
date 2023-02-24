@@ -3,12 +3,13 @@ import Block from "../../core/Block";
 import ExitButton from "../../components/ExitButtonComponent";
 import EditProfileContent from "../../components/EditProfileContent";
 import Input from "../../components/InputComponent";
-
+import { formEvents } from "../../core/formEvents";
 
 export default class ChangePassword extends Block {
   constructor() {
+    const state = {};
     const exitButton = new ExitButton({
-      href: "",
+      href: "/user-profile",
     });
 
     const content = new EditProfileContent();
@@ -32,15 +33,14 @@ export default class ChangePassword extends Block {
       error: "",
     });
     const repeatNewPassword = new Input({
-      name: "newPassword",
+      name: "newPasswordRepeat",
       id: "repeatNewPassword",
       type: "password",
-      label: "New Password",
+      label: "Repeat New Password",
       placeholder: "new password",
       value: "",
       error: "",
     });
-
 
     const changePassword = true;
 
@@ -51,6 +51,10 @@ export default class ChangePassword extends Block {
       newPassword,
       repeatNewPassword,
       changePassword,
+      events: {
+        input: (event: Event) => formEvents.getInput(event, state),
+        submit: (event: Event) => formEvents.submit(event),
+      },
     });
   }
 

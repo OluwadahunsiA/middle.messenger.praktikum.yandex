@@ -9,12 +9,12 @@ export default `
 
       <input type="file" name="avatar" />
 
-      <button type="submit">Update picture</button>
+      {{{button}}}
 
     </form>
 
      <br></br>  
-    <a href="../pages/edit-profile.hbs">Go back</a>
+    <a href="/edit-profile">Go back</a>
   </div>
 
 </div>

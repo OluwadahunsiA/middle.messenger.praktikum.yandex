@@ -4,12 +4,14 @@ import ExitButton from "../../components/ExitButtonComponent";
 import EditProfileContent from "../../components/EditProfileContent";
 import Input from "../../components/InputComponent";
 import { avatar } from "../../mock-data/avatar";
+import { formEvents } from "../../core/formEvents";
 
 
 export default class EditProfile extends Block {
   constructor() {
+    const state = {};
     const exitButton = new ExitButton({
-      href: "",
+      href: "/user-profile",
     });
 
     const content = new EditProfileContent();
@@ -60,7 +62,20 @@ export default class EditProfile extends Block {
           error: "",
         });
 
-    super({ exitButton, content , email, login, firstName, secondName, phone, avatar});
+    super({
+      exitButton,
+      content,
+      email,
+      login,
+      firstName,
+      secondName,
+      phone,
+      avatar,
+      events: {
+        input: (event: Event) => formEvents.getInput(event, state),
+        submit: (event: Event) => formEvents.submit(event),
+      },
+    });
   }
 
   render() {

@@ -8,7 +8,7 @@ import { profile } from "../../mock-data/profile";
 export default class UserProfile extends Block {
   constructor() {
     const exitButton = new ExitButton({
-      href: "",
+      href: "/chats",
     });
     const content = new UserProfileContent();
     const name = "person"

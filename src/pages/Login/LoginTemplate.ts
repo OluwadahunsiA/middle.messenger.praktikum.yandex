@@ -8,7 +8,7 @@ export default `
     {{{button}}}
 
   </form>
-  <p>New here? <a href="./registration.hbs">Sign up</a> </p>
+  <p>New here? <a href="/registration">Sign up</a> </p>
 
 </div>
 `;

@@ -29,7 +29,7 @@ export const formEvents = {
     }
   },
 
-  input: (event: Event, state: Record<string, any>) => {
+  getInput: (event: Event, state: Record<string, any>) => {
     const element = event.target as HTMLInputElement;
     const elementName = element.name;
 
@@ -38,14 +38,11 @@ export const formEvents = {
     console.log("form", state);
   },
 
-  submit: (event: Event, self: Block) => {
+  submit: (event: Event) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
-    const formIsValid = ValidateForm.validateSubmit(form);
-    // Object.values(self.children).forEach((element) => {
-    //   element.setProps({ value: "", error: "" });
-    // });
+    const validateFormContent = ValidateForm.validateSubmit(form);
 
-    console.log("formSubmitted", formIsValid);
+    console.log("formSubmitted", validateFormContent);
   },
 };

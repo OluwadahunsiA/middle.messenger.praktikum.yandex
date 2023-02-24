@@ -40,12 +40,12 @@ export default class Login extends Block {
       button,
       password,
       events: {
-        input: (event: Event) => formEvents.input(event, state),
-        submit: (event: Event) => formEvents.submit(event, self),
+        input: (event: Event) => formEvents.getInput(event, state),
+        submit: (event: Event) => formEvents.submit(event),
       },
     });
 
-    const self = this;
+    // const self = this;
   }
 
   render() {

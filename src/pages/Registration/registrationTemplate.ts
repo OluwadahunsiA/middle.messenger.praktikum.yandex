@@ -10,8 +10,9 @@ export default `
     {{{phone}}}
     {{{password}}}
     {{{repeatPassword}}}
-      <button class="registration__form-button" type="submit">Create account</button>
+
+    {{{button}}}
     </form>
-  <a href="../index.hbs">Sign In</a>
+  <a href="/">Sign In</a>
 </div>
 `;

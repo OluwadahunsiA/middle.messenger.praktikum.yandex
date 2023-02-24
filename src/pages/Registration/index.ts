@@ -1,10 +1,12 @@
+import Button from "../../components/ButtonComponent";
 import Input from "../../components/InputComponent";
 import Block from "../../core/Block";
+import { formEvents } from "../../core/formEvents";
 import template from "./registrationTemplate";
 
 export default class Registration extends Block {
   constructor() {
-    // const state = {};
+    const state = {};
 
     const email = new Input({
       name: "email",
@@ -70,6 +72,11 @@ export default class Registration extends Block {
       error: "",
     });
 
+    const button = new Button({
+      type: "submit",
+      name: "Create account",
+    });
+
     super({
       email,
       login,
@@ -78,6 +85,11 @@ export default class Registration extends Block {
       phone,
       password,
       repeatPassword,
+      button,
+      events: {
+        input: (event: Event) => formEvents.getInput(event, state),
+        submit: (event: Event) => formEvents.submit(event),
+      },
     });
   }
 

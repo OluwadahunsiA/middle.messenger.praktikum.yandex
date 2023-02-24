@@ -3,7 +3,7 @@ export default `
 <div class="content">
   <div class="chats">
 
-    <a class="chats__user" href="./user-profile.hbs">Profile ></a>
+    <a class="chats__user" href="/user-profile">Profile ></a>
 
     <div class="chats__input">
       <input name="search" placeholder="search" />
@@ -26,7 +26,7 @@ export default `
         </div>
 
         <div class="messages__display-heading-dots">
-          <a href="../pages/edit-profile.hbs">
+          <a href="/user-profile/edit-profile">
             <img src="{{moreOptions}}" alt="three dots" />
           </a>
         </div>

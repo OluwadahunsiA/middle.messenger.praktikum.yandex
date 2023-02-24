@@ -6,7 +6,7 @@ export default class Error404 extends Block {
     super();
   }
 
-  render(){
+  render() {
     return this.compile(template);
   }
 }
