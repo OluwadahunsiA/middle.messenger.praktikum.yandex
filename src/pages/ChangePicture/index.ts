@@ -5,6 +5,7 @@ import template from "./ChangePictureTemplate";
 
 export default class ChangePicture extends Block {
   constructor() {
+    const state = {};
     const button = new Button({
       type: "submit",
       name: "Update picture",
@@ -13,7 +14,7 @@ export default class ChangePicture extends Block {
     super({
       button,
       events: {
-        submit: (event: Event) => formEvents.submit(event),
+        submit: (event: Event) => formEvents.submit(event, state),
       },
     });
   }

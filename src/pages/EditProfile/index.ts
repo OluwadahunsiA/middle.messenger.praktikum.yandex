@@ -73,7 +73,7 @@ export default class EditProfile extends Block {
       avatar,
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
-        submit: (event: Event) => formEvents.submit(event),
+        submit: (event: Event) => formEvents.submit(event, state),
       },
     });
   }

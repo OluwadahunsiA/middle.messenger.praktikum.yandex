@@ -53,7 +53,7 @@ export default class ChangePassword extends Block {
       changePassword,
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
-        submit: (event: Event) => formEvents.submit(event),
+        submit: (event: Event) => formEvents.submit(event, state),
       },
     });
   }

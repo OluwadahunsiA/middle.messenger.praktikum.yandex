@@ -17,11 +17,10 @@ export const formEvents = {
     event.preventDefault();
     event.stopPropagation();
 
-    const element = event.target as HTMLInputElement
+    const element = event.target as HTMLInputElement;
 
     if (element.nodeName === "INPUT") {
       const { value, error } = ValidateForm.verifyElement(element);
-      console.log(value, error);
       self.setProps({
         value,
         error,
@@ -35,14 +34,18 @@ export const formEvents = {
 
     const { value } = element;
     Object.assign(state, { [elementName]: value });
-    console.log("form", state);
+    console.log("formInputValues", state);
   },
 
-  submit: (event: Event) => {
+  submit: (event: Event, state?: Record<string, any>) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const validateFormContent = ValidateForm.validateSubmit(form);
-
-    console.log("formSubmitted", validateFormContent);
+    console.log(
+      "formSubmissionStatus:",
+      validateFormContent,
+      "formInputValues",
+      state
+    );
   },
 };

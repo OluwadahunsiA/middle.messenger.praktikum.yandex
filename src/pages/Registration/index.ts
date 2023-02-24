@@ -88,7 +88,7 @@ export default class Registration extends Block {
       button,
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
-        submit: (event: Event) => formEvents.submit(event),
+        submit: (event: Event) => formEvents.submit(event, state),
       },
     });
   }

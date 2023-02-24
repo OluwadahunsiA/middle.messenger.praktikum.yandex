@@ -41,11 +41,9 @@ export default class Login extends Block {
       password,
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
-        submit: (event: Event) => formEvents.submit(event),
+        submit: (event: Event) => formEvents.submit(event, state),
       },
     });
-
-    // const self = this;
   }
 
   render() {
