@@ -32,8 +32,8 @@
     &__content {
       overflow: scroll;
 
-      a{
-        text-decoration:none;
+      a {
+        text-decoration: none;
         color: inherit;
       }
     }
@@ -99,10 +99,28 @@
       }
     }
 
+    &__form {
+      position: relative;
+
+      &-input{
+        margin-left: 90px;
+      }
+  
+      &-button {
+        position: absolute;
+        right: 40;
+        top: 10;
+        width: 10%;
+          .login__form-button {
+          margin-top: 0px;
+        }
+      }
+    }
+
     &__input {
       position: relative;
       align-self: center;
-      @include inputContainer(10px, 30px, 90%);
+      @include inputContainer(10px, 30px, 80%);
 
       .errorMessage {
         font-size: 10px;
@@ -113,7 +131,7 @@
     }
 
     &__empty {
-      height:100%;
+      height: 100%;
       font-size: 20px;
       display: flex;
       align-items: center;
