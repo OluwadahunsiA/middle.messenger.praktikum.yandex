@@ -31,6 +31,11 @@
 
     &__content {
       overflow: scroll;
+
+      a{
+        text-decoration:none;
+        color: inherit;
+      }
     }
 
     &__input {
@@ -102,9 +107,17 @@
       .errorMessage {
         font-size: 10px;
         position: absolute;
-        color:$error-color;
+        color: $error-color;
         top: 30;
       }
+    }
+
+    &__empty {
+      height:100%;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

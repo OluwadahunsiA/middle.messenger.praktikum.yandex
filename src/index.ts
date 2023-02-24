@@ -24,6 +24,7 @@ const pageRoutes: Record<string, any> = {
   "/": login,
   "/registration": registration,
   "/chats": chats,
+  "/chats/id":chats,
   "/user-profile": profile,
   "/user-profile/edit-profile": editProfile,
   "/user-profile/change-password": changePassword,
