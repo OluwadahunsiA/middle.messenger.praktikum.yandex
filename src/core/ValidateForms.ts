@@ -28,7 +28,7 @@ export default class ValidateForm {
     email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
     password: /^(?=[^A-Z]*[A-Z])(?=\D*\d)[A-Za-z0-9!#%]{8,40}$/,
     name: /^[A-ZА-ЯЁ][а-яА-ЯёЁa-zA-Z-]+$/,
-    phone: /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/,
+    phone: /^((?:.+)[0-9]{10,15})$/,
     message: /.+/,
   };
 
@@ -113,8 +113,6 @@ export default class ValidateForm {
     let valid = true;
 
     for (const element of elements) {
-      
-    
       if (element.nodeName === "INPUT") {
         //@ts-ignore
         const { error } = ValidateForm.verifyElement(element);
@@ -122,7 +120,7 @@ export default class ValidateForm {
         if (error.length > 0) {
           valid = false;
         }
-      } 
+      }
     }
 
     return valid;
