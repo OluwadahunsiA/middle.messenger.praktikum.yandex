@@ -59,7 +59,11 @@ export default class ValidateForm {
 
   static validateLogin(value: string) {
     const expression = ValidateForm.regularExpresssions.login;
-    return CheckValidity(value, expression, "Please enter a valid login");
+    return CheckValidity(
+      value,
+      expression,
+      "Must be 3-20 symbols. No special symbols except - and _"
+    );
   }
 
   static validateEmail(value: string) {
@@ -70,13 +74,21 @@ export default class ValidateForm {
   static validateName(value: string) {
     const expression = ValidateForm.regularExpresssions.name;
 
-    return CheckValidity(value, expression, "Incorrect value");
+    return CheckValidity(
+      value,
+      expression,
+      "First letter must be in uppercase. No special symbol is allowed."
+    );
   }
 
   static validatePassword(value: string) {
     const expression = ValidateForm.regularExpresssions.password;
 
-    return CheckValidity(value, expression, "Incorrect password");
+    return CheckValidity(
+      value,
+      expression,
+      "Password must be 8-40 symbols long. Must contain one uppercase and one numerical value "
+    );
   }
 
   static validateMessage(value: string) {
@@ -88,7 +100,7 @@ export default class ValidateForm {
   static validatePhoneNumber(value: string) {
     const expression = ValidateForm.regularExpresssions.phone;
 
-    return CheckValidity(value, expression, "Incorrect phone number");
+    return CheckValidity(value, expression, "Incorrect phone number. Number can start with a +");
   }
 
   static validateSubmit(form: HTMLFormElement) {
