@@ -1,4 +1,3 @@
-
 export default `
 <div class="content">
   <div class="chats">
@@ -43,9 +42,10 @@ export default `
       </div>
 
     </div>
-    <div class="messages__input">
-      <input name="message" id="message" placeholder="message" />
-    </div>
+   
+    {{{messageInput}}}
+    
+ 
   </div>
 
 </div>

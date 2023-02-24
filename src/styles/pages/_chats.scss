@@ -95,8 +95,16 @@
     }
 
     &__input {
+      position: relative;
       align-self: center;
       @include inputContainer(10px, 30px, 90%);
+
+      .errorMessage {
+        font-size: 10px;
+        position: absolute;
+        color:$error-color;
+        top: 30;
+      }
     }
   }
 }

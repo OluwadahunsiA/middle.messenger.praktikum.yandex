@@ -2,6 +2,6 @@
   @include inputContainer(20px, 60px, 100%);
 
   .errorMessage {
-    color: red;
+    color: $error-color;
   }
 }
