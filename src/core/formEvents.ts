@@ -21,6 +21,7 @@ export const formEvents = {
 
     if (element.nodeName === "INPUT") {
       const { value, error } = ValidateForm.verifyElement(element);
+      element.nextElementSibling!.textContent = '';
       self.setProps({
         value,
         error,

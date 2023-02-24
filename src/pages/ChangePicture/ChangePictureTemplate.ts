@@ -14,7 +14,7 @@ export default `
     </form>
 
      <br></br>  
-    <a href="/edit-profile">Go back</a>
+    <a href="/user-profile/edit-profile">Go back</a>
   </div>
 
 </div>
