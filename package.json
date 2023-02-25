@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node ./server.js --no-cache",
     "dev": "parcel static/index.html --no-cache",
-    "build": "parcel build static/index.html"
+    "build": "parcel build static/index.html",
+    "stylelint": "stylelint **/*.scss --fix"
   },
   "repository": {
     "type": "git",

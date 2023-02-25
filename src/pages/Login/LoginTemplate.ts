@@ -1,7 +1,7 @@
 export default `
 <div class="login">
   <h2 class="login__title">Sign In</h2>
-  <form class="login__form">
+  <form class="login-form">
   
     {{{login}}}
     {{{password}}}

@@ -1,5 +1,6 @@
 .layout {
   @include container(80px, 600px, 80%);
+
   &__underline {
     height: $layout-underline-height;
     width: 100%;

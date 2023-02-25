@@ -7,23 +7,24 @@
   width: $width;
 }
 
-@mixin flexCenter() {
+@mixin flex-center() {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@mixin containerContent() {
+@mixin container-content() {
   display: flex;
   align-items: center;
   flex-direction: column;
+
   &__title {
     font-size: 30px;
     color: $deep-green;
   }
 }
 
-@mixin inputContainer($margin, $height, $width) {
+@mixin input-container($margin, $height, $width) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,14 +41,13 @@
 
     &:focus {
       border-color: $input-focus;
-      box-shadow: $input-focus;
       outline: 3px solid transparent;
       box-shadow: 0 0 2px 3px $input-focus;
     }
   }
 }
 
-@mixin buttonStyle() {
+@mixin button-style() {
   height: 30px;
   width: 100%;
   cursor: pointer;
@@ -57,7 +57,7 @@
   background-color: $deep-green;
 }
 
-@mixin clampText($line) {
+@mixin clamp-text($line) {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

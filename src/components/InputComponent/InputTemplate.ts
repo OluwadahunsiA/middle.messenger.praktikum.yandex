@@ -1,5 +1,5 @@
 export default `
-<div class="input__field">
+<div class="input-field">
   <label for="{{label}}">{{label}}:</label>
   <input
     id="{{id}}"
@@ -8,6 +8,6 @@ export default `
     placeholder="{{placeholder}}"
     value="{{value}}"
   />
-  <span class="errorMessage">{{error}}</span>
+  <span class="error-message">{{error}}</span>
 </div>
 `;

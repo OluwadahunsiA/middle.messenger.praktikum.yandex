@@ -11,17 +11,17 @@
 
     &__user {
       align-self: flex-end;
-      margin: 20px 10px 10px 0px;
+      margin: 20px 10px 10px 0;
       text-decoration: none;
       color: $dark-grey;
-
       cursor: pointer;
       right: 10px;
       top: 10px;
     }
 
     &__input {
-      @include inputContainer(10px, 30px, 90%);
+      @include input-container(10px, 30px, 90%);
+
       align-self: center;
 
       input::placeholder {
@@ -37,12 +37,8 @@
         color: inherit;
       }
     }
-
-    &__input {
-      @include inputContainer(20px, 60px, 90%);
-      align-self: center;
-    }
   }
+
   .messages {
     width: 100%;
     display: flex;
@@ -65,6 +61,7 @@
           justify-content: space-between;
           width: 90px;
           margin: 20px;
+
           img {
             height: 40px;
             width: 40px;
@@ -111,8 +108,9 @@
         right: 40;
         top: 10;
         width: 10%;
-          .login__form-button {
-          margin-top: 0px;
+
+          .login-form-button {
+          margin-top: 0;
         }
       }
     }
@@ -120,9 +118,10 @@
     &__input {
       position: relative;
       align-self: center;
-      @include inputContainer(10px, 30px, 80%);
 
-      .errorMessage {
+      @include input-container(10px, 30px, 80%);
+
+      .error-message {
         font-size: 10px;
         position: absolute;
         color: $error-color;

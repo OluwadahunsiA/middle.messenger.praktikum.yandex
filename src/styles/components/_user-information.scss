@@ -4,14 +4,16 @@
   height: calc($innerheight - $correct-overflow);
 
   &__exit {
-    @include flexCenter();
+    @include flex-center;
+
     border-right: 1px solid $light-grey;
     cursor: pointer;
     width: 5%;
   }
 
   &__content {
-    @include flexCenter();
+    @include flex-center;
+
     width: 100%;
 
     &-box {
@@ -41,7 +43,7 @@
 
       &-actions {
         font-size: $text-font-size;
-        margin: 20px 0px;
+        margin: 20px 0;
         min-height: 100px;
         width: 100%;
         display: flex;
@@ -50,7 +52,7 @@
       }
 
       &-uneditable {
-        @include inputContainer(20px, 30px, 100%);
+        @include input-container(20px, 30px, 100%);
       }
     }
   }
