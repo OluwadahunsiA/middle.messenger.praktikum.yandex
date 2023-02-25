@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-
+    "target": "es2019",
+    "declaration": false,
     "module": "commonjs",
-
-    "outDir": "dist",
-
-    "typeRoots": ["node_modules/@types", "src/typings/app.d.ts"],
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "typeRoots": ["node_modules/@types", "src/typings/app.d.ts"],
 
-    "skipLibCheck": true
+    "outDir": "dist"
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]
