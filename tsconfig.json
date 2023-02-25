@@ -1,32 +1,18 @@
 {
   "compilerOptions": {
-    /* Visit https://aka.ms/tsconfig to read more about this file */
+    "target": "es2016",
 
-    /* Language and Environment */
-    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "commonjs",
 
-    /* Modules */
-
-    "module": "commonjs" /* Specify what module code is generated. */,
-    //"rootDir": "./src",                                  /* Specify the root folder within your source files. */
     "outDir": "dist",
-    //"baseUrl": "./src",                                  /* Specify the base directory to resolve non-relative module names. */
-    "typeRoots": [
-      "node_modules/@types",
-      "src/typings/app.d.ts"
-    ] /* Specify multiple folders that act like './node_modules/@types'. */,
 
-    /* Emit */
-    /* Interop Constraints */
-    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "typeRoots": ["node_modules/@types", "src/typings/app.d.ts"],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
 
-    /* Type Checking */
-    "strict": true /* Enable all strict type-checking options. */,
-    /* Completeness */
-    // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true
   },
-  "include": ["src/**/*"],
+  "include": ["./src/**/*"],
   "exclude": ["node_modules"]
 }
