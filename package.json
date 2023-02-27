@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node ./server.js --no-cache --open",
-    "dev": "parcel static/index.html --no-cache",
+    "dev": "parcel static/index.html --no-cache --open",
     "build": "parcel build static/index.html",
     "stylelint": "stylelint **/*.scss --fix"
   },
