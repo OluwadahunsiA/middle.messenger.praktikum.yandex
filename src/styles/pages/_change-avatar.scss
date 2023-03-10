@@ -17,6 +17,6 @@
   }
 
   button {
-    @include buttonStyle();
+    @include button-style;
   }
 }

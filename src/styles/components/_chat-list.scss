@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+
   &:hover {
     background-color: $hover-color;
   }
@@ -45,7 +46,8 @@
         font-size: 15px;
         width: 100%;
         height: 100%;
-        @include clampText(2);
+
+        @include clamp-text(2);
       }
     }
 

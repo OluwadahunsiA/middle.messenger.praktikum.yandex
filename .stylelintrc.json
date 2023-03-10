@@ -1,0 +1,9 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "color-hex-case": "lower",
+    "no-duplicate-selectors": true
+  },
+  "plugins": ["stylelint-scss"],
+  "ignoreFiles": ["dist/*"]
+}

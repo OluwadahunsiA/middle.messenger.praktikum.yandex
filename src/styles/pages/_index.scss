@@ -1,21 +1,22 @@
 .login {
   @include container(10px, 80%, 30%);
-  @include containerContent();
+  @include container-content;
 
-  &__form {
+  &-form {
     display: flex;
     flex-direction: column;
-
     margin-top: 10px;
     font-size: $text-font-size;
     width: 90%;
 
     &-button {
-      @include buttonStyle();
+      @include button-style;
+
+      color: $general-white;
+      font-size: $text-font-size;
+
       a {
         text-decoration: none;
-        font-size: $text-font-size;
-        color: $general-white;
       }
     }
   }

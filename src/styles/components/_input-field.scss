@@ -1,3 +1,8 @@
-.input__field {
-  @include inputContainer(20px, 60px, 100%);
+.input-field {
+  @include input-container(20px, 60px, 100%);
+
+  .error-message {
+    color: $error-color;
+    font-size: 12px;
+  }
 }

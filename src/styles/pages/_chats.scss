@@ -11,17 +11,17 @@
 
     &__user {
       align-self: flex-end;
-      margin: 20px 10px 10px 0px;
+      margin: 20px 10px 10px 0;
       text-decoration: none;
       color: $dark-grey;
-
       cursor: pointer;
       right: 10px;
       top: 10px;
     }
 
     &__input {
-      @include inputContainer(10px, 30px, 90%);
+      @include input-container(10px, 30px, 90%);
+
       align-self: center;
 
       input::placeholder {
@@ -31,13 +31,14 @@
 
     &__content {
       overflow: scroll;
-    }
 
-    &__input {
-      @include inputContainer(20px, 60px, 90%);
-      align-self: center;
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
     }
   }
+
   .messages {
     width: 100%;
     display: flex;
@@ -60,6 +61,7 @@
           justify-content: space-between;
           width: 90px;
           margin: 20px;
+
           img {
             height: 40px;
             width: 40px;
@@ -94,9 +96,45 @@
       }
     }
 
+    &__form {
+      position: relative;
+
+      &-input{
+        margin-left: 90px;
+      }
+  
+      &-button {
+        position: absolute;
+        right: 40;
+        top: 10;
+        width: 10%;
+
+          .login-form-button {
+          margin-top: 0;
+        }
+      }
+    }
+
     &__input {
+      position: relative;
       align-self: center;
-      @include inputContainer(10px, 30px, 90%);
+
+      @include input-container(10px, 30px, 80%);
+
+      .error-message {
+        font-size: 10px;
+        position: absolute;
+        color: $error-color;
+        top: 30;
+      }
+    }
+
+    &__empty {
+      height: 100%;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
