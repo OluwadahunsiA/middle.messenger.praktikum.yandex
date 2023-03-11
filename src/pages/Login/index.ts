@@ -37,7 +37,7 @@ export default class Login extends Block {
     });
 
     const link = new Link({
-      path: "/registration",
+      path: "/sign-up",
       name: "Sign up",
     });
 

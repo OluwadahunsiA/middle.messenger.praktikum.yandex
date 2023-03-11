@@ -14,7 +14,7 @@ import Router from "./core/Router";
 
 const Routes = {
   Login: "/",
-  Registration: "/registration",
+  Registration: "/sign-up",
   Profile: "/settings",
   Chat: "/messenger",
   Server: "/server-error",

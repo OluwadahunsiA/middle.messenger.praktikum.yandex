@@ -31,7 +31,7 @@ function queryStringify(data: Record<string, any>) {
   );
 }
 
-export default class HTTPTransport {
+class HTTP {
   get: HTTPMethodType = (url, options = {}) => {
     if (options.data) {
       url = `${url}${queryStringify(options.data)}`;
@@ -80,3 +80,5 @@ export default class HTTPTransport {
     });
   }
 }
+
+export default new HTTP();
