@@ -3,6 +3,7 @@ import Input from "../../components/InputComponent";
 import Block from "../../core/Block";
 import { formEvents } from "../../core/formEvents";
 import template from "./registrationTemplate";
+import Link from "../../components/Link";
 
 export default class Registration extends Block {
   constructor() {
@@ -77,7 +78,13 @@ export default class Registration extends Block {
       name: "Create account",
     });
 
+    const link = new Link({
+      path: "/",
+      name: "Sign In",
+    });
+
     super({
+      link,
       email,
       login,
       firstName,

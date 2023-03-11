@@ -5,6 +5,7 @@ import template from "./LoginTemplate";
 import Input from "../../components/InputComponent";
 import { formEvents } from "../../core/formEvents";
 import Button from "../../components/ButtonComponent";
+import Link from "../../components/Link";
 
 export default class Login extends Block {
   constructor() {
@@ -35,7 +36,13 @@ export default class Login extends Block {
       name: "Enter",
     });
 
+    const link = new Link({
+      path: "/registration",
+      name: "Sign up",
+    });
+
     super({
+      link,
       login,
       button,
       password,
