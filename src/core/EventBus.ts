@@ -18,7 +18,8 @@ export default class EventBus {
 
   off(event: string, callback: EventListener) {
     if (!this.listeners[event]) {
-      throw new Error(`No such event: ${event}`);
+      // throw new Error(`No such event: ${event}`);
+      return;
     }
     this.listeners[event] = this.listeners[event].filter(
       (listener: EventListener) => {
@@ -29,7 +30,8 @@ export default class EventBus {
 
   emit(event: string, ...args: any) {
     if (!this.listeners[event]) {
-      throw new Error(`No such event: ${event}`);
+      // throw new Error(`No such event: ${event}`);
+      return;
     }
 
     this.listeners[event].forEach((listener: EventListener) =>

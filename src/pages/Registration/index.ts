@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import Button from "../../components/ButtonComponent";
 import Input from "../../components/InputComponent";
 import Block from "../../core/Block";
 import { formEvents } from "../../core/formEvents";
 import template from "./registrationTemplate";
 import Link from "../../components/Link";
+import ValidateForm from "../../core/ValidateForms";
+import AuthenticationService from "../../services/authentication";
 
 export default class Registration extends Block {
   constructor() {
@@ -95,9 +98,64 @@ export default class Registration extends Block {
       button,
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
-        submit: (event: Event) => formEvents.submit(event, state),
+        // change: (event: Event) => {
+        //   event.preventDefault();
+
+        //   let checkFormValidity = false;
+
+        //   setTimeout(() => {
+        //     const children: { [key: string]: any } = Object.values(
+        //       // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        //       self.children
+        //     );
+
+        //     for (let i = 0; i < children.length; i += 1) {
+        //       if (children[i].props.error !== undefined) {
+        //         if (
+        //           children[i].props.value.length > 0 &&
+        //           children[i].props.error.length === 0
+        //         ) {
+        //           checkFormValidity = true;
+        //         } else {
+        //           checkFormValidity = false;
+        //           break;
+        //         }
+        //       }
+        //     }
+        //   }, 100);
+        // },
+        submit: (event: Event) => {
+          // formEvents.submit(event, state);
+          event.preventDefault();
+
+          const form = event.target as HTMLFormElement;
+
+          const validateForm = ValidateForm.validateSubmit(form);
+
+          const payload: { [key: string]: string } = {
+            first_name: "",
+            second_name: "",
+            login: "",
+            email: "",
+            password: "",
+            phone: "",
+          };
+
+          Object.values(self.children).forEach((element) => {
+            payload[element.props.name] = element.props.value;
+          });
+          
+          const dataToString = JSON.stringify(payload);
+
+          if (validateForm) {
+            AuthenticationService.signup(dataToString, self.children);
+          }
+        },
       },
     });
+
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this;
   }
 
   render() {

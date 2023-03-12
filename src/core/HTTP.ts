@@ -1,4 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { PropsType } from "../types";
+
+const BASE_URL = "https://ya-praktikum.tech/api/v2/";
+export const BASE_URL_RESOUCES = "https://ya-praktikum.tech/api/v2/resources";
+export const WWS_URL = "wss://ya-praktikum.tech/ws/chats";
+
 enum METHOD {
   GET = "GET",
   POST = "POST",
@@ -8,7 +14,7 @@ enum METHOD {
 
 type RequestOptions = {
   method: METHOD;
-  data?: Record<string, any>;
+  data?: PropsType | XMLHttpRequestBodyInit;
   headers?: Record<string, string>;
 };
 
@@ -33,8 +39,8 @@ function queryStringify(data: Record<string, any>) {
 
 class HTTP {
   get: HTTPMethodType = (url, options = {}) => {
-    if (options.data) {
-      url = `${url}${queryStringify(options.data)}`;
+    if (options?.data) {
+      url = `${url}${queryStringify(options.data as PropsType)}`;
     }
 
     return this.request(url, { ...options, method: METHOD.GET });
@@ -58,13 +64,17 @@ class HTTP {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
+      xhr.withCredentials = true;
+
+      url = BASE_URL + url;
+
       xhr.open(method, url);
 
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.onload = function () {
+      xhr.onload = function cb() {
         resolve(xhr);
       };
 

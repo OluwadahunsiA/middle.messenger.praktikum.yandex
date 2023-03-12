@@ -1,11 +1,17 @@
 import EventBus from "./EventBus";
 import { set } from "../utils/helper";
 
-import { StateType } from "../types";
+import { StoreInterface } from "../types";
 
 class Store extends EventBus {
-  appState: StateType = {
-    isAuthenticated: false,
+  appState: StoreInterface = {
+    isAuth: false,
+    user: null,
+    emptyChat: true,
+    selectedUser: null,
+    currentChat: null,
+    messages: {},
+    chats:[],
   };
 
   initState() {
@@ -18,7 +24,7 @@ class Store extends EventBus {
     const state = localStorage.getItem("currentState");
     if (state) {
       //check why deep parse should work here if there is any issue..
-      console.log(JSON.parse(state));
+      // console.log(JSON.parse(state));
       return JSON.parse(state);
     } else {
       return {};
@@ -27,7 +33,13 @@ class Store extends EventBus {
 
   removeState() {
     this.appState = {
-      isAuthenticated: false,
+      isAuth: false,
+      user: null,
+      emptyChat: true,
+      selectedUser: null,
+      currentChat: null,
+      messages: {},
+      chats: [],
     };
     localStorage.removeItem("currentState");
   }

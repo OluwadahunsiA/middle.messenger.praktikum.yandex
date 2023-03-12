@@ -6,6 +6,8 @@ import Input from "../../components/InputComponent";
 import { formEvents } from "../../core/formEvents";
 import Button from "../../components/ButtonComponent";
 import Link from "../../components/Link";
+import AuthenticationService from "../../services/authentication";
+import ValidateForm from "../../core/ValidateForms";
 
 export default class Login extends Block {
   constructor() {
@@ -48,9 +50,34 @@ export default class Login extends Block {
       password,
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
-        submit: (event: Event) => formEvents.submit(event, state),
+        submit: (event: Event) => {
+          // formEvents.submit(event, state);
+
+          event.preventDefault();
+
+          const form = event.target as HTMLFormElement;
+
+          const validateForm = ValidateForm.validateSubmit(form);
+
+          const payload: { [key: string]: string } = {
+            email: "",
+            password: "",
+          };
+
+          Object.values(self.children).forEach((element) => {
+            payload[element.props.name] = element.props.value;
+          });
+
+          const dataToString = JSON.stringify(payload)
+
+          if (validateForm) {
+            AuthenticationService.signin(dataToString, self.children);
+          }
+        },
       },
     });
+
+    const self = this;
   }
 
   render() {
