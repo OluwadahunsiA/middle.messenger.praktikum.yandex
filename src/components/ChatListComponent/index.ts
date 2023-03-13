@@ -43,8 +43,6 @@ class ChatList extends Block {
   }
 
   render() {
-    console.log('rendering chat list')
-    console.log(this.props)
     return this.compile(template);
   }
 }
