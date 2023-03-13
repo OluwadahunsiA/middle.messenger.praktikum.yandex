@@ -30,6 +30,7 @@ class MessageService {
   }
 
   sendMessage(content: string) {
+   
     this.socket.send({ type: "message", content });
   }
 
