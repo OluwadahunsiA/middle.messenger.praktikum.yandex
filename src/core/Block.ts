@@ -204,7 +204,8 @@ export default class Block {
   compile(Incomingtemplate: string): DocumentFragment {
     const properties: any = { ...this.props };
     Object.entries(this.children).forEach(([key, value]) => {
-      properties[key] = `<div data-id="${value.id}"></div>`;
+      console.log(value);
+      properties[key] = `<div data-id="${value?.id}"></div>`;
     });
     const createdTemplate = document.createElement("template");
 

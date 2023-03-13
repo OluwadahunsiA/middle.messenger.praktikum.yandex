@@ -2,7 +2,7 @@
 import Block from "../../core/Block";
 import template from "./ChatListTemplate";
 
-import userProfileService from "../../services/userProfileService";
+import UserProfileService from "../../services/userProfileService";
 import ChatService from "../../services/chatService";
 
 import { BASE_URL_RESOUCES } from "../../core/HTTP";
@@ -13,7 +13,6 @@ import avatar from "../../assets/images/avatar.avif";
 type ChatListProps = { [key: string]: string };
 class ChatList extends Block {
   constructor(props: ChatListProps[] | any) {
-
     super({
       ...props,
       baseUrl: BASE_URL_RESOUCES,
@@ -23,19 +22,24 @@ class ChatList extends Block {
 
       events: {
         click: (event: Event) => {
-          const clickedList = event.target as Element;
+          const clickedUser = event.target as Element;
 
-          const clickedUser = clickedList.closest(
-            "#chat_list_click"
+          const clickedUserInfo = clickedUser.closest(
+            ".chats-list__single"
           ) as HTMLElement;
 
-          if (clickedUser && clickedUser.dataset) {
-            const id = clickedUser.dataset.chatId as string;
+          if (clickedUserInfo && clickedUserInfo.dataset) {
+            const id = clickedUserInfo.dataset.userId as string;
+            console.log(id);
 
-            const title =
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              clickedUser.querySelector("#chat_list-title")!.textContent;
-            ChatService.startChating(id, title, true);
+            UserProfileService.findUserById(id);
+
+            // const title =
+            //   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            //   clickedUser.querySelector("#chat_list-title")!.textContent;
+
+            // console.log(title);
+            // ChatService.startChating(id, title, true);
           }
         },
       },
