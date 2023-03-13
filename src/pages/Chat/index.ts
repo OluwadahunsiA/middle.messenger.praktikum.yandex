@@ -3,16 +3,22 @@ import template from "./ChatTemplate";
 import ChatList from "../../components/ChatListComponent";
 import { messages } from "../../mock-data/messages";
 import ChatsComponent from "../../components/ChatsComponent";
+import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
+import { PropsType } from "../../types";
+import ChatSearchInput from "../../components/ChatSearchInput";
 
-export default class Chats extends Block {
+class Chats extends Block {
   constructor() {
-    const chatList = new ChatList({ messages });
-  
+    const chatSearch = new ChatSearchInput();
 
     const chatsContent = new ChatsComponent();
+
+    const chatList = ChatList;
+
     super({
-      chatsContent,
       chatList,
+      chatsContent,
+      chatSearch,
     });
   }
 
@@ -20,3 +26,19 @@ export default class Chats extends Block {
     return this.compile(template);
   }
 }
+
+function addStateToProps(state: PropsType) {
+  if (state.chats) {
+    const { chats } = state;
+
+    return {
+      chats,
+    };
+  }
+
+  return {
+    chats: [],
+  };
+}
+
+export default AddStoreToBlock(Chats, addStateToProps);

@@ -8,12 +8,12 @@ import ChatService from "../../services/chatService";
 import { BASE_URL_RESOUCES } from "../../core/HTTP";
 
 //@ts-ignore
-import avatar from "../../assets/images/dots.svg";
+import avatar from "../../assets/images/avatar.avif";
 
 type ChatListProps = { [key: string]: string };
-
-export default class ChatList extends Block {
+class ChatList extends Block {
   constructor(props: ChatListProps[] | any) {
+
     super({
       ...props,
       baseUrl: BASE_URL_RESOUCES,
@@ -43,6 +43,10 @@ export default class ChatList extends Block {
   }
 
   render() {
+    console.log('rendering chat list')
+    console.log(this.props)
     return this.compile(template);
   }
 }
+
+export default new ChatList({});

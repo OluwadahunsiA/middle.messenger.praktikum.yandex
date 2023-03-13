@@ -8,6 +8,7 @@
     flex-direction: column;
     width: 400px;
     border-right: 1px solid $dark-grey;
+    position: relative;
 
     &__user {
       align-self: flex-end;
@@ -26,6 +27,17 @@
 
       input::placeholder {
         padding-left: 5px;
+      }
+    }
+
+    &__button {
+      position: absolute;
+      right: 20;
+      top: 10;
+      width: 20%;
+
+      .login-form-button {
+        margin-top: 0;
       }
     }
 
@@ -99,17 +111,17 @@
     &__form {
       position: relative;
 
-      &-input{
+      &-input {
         margin-left: 90px;
       }
-  
+
       &-button {
         position: absolute;
         right: 40;
         top: 10;
         width: 10%;
 
-          .login-form-button {
+        .login-form-button {
           margin-top: 0;
         }
       }

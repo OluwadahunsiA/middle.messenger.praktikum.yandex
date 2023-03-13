@@ -95,6 +95,7 @@ export default class Block {
 
   _componentDidUpdate(oldProps: PropsType, newProps: PropsType) {
     const response = this.componentDidUpdate(oldProps, newProps);
+    console.log("component should be updated");
     if (!response) {
       return;
     }
@@ -119,9 +120,10 @@ export default class Block {
 
   _render() {
     const renderResult: any = this.render();
+    console.log('render')
     this._removeEvents();
     const newElement = renderResult?.firstElementChild;
-    // this._element?.replaceWith(newElement);
+    this._element?.replaceWith(newElement);
     this._element = newElement as HTMLElement;
     this._addEvents();
   }
@@ -153,6 +155,8 @@ export default class Block {
       set(target: Record<string, unknown>, prop: string, value: unknown) {
         target[prop] = value;
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+
+        console.log(self, "status update");
         return true;
       },
       deleteProperty() {
@@ -231,7 +235,7 @@ export default class Block {
 
       const content = child.getContent();
       selectedElement.replaceWith(content);
-      
+
       const layoutContent = content?.querySelector('[data-layout="1"]');
       if (layoutContent && selectedElementChildren.length) {
         layoutContent.append(...selectedElementChildren);

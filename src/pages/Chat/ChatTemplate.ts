@@ -4,9 +4,7 @@ export default `
 
     <a class="chats__user" href="/user-profile">Profile ></a>
 
-    <div class="chats__input">
-      <input name="search" placeholder="search" />
-    </div>
+     {{{chatSearch}}}
 
     <div class="chats__content">
       
@@ -20,6 +18,3 @@ export default `
 </div>
 
 `;
-
-
-

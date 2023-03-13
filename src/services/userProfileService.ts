@@ -4,7 +4,7 @@ import Store from "../core/Store";
 import Block from "../core/Block";
 
 // pictures might go here
-//chat list might go here
+import ChatList from "../components/ChatListComponent";
 
 // tooltip might go here
 
@@ -107,7 +107,12 @@ class UserProfileService {
               isNotFoundUser,
             });
           } else {
-            //set the chatlist props here.
+            ChatList.setProps({
+              isUsers: true,
+              isChats: false,
+              users,
+              isNotFoundUser,
+            });
           }
         } else {
           //display error message
