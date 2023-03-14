@@ -128,7 +128,8 @@ class UserProfileService {
   }
 
   findUserById(id: string) {
-    //show spinner
+   
+    if (!id) return;
 
     UserProfileAPI.getUserById(id)
       .then((result) => {

@@ -31,8 +31,6 @@ class SelectChat extends Block {
       }
     );
 
-    
-
     super({
       ...props,
       baseUrl: BASE_URL_RESOUCES,
@@ -41,7 +39,7 @@ class SelectChat extends Block {
       user: props.user,
     });
 
-   
+    console.log(this.props);
   }
 
   render() {
@@ -50,7 +48,6 @@ class SelectChat extends Block {
 }
 
 function addStateToProps(state: StoreInterface) {
-
   return {
     selectedUser: state.selectedUser,
     user: state.user,

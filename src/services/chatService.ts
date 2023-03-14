@@ -67,7 +67,7 @@ class ChatService extends GeneralService {
 
           ChatListComponent.setProps({
             chats,
-            isChat: true,
+            isChats: true,
             isUsers: false,
           });
 

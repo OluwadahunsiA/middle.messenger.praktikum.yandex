@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Block from "../../core/Block";
 import template from "./ChatListTemplate";
@@ -9,6 +10,7 @@ import { BASE_URL_RESOUCES } from "../../core/HTTP";
 
 //@ts-ignore
 import avatar from "../../assets/images/avatar.avif";
+import SelectChatComponent from "../SelectChat/SelectChatComponent";
 
 type ChatListProps = { [key: string]: string };
 class ChatList extends Block {
@@ -28,10 +30,9 @@ class ChatList extends Block {
             ".chats-list__single"
           ) as HTMLElement;
 
-          console.log('clickedUser')
-
           if (clickedUserInfo && clickedUserInfo.dataset) {
             const id = clickedUserInfo.dataset.userId as string;
+            console.log(id);
 
             UserProfileService.findUserById(id);
           }
@@ -41,11 +42,13 @@ class ChatList extends Block {
           ) as HTMLElement;
 
           console.log(selectChat);
-          
+
           if (selectChat && selectChat.dataset) {
             const id = selectChat.dataset.chatId as string;
 
-            const title = "";
+            const title = selectChat.querySelector(
+              ".chats-list__single-sender-name"
+            )!.textContent;
 
             ChatService.startChating(id, title, true);
           }
