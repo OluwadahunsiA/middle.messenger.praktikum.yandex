@@ -1,10 +1,13 @@
 import ChatsAPI from "../api/chats";
 import Store from "../core/Store";
 import GeneralService from "./general";
+import MessageService from "./messageService";
 
 //To be completed with other components
+import ChatListComponent from "../components/ChatListComponent";
 
 import { PropsType } from "../types";
+import { toDate } from "../utils/helper";
 
 class ChatService extends GeneralService {
   constructor() {
@@ -62,6 +65,12 @@ class ChatService extends GeneralService {
 
           // you can load data for all your chat list here.
 
+          ChatListComponent.setProps({
+            chats,
+            isChat: true,
+            isUsers: false,
+          });
+
           Store.setState("chats", chats);
         }
       })
@@ -77,8 +86,9 @@ class ChatService extends GeneralService {
       .then(async (result) => {
         if (result.status === 200) {
           const { token } = JSON.parse(result.responseText);
+          const chatIdToNumber = Number(chatId);
 
-          // This is where the messageService will be connected;
+          await MessageService.connect(chatIdToNumber, token, "0");
 
           Store.setState("selectedUser", null);
 
@@ -93,8 +103,6 @@ class ChatService extends GeneralService {
         }
       })
       .catch((error) => {
-        // you can show a tooltip for error monitoring
-
         Store.setState("emptyChat", true);
 
         console.log(error);
@@ -128,6 +136,7 @@ class ChatService extends GeneralService {
           // you can display something with a tooltip.
 
           //You will need to close message service here
+          MessageService.close();
 
           Store.setState("selectedUser", null);
 
@@ -200,6 +209,8 @@ class ChatService extends GeneralService {
         if (result.status === 200) {
           const users = JSON.parse(result.response);
 
+          console.log(users);
+
           // something about searching for users here.
         }
       })
@@ -235,15 +246,14 @@ class ChatService extends GeneralService {
       delete chat.last_message;
 
       if (lastMessages) {
-        // show last message date here
-        // const newTime = toDate(lastMessages.time);
-        // lastMessages.time = newTime
+        const newTime = toDate(lastMessages.time);
+
+        lastMessages.time = newTime;
 
         return {
           ...chat,
           title,
-          // use the lastMessages here
-          last_message: { time: "2:00" },
+          last_message: lastMessages,
         };
       }
 

@@ -1,12 +1,12 @@
 export default `
 
 <div class="messages">
-  <div class="messages__display"> 
     {{#if currentChat}}
+      <div class="messages__display">
 
         <div  class="messages__display-heading">
           <div class="messages__display-heading-info">
-            <img src="{{#if currentChat.avatar}}{{baseUrl}}{{currrentChat.avatar}}{{else}}{{defaultAvatar}}{{/if}}" alt="user picture" />
+            <img src="{{#if currentChat.avatar}}{{baseUrl}}{{currrentChat.avatar}}{{else}}{{defaultPicture}}{{/if}}" alt="user picture" />
             <p> {{currentChat.title}}</p>
           </div>
 
@@ -30,6 +30,8 @@ export default `
             {{/each}}
 
         </div>
+      
+      </div>
 
         {{{sendMessage}}}
 
@@ -48,7 +50,7 @@ export default `
 
     {{/if}}
 
-  </div>
+ 
 
 
 </div>

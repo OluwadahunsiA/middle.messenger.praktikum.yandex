@@ -12,7 +12,7 @@ class MessageService {
   sockets: { [id: string]: UseWebSocket } = {};
 
   async connect(chatId: number, token: string, newMessages: string) {
-    await this.close();
+    this.close();
 
     const store = Store.getState() as StoreInterface;
 
@@ -30,8 +30,8 @@ class MessageService {
   }
 
   sendMessage(content: string) {
-   
-    this.socket.send({ type: "message", content });
+    this?.socket?.send({ type: "message", content });
+    console.log(content);
   }
 
   getOldMessages(newMessages?: string | undefined) {
@@ -42,6 +42,7 @@ class MessageService {
     let newMessages = [];
     if (Array.isArray(messages)) {
       newMessages = messages.reverse();
+
     } else {
       newMessages.push(messages);
     }

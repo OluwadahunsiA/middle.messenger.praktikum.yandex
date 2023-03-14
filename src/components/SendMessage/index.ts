@@ -1,28 +1,13 @@
 import Block from "../../core/Block";
 import template from "./SendMessageTemplate";
-
-import MessageInput from "../../components/MessageInputComponent";
 // import { formEvents } from "../../core/formEvents";
-import Button from "../ButtonComponent";
 import MessageService from "../../services/messageService";
 import ValidateForm from "../../core/ValidateForms";
 
 export default class SendMessage extends Block {
   constructor(props: { [key: string]: string }) {
-    const messageInput = new MessageInput({
-      name: "message",
-      id: "message",
-      placeholder: "message",
-    });
-    const button = new Button({
-      type: "submit",
-      name: "send",
-    });
-
     super({
       ...props,
-      messageInput,
-      button,
       events: {
         submit: (event: Event) => {
           event.preventDefault();
@@ -49,6 +34,10 @@ export default class SendMessage extends Block {
               error: "",
             });
           } else {
+            this.setProps({
+              ...this.props,
+              error,
+            });
             // you can display a message here.
           }
         },

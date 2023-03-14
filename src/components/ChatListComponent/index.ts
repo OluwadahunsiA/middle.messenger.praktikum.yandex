@@ -28,17 +28,20 @@ class ChatList extends Block {
             ".chats-list__single"
           ) as HTMLElement;
 
+          console.log('clickedUser')
+
           if (clickedUserInfo && clickedUserInfo.dataset) {
             const id = clickedUserInfo.dataset.userId as string;
 
             UserProfileService.findUserById(id);
-
           }
 
           const selectChat = clickedUser.closest(
             "#chat_list_click"
           ) as HTMLElement;
 
+          console.log(selectChat);
+          
           if (selectChat && selectChat.dataset) {
             const id = selectChat.dataset.chatId as string;
 

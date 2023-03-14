@@ -45,3 +45,12 @@ export function set(
   );
   return merge(object as Indexed, result);
 }
+
+export const toDate = (date: string) =>
+  new Intl.DateTimeFormat("ru", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date(date));

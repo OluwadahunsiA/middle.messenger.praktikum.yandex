@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // /* eslint-disable @typescript-eslint/no-explicit-any */
 // /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Handlebars from "handlebars";
+import Handlebars, { blockParams } from "handlebars";
 import EventBus from "./EventBus";
 import { nanoid } from "nanoid";
 
@@ -218,13 +218,13 @@ export default class Block {
     const compiledTemplate = Handlebars.compile(Incomingtemplate);
 
     createdTemplate.innerHTML = compiledTemplate({
-      ...this.props,
       children: this.children,
-      refs: this.references,
       ...properties,
     });
 
     const replaceCont = (blockComp: Block) => {
+      if (!blockComp) return;
+
       const cont = createdTemplate.content.querySelector(
         `[data-id="${blockComp?.id}"]`
       );
@@ -232,10 +232,11 @@ export default class Block {
       if (!cont) {
         return;
       }
+      console.log(blockComp);
 
-      blockComp.getContent()?.append(...Array.from(cont.childNodes));
+      blockComp?.getContent().append(...Array.from(cont.childNodes));
 
-      cont.replaceWith(blockComp.getContent()!);
+      cont.replaceWith(blockComp.getContent());
     };
 
     Object.entries(this.children).forEach(([, blockComp]) => {
