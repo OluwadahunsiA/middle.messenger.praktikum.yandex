@@ -2,6 +2,7 @@ export default `
 
 <div class="messages">
     {{#if currentChat}}
+
       <div class="messages__display">
 
         <div  class="messages__display-heading">
@@ -25,7 +26,7 @@ export default `
 
             {{#each messages}}
 
-                {{{this}}}
+                {{{ this }}}
 
             {{/each}}
 

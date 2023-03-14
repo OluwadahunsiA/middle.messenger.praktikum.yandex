@@ -3,7 +3,7 @@ import EventBus from "./EventBus";
 export default class UseWebSocket extends EventBus {
   socket: WebSocket;
 
-  pingInterval = 3000;
+  pingInterval = 5000;
 
   url: string;
 

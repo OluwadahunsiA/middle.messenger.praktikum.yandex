@@ -4,9 +4,6 @@ import Block from "../../core/Block";
 import template from "./ChatsComponentTemplate";
 import userPicture from "../../assets/images/avatar.avif";
 import moreOptions from "../../assets/images/dots.svg";
-// import MessageInput from "../../components/MessageInputComponent";
-// import { formEvents } from "../../core/formEvents";
-// import Button from "../ButtonComponent";
 import SendMessage from "../SendMessage";
 import NoSelectedChat from "../NoSelectedChatComponent";
 import { PropsType, Message, StoreInterface } from "../../types";
@@ -32,15 +29,13 @@ class ChatsComponent extends Block {
       moreOptions,
       sendMessage,
       noSelectedChat,
+      messages: props?.messages,
       baseUrl: BASE_URL_RESOUCES,
       currentChat: props?.currentChat,
       selectedUser: props?.selectedUser,
-      messages: props?.messages,
     });
 
     const messages = this.createMessages(props);
-
-    console.log(messages);
 
     this.children = { ...this.children, messages };
   }
@@ -57,7 +52,7 @@ class ChatsComponent extends Block {
     return props?.messages?.map((messages: Message) => {
       console.log(messages.user_id, props.userId);
 
-      new MessageComponent({
+      return new MessageComponent({
         content: messages.content,
         type: messages.user_id === props.userId ? "send" : "receive",
         time: toDate(messages.time),

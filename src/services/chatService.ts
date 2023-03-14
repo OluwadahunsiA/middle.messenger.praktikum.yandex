@@ -94,6 +94,8 @@ class ChatService extends GeneralService {
 
           Store.setState("emptyChat", false);
 
+          console.log("now chatting");
+
           Store.setState("currentChat", {
             id: Number(chatId),
             title: chatTitle,

@@ -232,7 +232,6 @@ export default class Block {
       if (!cont) {
         return;
       }
-      console.log(blockComp);
 
       blockComp?.getContent().append(...Array.from(cont.childNodes));
 

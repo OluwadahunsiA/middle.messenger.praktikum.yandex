@@ -1,5 +1,5 @@
 import EventBus from "./EventBus";
-import { set } from "../utils/helper";
+import { set, parseInternalJSON } from "../utils/helper";
 
 import { StoreInterface } from "../types";
 
@@ -11,7 +11,7 @@ class Store extends EventBus {
     selectedUser: null,
     currentChat: null,
     messages: {},
-    chats:[],
+    chats: [],
   };
 
   initState() {
@@ -22,10 +22,9 @@ class Store extends EventBus {
 
   getState() {
     const state = localStorage.getItem("currentState");
+
     if (state) {
-      //check why deep parse should work here if there is any issue..
-      // console.log(JSON.parse(state));
-      return JSON.parse(state);
+      return parseInternalJSON(state);
     } else {
       return {};
     }
@@ -55,3 +54,6 @@ class Store extends EventBus {
 }
 
 export default new Store();
+function deepParseJson(store: any) {
+  throw new Error("Function not implemented.");
+}
