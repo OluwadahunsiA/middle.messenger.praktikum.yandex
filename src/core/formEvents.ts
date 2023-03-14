@@ -39,7 +39,7 @@ export const formEvents = {
 
     const { value } = element;
     Object.assign(state, { [elementName]: value });
-    console.log("formInputValues", state);
+    // console.log("formInputValues", state);
   },
 
   submit: (event: Event, state?: Record<string, any>) => {

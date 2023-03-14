@@ -41,9 +41,7 @@ class ChatsComponent extends Block {
   }
 
   componentDidUpdate(_: PropsType, newProps: PropsType): boolean {
-    this.children.messsages = this.createMessages(newProps);
-
-    console.log(this.children.messages);
+    this.children.messages = this.createMessages(newProps);
 
     return true;
   }
