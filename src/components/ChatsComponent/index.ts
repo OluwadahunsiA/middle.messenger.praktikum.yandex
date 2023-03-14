@@ -20,7 +20,7 @@ class ChatsComponent extends Block {
     const state = {};
     const sendMessage = new SendMessage({});
     const noSelectedChat = new NoSelectedChat();
-    const isEmptyChat = props?.emptyChat === false ? props.emptyChat : true;
+    const isEmptyChat = props?.isEmptyChat === false ? props.isEmptyChat : true;
     const selectChatWithUser = new SelectChat();
 
     const messageInput = new MessageInput({
@@ -89,6 +89,14 @@ function addStateToProps(state: StoreInterface) {
 
   const { selectedUser } = state;
 
+  console.log(
+    "check state",
+    "selected user",
+    selectedUser,
+    "current chat",
+    currentChat
+  );
+
   if (selectedUser) {
     return {
       isEmptyChat: false,
@@ -110,7 +118,7 @@ function addStateToProps(state: StoreInterface) {
   const id = state.currentChat!.id;
 
   return {
-    isEmptyChat: true,
+    isEmptyChat: false,
     selectedUser: null,
     currentChat,
     messages: ((state.messages as any) || {})[id] || [],

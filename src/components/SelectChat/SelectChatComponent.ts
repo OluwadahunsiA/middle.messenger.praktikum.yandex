@@ -1,12 +1,11 @@
 export default `
-<div class="select-chat">
+<div class="select-chat" data-user-id="{{selectedUser.id}}">
 
 
-<p>{{selectedUser.display_name}}</p>
+<p>{{selectedUser.displayName}}</p>
 
 <div> 
 {{{startChatButton}}}
 </div>
 </div>
-
 `;

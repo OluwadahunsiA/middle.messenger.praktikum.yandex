@@ -30,16 +30,21 @@ class ChatList extends Block {
 
           if (clickedUserInfo && clickedUserInfo.dataset) {
             const id = clickedUserInfo.dataset.userId as string;
-            console.log(id);
 
             UserProfileService.findUserById(id);
 
-            // const title =
-            //   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            //   clickedUser.querySelector("#chat_list-title")!.textContent;
+          }
 
-            // console.log(title);
-            // ChatService.startChating(id, title, true);
+          const selectChat = clickedUser.closest(
+            "#chat_list_click"
+          ) as HTMLElement;
+
+          if (selectChat && selectChat.dataset) {
+            const id = selectChat.dataset.chatId as string;
+
+            const title = "";
+
+            ChatService.startChating(id, title, true);
           }
         },
       },
