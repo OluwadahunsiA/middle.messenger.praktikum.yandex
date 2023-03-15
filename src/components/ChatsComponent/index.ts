@@ -12,6 +12,7 @@ import SelectChat from "../SelectChat";
 import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
 import MessageComponent from "../Message";
 import { toDate } from "../../utils/helper";
+import ChatService from "../../services/chatService";
 
 class ChatsComponent extends Block {
   constructor(props: PropsType) {
@@ -21,7 +22,6 @@ class ChatsComponent extends Block {
     const isEmptyChat = props?.emptyChat === false ? props.emptyChat : true;
     const selectChatWithUser = new SelectChat();
 
-    
     super({
       ...props,
       isEmptyChat,
@@ -34,13 +34,21 @@ class ChatsComponent extends Block {
       baseUrl: BASE_URL_RESOUCES,
       currentChat: props.currentChat,
       selectedUser: props.selectedUser,
+
+      events: {
+        click: (event: Event) => {
+          if ((event.target as Element).classList.contains("delete-chat")) {
+            ChatService.deleteChat(
+              JSON.stringify({ chatId: this.props.currentChat.id })
+            );
+          }
+        },
+      },
     });
 
     const messages = this.createMessages(props);
 
     this.children = { ...this.children, messages };
-
-    
   }
 
   componentDidUpdate(_: PropsType, newProps: PropsType): boolean {
@@ -60,15 +68,12 @@ class ChatsComponent extends Block {
   }
 
   render() {
-   
     return this.compile(template);
   }
 }
 
 function addStateToProps(state: StoreInterface) {
   const { currentChat } = state;
-
- 
 
   const { selectedUser } = state;
 

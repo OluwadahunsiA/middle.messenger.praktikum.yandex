@@ -140,6 +140,11 @@
           color: $dark-grey;
         }
       }
+
+      &-content{
+        height:100%;
+        overflow: scroll;
+      }
     }
 
     &__form {

@@ -31,7 +31,7 @@ export default `
         </div>
 
         
-        <div> 
+        <div class="messages__display-content"> 
 
           <p> Chat created </p>
 
