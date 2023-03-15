@@ -1,0 +1,7 @@
+.add-user-container {
+  display: none;
+
+  &.opened {
+    display: block;
+  }
+}

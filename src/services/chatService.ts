@@ -8,6 +8,7 @@ import ChatListComponent from "../components/ChatListComponent";
 
 import { PropsType } from "../types";
 import { toDate } from "../utils/helper";
+import AddUsers from "../components/AddUsers";
 
 class ChatService extends GeneralService {
   constructor() {
@@ -81,7 +82,7 @@ class ChatService extends GeneralService {
       });
   }
 
-  startChating(chatId: string, chatTitle: string | null, groupChat=false) {
+  startChating(chatId: string, chatTitle: string | null, groupChat = false) {
     ChatsAPI.getChatToken(chatId)
       .then(async (result) => {
         if (result.status === 200) {
@@ -93,7 +94,6 @@ class ChatService extends GeneralService {
           Store.setState("selectedUser", null);
 
           Store.setState("emptyChat", false);
-
 
           Store.setState("currentChat", {
             id: Number(chatId),
@@ -164,6 +164,10 @@ class ChatService extends GeneralService {
     ChatsAPI.addUserToChat(data)
       .then((result) => {
         if (result.status === 200) {
+          //create chat should also be closed
+          AddUsers.setProps({
+            openedPop: false,
+          });
           // you could close pop ups here or just switch to other pages.
           // you can display a tooltip here to indicate that it was successful.
         } else {

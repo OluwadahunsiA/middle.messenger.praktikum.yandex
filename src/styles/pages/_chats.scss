@@ -2,6 +2,7 @@
   display: flex;
   font-size: $text-font-size;
   height: $innerheight;
+  position: relative;
 
   .chats {
     display: flex;
@@ -118,7 +119,8 @@
           }
         }
 
-        input[type="checkbox"]:checked ~ .messages__display-heading-dots-dropdown {
+        input[type="checkbox"]:checked
+          ~ .messages__display-heading-dots-dropdown {
           display: block;
         }
       }
@@ -141,9 +143,16 @@
         }
       }
 
-      &-content{
-        height:100%;
+      &-content {
+        height: 100%;
         overflow: scroll;
+
+        &-created {
+          align-self: flex-start;
+          margin-left: 40%;
+          width: max-content;
+          color: $dark-grey;
+        }
       }
     }
 

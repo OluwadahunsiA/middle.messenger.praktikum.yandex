@@ -95,9 +95,9 @@ export function parseInternalJSON(jsonString: any): any {
 // }
 
 export const toDate = (date: string) =>
-  new Intl.DateTimeFormat("ru", {
+  new Intl.DateTimeFormat("en", {
     day: "2-digit",
-    month: "long",
+    month: "short",
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit",

@@ -33,7 +33,7 @@ export default `
         
         <div class="messages__display-content"> 
 
-          <p> Chat created </p>
+          <p class="messages__display-content-created"> Chat created </p>
 
             {{#each messages}}
 

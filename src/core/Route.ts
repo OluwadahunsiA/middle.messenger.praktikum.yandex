@@ -40,11 +40,9 @@ export default class Route {
   match(pathname: string) {
     return isEqual(pathname, this._pathname);
   }
-
   render() {
     this._block = new this._blockClass(this._props);
-   
-
+  
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     renderDOM(this._block!, "root");
   }

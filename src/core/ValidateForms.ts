@@ -46,7 +46,7 @@ export default class ValidateForm {
     password_repeat: (value: string) => ValidateForm.validatePassword(value),
     newPasswordRepeat: (value: string) => ValidateForm.validatePassword(value),
     chat_name: (value: string) => ValidateForm.validateName(value),
-    find_users: (value: string) => ValidateForm.validateLogin(value),
+    search: (value: string) => ValidateForm.validateLogin(value),
   };
 
   static validateInput(value: string | number, expression: RegExp) {

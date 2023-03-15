@@ -7,6 +7,7 @@ import { PropsType } from "../../types";
 import ChatSearchInput from "../../components/ChatSearchInput";
 import Link from "../../components/Link";
 import Store from "../../core/Store";
+import AddUsers from "../../components/AddUsers";
 
 class Chats extends Block {
   constructor() {
@@ -24,9 +25,10 @@ class Chats extends Block {
 
     super({
       link,
-      ChatList,
+      chatList,
       chatsContent,
       chatSearch,
+      AddUsers,
     });
   }
 
@@ -38,7 +40,6 @@ class Chats extends Block {
 // export default Chats
 
 function addStateToProps(state: PropsType) {
- 
   if (state.chats) {
     const { chats } = state;
 

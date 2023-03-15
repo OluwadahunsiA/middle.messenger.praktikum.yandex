@@ -8,12 +8,14 @@ export default `
 
     <div class="chats__content">
       
-      {{{ChatList}}}
+      {{{chatList}}}
 
     </div>
 
-  </div>
-  {{{chatsContent}}}
+    
+    </div>
+    {{{AddUsers}}}
+    {{{chatsContent}}}
 
 </div>
 

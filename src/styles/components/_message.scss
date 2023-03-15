@@ -1,0 +1,32 @@
+.message {
+  // position: absolute;
+  border: 2px solid red;
+  font-size: 14px;
+  max-width: 300px;
+  padding: 5px;
+  min-height: 80px;
+  border-top-left-radius: $radius-value;
+  border-top-right-radius: $radius-value;
+  margin-bottom: 10px;
+
+  &-text{
+    line-height:30px;
+  
+  }
+
+  &.send {
+    border: 2px solid $light-green;
+    border-bottom-right-radius: $radius-value;
+    margin-left: 56%;
+  }
+
+  &.receive {
+    border: 2px solid $deep-green;
+    border-bottom-left-radius: $radius-value;
+    margin-left: 0%;
+  }
+
+  &-date{
+    font-size: 12px;
+  }
+}
