@@ -63,6 +63,7 @@
 
       &-heading {
         display: flex;
+        position: relative;
         justify-content: space-between;
         height: 75px;
         width: 100%;
@@ -86,6 +87,39 @@
           align-self: center;
           justify-self: end;
           margin-right: 20px;
+
+          input[type="checkbox"] {
+            position: absolute;
+            cursor: pointer;
+            opacity: 0;
+            height: 30px;
+            width: 30px;
+            right: 16px;
+          }
+
+          &-dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 1px;
+            background-color: $general-white;
+            border: 2px solid $deep-green;
+            border-radius: 10px;
+            width: 150px;
+
+            ul {
+              list-style: none;
+
+              li {
+                font-size: 13px;
+                padding: 10px 0px;
+              }
+            }
+          }
+        }
+
+        input[type="checkbox"]:checked ~ .messages__display-heading-dots-dropdown {
+          display: block;
         }
       }
 

@@ -12,9 +12,20 @@ export default `
           </div>
 
           <div class="messages__display-heading-dots">
-            <a href="/user-profile/edit-profile">
+            
               <img src="{{moreOptions}}" alt="three dots" />
-            </a>
+              <input type="checkbox">
+
+              <div class="messages__display-heading-dots-dropdown">
+                <ul>
+                  <li class="delete-chat">Delete chat</li>
+                  <li class="delete-user">Delete Users</li>
+                  <li class="add-user">Add users</li>
+
+                </ul>
+              
+              </div>
+           
           </div>
         
         </div>
