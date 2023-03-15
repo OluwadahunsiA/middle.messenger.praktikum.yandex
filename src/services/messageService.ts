@@ -31,7 +31,6 @@ class MessageService {
 
   sendMessage(content: string) {
     this?.socket?.send({ type: "message", content });
-    console.log(content);
   }
 
   getOldMessages(newMessages?: string | undefined) {

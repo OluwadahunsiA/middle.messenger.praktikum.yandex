@@ -39,7 +39,6 @@ class SelectChat extends Block {
       user: props.user,
     });
 
-    console.log(this.props);
   }
 
   render() {

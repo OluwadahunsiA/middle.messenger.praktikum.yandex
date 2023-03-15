@@ -24,7 +24,9 @@ class Router {
 
     Router.__instance = this;
 
-    this.isAuthenticated = Store.getState()?.isAuthenticated;
+    this.isAuthenticated = Store.getState()?.isAuth;
+
+  
   }
 
   use(pathname: string, block: any, props: Record<string, any> = {}) {

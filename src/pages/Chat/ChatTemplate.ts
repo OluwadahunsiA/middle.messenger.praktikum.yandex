@@ -2,13 +2,13 @@ export default `
 <div class="content">
   <div class="chats">
 
-    <a class="chats__user" href="/user-profile">Profile ></a>
+    <span class="chats__user" href="/user-profile">{{{link}}}</span>
 
      {{{chatSearch}}}
 
     <div class="chats__content">
       
-      {{{chatList}}}
+      {{{ChatList}}}
 
     </div>
 

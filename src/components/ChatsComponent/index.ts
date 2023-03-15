@@ -18,9 +18,10 @@ class ChatsComponent extends Block {
     const defaultPicture = userPicture;
     const sendMessage = new SendMessage({});
     const noSelectedChat = new NoSelectedChat();
-    const isEmptyChat = props?.isEmptyChat === false ? props.isEmptyChat : true;
+    const isEmptyChat = props?.emptyChat === false ? props.emptyChat : true;
     const selectChatWithUser = new SelectChat();
 
+    
     super({
       ...props,
       isEmptyChat,
@@ -31,13 +32,15 @@ class ChatsComponent extends Block {
       noSelectedChat,
       messages: props?.messages,
       baseUrl: BASE_URL_RESOUCES,
-      currentChat: props?.currentChat,
-      selectedUser: props?.selectedUser,
+      currentChat: props.currentChat,
+      selectedUser: props.selectedUser,
     });
 
     const messages = this.createMessages(props);
 
     this.children = { ...this.children, messages };
+
+    
   }
 
   componentDidUpdate(_: PropsType, newProps: PropsType): boolean {
@@ -48,8 +51,6 @@ class ChatsComponent extends Block {
 
   createMessages(props: PropsType) {
     return props?.messages?.map((messages: Message) => {
-      console.log(messages.user_id, props.userId);
-
       return new MessageComponent({
         content: messages.content,
         type: messages.user_id === props.userId ? "send" : "receive",
@@ -59,12 +60,15 @@ class ChatsComponent extends Block {
   }
 
   render() {
+   
     return this.compile(template);
   }
 }
 
 function addStateToProps(state: StoreInterface) {
   const { currentChat } = state;
+
+ 
 
   const { selectedUser } = state;
 

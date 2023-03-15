@@ -49,11 +49,11 @@ class Store extends EventBus {
 
     localStorage.setItem("currentState", JSON.stringify(updatedState));
 
+   
+
     this.emit("set-state", updatedState);
   }
 }
 
 export default new Store();
-function deepParseJson(store: any) {
-  throw new Error("Function not implemented.");
-}
+

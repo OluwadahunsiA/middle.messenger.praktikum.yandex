@@ -10,7 +10,9 @@ import { BASE_URL_RESOUCES } from "../../core/HTTP";
 
 //@ts-ignore
 import avatar from "../../assets/images/avatar.avif";
-import SelectChatComponent from "../SelectChat/SelectChatComponent";
+import { StoreInterface } from "../../types";
+import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
+// import SelectChatComponent from "../SelectChat/SelectChatComponent";
 
 type ChatListProps = { [key: string]: string };
 class ChatList extends Block {
@@ -32,7 +34,6 @@ class ChatList extends Block {
 
           if (clickedUserInfo && clickedUserInfo.dataset) {
             const id = clickedUserInfo.dataset.userId as string;
-            console.log(id);
 
             UserProfileService.findUserById(id);
           }
@@ -41,8 +42,6 @@ class ChatList extends Block {
             "#chat_list_click"
           ) as HTMLElement;
 
-          console.log(selectChat);
-
           if (selectChat && selectChat.dataset) {
             const id = selectChat.dataset.chatId as string;
 
@@ -50,7 +49,7 @@ class ChatList extends Block {
               ".chats-list__single-sender-name"
             )!.textContent;
 
-            ChatService.startChating(id, title, true);
+            ChatService.startChating(id, title);
           }
         },
       },
@@ -58,8 +57,22 @@ class ChatList extends Block {
   }
 
   render() {
+    console.log(this.props);
+
     return this.compile(template);
   }
 }
 
-export default new ChatList({});
+function addStateToProps(state: StoreInterface) {
+  let isChats;
+  if (state.chats.length > 0) {
+    isChats = true;
+  }
+  const chats = state.chats;
+
+  return { chats, isChats };
+}
+
+const chatList = AddStoreToBlock(ChatList, addStateToProps);
+
+export default new chatList({});

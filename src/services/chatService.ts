@@ -33,9 +33,9 @@ class ChatService extends GeneralService {
 
           const isGroupChat = userId.length > 2;
 
-          await this.addUsersToChat(request);
+          this.addUsersToChat(request);
 
-          await this.startChating(chatId, chatTitle, isGroupChat);
+          this.startChating(chatId, chatTitle, isGroupChat);
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
 
@@ -81,7 +81,7 @@ class ChatService extends GeneralService {
       });
   }
 
-  startChating(chatId: string, chatTitle: string | null, groupChat: boolean) {
+  startChating(chatId: string, chatTitle: string | null, groupChat=false) {
     ChatsAPI.getChatToken(chatId)
       .then(async (result) => {
         if (result.status === 200) {
@@ -94,7 +94,6 @@ class ChatService extends GeneralService {
 
           Store.setState("emptyChat", false);
 
-          console.log("now chatting");
 
           Store.setState("currentChat", {
             id: Number(chatId),
@@ -210,8 +209,6 @@ class ChatService extends GeneralService {
       .then((result) => {
         if (result.status === 200) {
           const users = JSON.parse(result.response);
-
-          console.log(users);
 
           // something about searching for users here.
         }

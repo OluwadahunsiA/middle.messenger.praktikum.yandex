@@ -47,27 +47,27 @@ export function set(
 }
 
 export function parseInternalJSON(jsonString: any): any {
-    if (typeof jsonString === "string") {
-      try {
-        return parseInternalJSON(JSON.parse(jsonString));
-      } catch (err) {
-        return jsonString;
-      }
+  if (typeof jsonString === "string") {
+    try {
+      return parseInternalJSON(JSON.parse(jsonString));
+    } catch (err) {
+      return jsonString;
     }
+  }
 
-    if (Array.isArray(jsonString)) {
-      return jsonString.map((value) => parseInternalJSON(value));
-    }
+  if (Array.isArray(jsonString)) {
+    return jsonString.map((value) => parseInternalJSON(value));
+  }
 
-    if (typeof jsonString === "object" && jsonString !== null) {
-      return Object.keys(jsonString).reduce((obj: Record<string, any>, key) => {
-        const value = jsonString[key];
-        obj[key] = parseInternalJSON(value);
-        return obj;
-      }, {});
-    }
+  if (typeof jsonString === "object" && jsonString !== null) {
+    return Object.keys(jsonString).reduce((obj: Record<string, any>, key) => {
+      const value = jsonString[key];
+      obj[key] = parseInternalJSON(value);
+      return obj;
+    }, {});
+  }
 
-    return jsonString;
+  return jsonString;
 }
 
 // export function deepParseJson(jsonString: any): any {
