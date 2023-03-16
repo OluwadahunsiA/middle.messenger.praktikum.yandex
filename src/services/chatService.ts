@@ -11,6 +11,7 @@ import { PropsType } from "../types";
 import { toDate } from "../utils/helper";
 import AddUsers from "../components/AddUsers";
 import DeleteUsers from "../components/DeleteUsers";
+import ChatsComponent from "../components/ChatsComponent";
 
 class ChatService extends GeneralService {
   constructor() {
@@ -196,6 +197,20 @@ class ChatService extends GeneralService {
           DeleteUsers.setProps({
             openedPop: false,
           });
+
+          if (SearchedUsers.props.users.length === 0) {
+            ChatsComponent.setProps({
+              isEmptyChat: true,
+            });
+
+            ChatListComponent.setProps({
+              isChats: false,
+              chats: [],
+            });
+
+            Store.setState("chats", []);
+            Store.setState("currentChat", null);
+          }
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
 

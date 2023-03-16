@@ -20,7 +20,7 @@ class Chats extends Block {
     });
     const chatSearch = new ChatSearchInput();
 
-    const chatsContent = new ChatsComponent();
+    const chatsContent = ChatsComponent;
 
     const chatList = ChatList;
 

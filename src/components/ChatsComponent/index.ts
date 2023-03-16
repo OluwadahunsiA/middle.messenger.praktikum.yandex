@@ -40,7 +40,6 @@ class ChatsComponent extends Block {
       events: {
         click: (event: Event) => {
           if ((event.target as Element).classList.contains("delete-chat")) {
-            console.log("delete user");
             ChatService.deleteChat(
               JSON.stringify({ chatId: this.props.currentChat.id })
             );
@@ -104,7 +103,6 @@ function addStateToProps(state: StoreInterface) {
   const { currentChat } = state;
 
   const { selectedUser } = state;
-  console.log(selectedUser);
 
   if (selectedUser) {
     return {
@@ -135,4 +133,6 @@ function addStateToProps(state: StoreInterface) {
   };
 }
 
-export default AddStoreToBlock(ChatsComponent, addStateToProps);
+const chatsContent = AddStoreToBlock(ChatsComponent, addStateToProps);
+
+export default new chatsContent();

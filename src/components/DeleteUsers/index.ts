@@ -40,8 +40,6 @@ class DeleteUsers extends Block {
   }
 
   render() {
-    console.log("recompiling this");
-    console.log(this.props)
     return this.compile(template);
   }
 }

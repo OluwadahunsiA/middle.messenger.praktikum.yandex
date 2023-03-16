@@ -63,9 +63,13 @@ class ChatList extends Block {
 
 function addStateToProps(state: StoreInterface) {
   let isChats;
+
   if (state.chats?.length > 0) {
     isChats = true;
+  } else {
+    isChats = false;
   }
+
   const chats = state.chats;
 
   return { chats, isChats };
