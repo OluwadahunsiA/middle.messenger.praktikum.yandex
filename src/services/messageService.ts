@@ -4,7 +4,9 @@ import UseWebSocket from "../core/WS";
 import ChatService from "./chatService";
 
 import { WWS_URL } from "../core/HTTP";
-import { Message, StoreInterface } from "../types";
+import { Message, PropsType, StoreInterface } from "../types";
+import { isEqual } from "../utils/helper";
+import { equal } from "assert";
 
 class MessageService {
   socket: UseWebSocket;
@@ -38,7 +40,7 @@ class MessageService {
   }
 
   setMessages(chatId: number, messages: Message | Message[]) {
-    let newMessages = [];
+    let newMessages: any = [];
 
     if (Array.isArray(messages)) {
       newMessages = messages.reverse();
@@ -48,15 +50,18 @@ class MessageService {
 
     const currentMessages = (Store.getState().messages || {})[chatId] || [];
 
-    newMessages = [...newMessages, ...currentMessages];
+    console.log(newMessages, currentMessages);
 
-    const stringNewMessages = newMessages.map((message) =>
-      JSON.stringify(message)
-    );
-    const uniqueString = [...new Set(stringNewMessages)];
-    const uniqueNewMessages = uniqueString.map((string) => JSON.parse(string));
 
-    Store.setState(`messages.${chatId}`, uniqueNewMessages);
+    if (newMessages.length === 1) {
+      newMessages = [...currentMessages, ...newMessages];
+    } else if (newMessages.length > 1 && currentMessages.length === 0) {
+      newMessages = [...newMessages];
+    } else {
+      newMessages = [...currentMessages];
+    }
+
+    Store.setState(`messages.${chatId}`, newMessages);
 
     ChatService.getChats();
   }
