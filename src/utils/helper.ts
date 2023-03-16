@@ -75,8 +75,6 @@ type PlainObject<T = any> = {
   [k in string]: T;
 };
 
-
-
 function isPlainObject(value: unknown): value is PlainObject {
   return (
     typeof value === "object" &&
@@ -115,30 +113,6 @@ export function isEqual(lhs: PlainObject, rhs: PlainObject) {
 
   return true;
 }
-
-// export function deepParseJson(jsonString: any): any {
-//   if (typeof jsonString === "string") {
-//     try {
-//       return deepParseJson(JSON.parse(jsonString));
-//     } catch (err) {
-//       return jsonString;
-//     }
-//   }
-
-//   if (Array.isArray(jsonString)) {
-//     return jsonString.map((value) => deepParseJson(value));
-//   }
-
-//   if (typeof jsonString === "object" && jsonString !== null) {
-//     return Object.keys(jsonString).reduce((obj: Record<string, any>, key) => {
-//       const value = jsonString[key];
-//       obj[key] = deepParseJson(value);
-//       return obj;
-//     }, {});
-//   }
-
-//   return jsonString;
-// }
 
 export const toDate = (date: string) =>
   new Intl.DateTimeFormat("en", {
