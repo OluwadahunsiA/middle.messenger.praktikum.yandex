@@ -51,12 +51,11 @@ class ChatsComponent extends Block {
               selectedUsers: [],
             });
 
-
             ChatService.getChatUsers();
 
             DeleteUsers.setProps({
-              openedPop:true
-            })
+              openedPop: true,
+            });
           }
 
           if ((event.target as Element).classList.contains("add-user")) {
@@ -123,6 +122,7 @@ function addStateToProps(state: StoreInterface) {
   }
 
   const chatId = state.currentChat!.id;
+
 
   return {
     isEmptyChat: false,

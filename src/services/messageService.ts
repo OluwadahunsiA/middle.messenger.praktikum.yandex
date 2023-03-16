@@ -39,18 +39,24 @@ class MessageService {
 
   setMessages(chatId: number, messages: Message | Message[]) {
     let newMessages = [];
+
     if (Array.isArray(messages)) {
       newMessages = messages.reverse();
-
     } else {
       newMessages.push(messages);
     }
 
     const currentMessages = (Store.getState().messages || {})[chatId] || [];
 
-    newMessages = [...currentMessages, ...newMessages];
+    newMessages = [...newMessages, ...currentMessages];
 
-    Store.setState(`messages.${chatId}`, newMessages);
+    const stringNewMessages = newMessages.map((message) =>
+      JSON.stringify(message)
+    );
+    const uniqueString = [...new Set(stringNewMessages)];
+    const uniqueNewMessages = uniqueString.map((string) => JSON.parse(string));
+
+    Store.setState(`messages.${chatId}`, uniqueNewMessages);
 
     ChatService.getChats();
   }
