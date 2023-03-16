@@ -21,6 +21,7 @@ class DeleteUsers extends Block {
 
       events: {
         click: (event: Event) => {
+          console.log(event.target);
           if ((event.target! as Element).classList.contains("opened")) {
             this.setProps({ openedPop: false });
           }
@@ -43,6 +44,5 @@ class DeleteUsers extends Block {
     return this.compile(template);
   }
 }
-
 
 export default new DeleteUsers({});

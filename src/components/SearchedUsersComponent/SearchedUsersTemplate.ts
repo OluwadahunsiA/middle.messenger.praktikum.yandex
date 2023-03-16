@@ -11,6 +11,7 @@ export default `
         {{else}}
 
           {{#each selectedUsers}}
+            <div class="chats-list"> 
 
               <div class="chats-list__single" id="chat_list_click-selected"  data-user-id="{{id}}">
                 <img
@@ -26,13 +27,14 @@ export default `
                   <div class="">
                     <input class="remove-select" type="checkbox" checked>
                   </div>
-              </div>        
+              </div> 
+            </div>       
 
           {{/each}}
 
               {{#if selectedUsers.length}}
 
-                <div> Add users to the above list </div>
+                <div class="demacation"> Choose Users from the list  </div>
 
               {{/if}}
           
@@ -52,7 +54,7 @@ export default `
                     <p class="chats-list__single-sender-login">@{{login}}</p>
                   </div>
 
-                  <div class="">
+                  <div class="chats-list__single-checkbox">
                     <input class="add-select" type="checkbox">
                   </div>
 

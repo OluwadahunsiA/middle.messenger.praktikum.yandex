@@ -68,6 +68,18 @@ class ChatsComponent extends Block {
               openedPop: true,
             });
           }
+          if (
+            (event.target as Element).classList.contains(
+              "messages__display-content"
+            )
+          ) {
+            AddUsers.setProps({
+              openedPop: false,
+            });
+            DeleteUsers.setProps({
+              openedPop: false,
+            });
+          }
         },
       },
     });
@@ -122,7 +134,6 @@ function addStateToProps(state: StoreInterface) {
   }
 
   const chatId = state.currentChat!.id;
-
 
   return {
     isEmptyChat: false,

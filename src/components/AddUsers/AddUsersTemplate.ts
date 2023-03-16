@@ -1,19 +1,24 @@
 export default `
- <div class="add-user-container {{#if openedPop}} opened{{/if}}">
- 
- 
-      <form>
+<div class="add-user-container {{#if openedPop}} opened{{/if}}">
+     
+            <form>
 
-      <p>Add user to chat </p>
+            <p>Add user to chat </p>
 
-      {{{ searchInput }}}
+            {{{ searchInput }}}
 
-      {{{SearchedUsers}}}
+            <div class="add-user-container-result"> 
+
+            {{{SearchedUsers}}}
+
+            </div>
 
 
-      {{{button}}}
+            {{{button}}}
 
-      </form>
- 
+            </form>
+   
+
 </div>
+
 `;

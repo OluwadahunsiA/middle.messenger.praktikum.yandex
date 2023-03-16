@@ -38,6 +38,7 @@ class AddUser extends Block {
       events: {
         click: (event: Event) => {
           if ((event.target! as Element).classList.contains("opened")) {
+
             this.setProps({ openedPop: false });
           }
         },
@@ -58,7 +59,6 @@ class AddUser extends Block {
 
           const chatId = Store.getState().currentChat.id;
 
-
           const selectedUserId = SearchedUsers.props.selectedUsers.map(
             (select: PropsType) => select.id
           );
@@ -76,7 +76,6 @@ class AddUser extends Block {
   }
 
   render() {
-
     return this.compile(template);
   }
 }
