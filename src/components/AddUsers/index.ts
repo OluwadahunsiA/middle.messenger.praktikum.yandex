@@ -55,11 +55,9 @@ class AddUser extends Block {
         },
         submit: (event: Event) => {
           event.preventDefault();
-          console.log(Store.getState());
 
           const chatId = Store.getState().currentChat.id;
 
-          console.log(SearchedUsers.props);
 
           const selectedUserId = SearchedUsers.props.selectedUsers.map(
             (select: PropsType) => select.id

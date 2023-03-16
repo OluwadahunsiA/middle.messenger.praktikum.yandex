@@ -15,6 +15,7 @@ import { toDate } from "../../utils/helper";
 import ChatService from "../../services/chatService";
 import AddUsers from "../AddUsers";
 import SearchedUsers from "../SearchedUsersComponent";
+import DeleteUsers from "../DeleteUsers";
 class ChatsComponent extends Block {
   constructor(props: PropsType) {
     const defaultPicture = userPicture;
@@ -38,11 +39,25 @@ class ChatsComponent extends Block {
 
       events: {
         click: (event: Event) => {
-          console.log(event.target);
           if ((event.target as Element).classList.contains("delete-chat")) {
+            console.log("delete user");
             ChatService.deleteChat(
               JSON.stringify({ chatId: this.props.currentChat.id })
             );
+          }
+
+          if ((event.target as Element).classList.contains("delete-user")) {
+            SearchedUsers.setProps({
+              users: [],
+              selectedUsers: [],
+            });
+
+
+            ChatService.getChatUsers();
+
+            DeleteUsers.setProps({
+              openedPop:true
+            })
           }
 
           if ((event.target as Element).classList.contains("add-user")) {
@@ -89,7 +104,7 @@ function addStateToProps(state: StoreInterface) {
   const { currentChat } = state;
 
   const { selectedUser } = state;
-  console.log(selectedUser );
+  console.log(selectedUser);
 
   if (selectedUser) {
     return {

@@ -15,6 +15,7 @@ export default `
     
     </div>
     {{{AddUsers}}}
+    {{{DeleteUsers}}}
     {{{chatsContent}}}
 
 </div>

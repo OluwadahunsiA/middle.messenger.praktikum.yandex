@@ -8,6 +8,7 @@ import ChatSearchInput from "../../components/ChatSearchInput";
 import Link from "../../components/Link";
 import Store from "../../core/Store";
 import AddUsers from "../../components/AddUsers";
+import DeleteUsers from "../../components/DeleteUsers";
 
 class Chats extends Block {
   constructor() {
@@ -29,6 +30,7 @@ class Chats extends Block {
       chatsContent,
       chatSearch,
       AddUsers,
+      DeleteUsers,
     });
   }
 

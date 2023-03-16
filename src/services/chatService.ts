@@ -5,10 +5,12 @@ import MessageService from "./messageService";
 
 //To be completed with other components
 import ChatListComponent from "../components/ChatListComponent";
+import SearchedUsers from "../components/SearchedUsersComponent";
 
 import { PropsType } from "../types";
 import { toDate } from "../utils/helper";
 import AddUsers from "../components/AddUsers";
+import DeleteUsers from "../components/DeleteUsers";
 
 class ChatService extends GeneralService {
   constructor() {
@@ -191,8 +193,9 @@ class ChatService extends GeneralService {
     ChatsAPI.deleteUsersFromChat(request)
       .then((result) => {
         if (result.status === 200) {
-          //you can close a popup here or return to a page.
-          // you can display a tooltip here
+          DeleteUsers.setProps({
+            openedPop: false,
+          });
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
 
@@ -213,6 +216,11 @@ class ChatService extends GeneralService {
       .then((result) => {
         if (result.status === 200) {
           const users = JSON.parse(result.response);
+
+          SearchedUsers.setProps({
+            isUsers: true,
+            users,
+          });
 
           // something about searching for users here.
         }
