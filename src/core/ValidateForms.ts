@@ -45,7 +45,7 @@ export default class ValidateForm {
     second_name: (value: string) => ValidateForm.validateName(value),
     password_repeat: (value: string) => ValidateForm.validatePassword(value),
     newPasswordRepeat: (value: string) => ValidateForm.validatePassword(value),
-    chat_name: (value: string) => ValidateForm.validateName(value),
+    avatar: (value: string) => ValidateForm.validateName(value),
     search: (value: string) => ValidateForm.validateSearch(value),
   };
 

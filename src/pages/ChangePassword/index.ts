@@ -1,15 +1,19 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/no-this-alias */
 import template from "../../components/UserInformationComponent/UserInformationTemplate";
 import Block from "../../core/Block";
 import ExitButton from "../../components/ExitButtonComponent";
 import EditProfileContent from "../../components/EditProfileContent";
 import Input from "../../components/InputComponent";
-import { formEvents } from "../../core/formEvents";
+
+import ValidateForm from "../../core/ValidateForms";
+import { PropsType } from "../../types";
+import UserProfileService from "../../services/userProfileService";
 
 export default class ChangePassword extends Block {
   constructor() {
-    const state = {};
     const exitButton = new ExitButton({
-      href: "/user-profile",
+      path: "/settings",
     });
 
     const content = new EditProfileContent();
@@ -52,10 +56,33 @@ export default class ChangePassword extends Block {
       repeatNewPassword,
       changePassword,
       events: {
-        input: (event: Event) => formEvents.getInput(event, state),
-        submit: (event: Event) => formEvents.submit(event, state),
+        // input: (event: Event) => formEvents.getInput(event, state),
+        submit: (event: Event) => {
+          event.preventDefault();
+
+          const formElement = event.target as HTMLFormElement;
+          const validateForm = ValidateForm.validateSubmit(formElement);
+
+          const payload: PropsType = {
+            oldPassword: "",
+            newPassword: "",
+          };
+
+          Object.values(self.children).forEach((child) => {
+            payload[child.props.name] = child.props.value;
+          });
+
+          if (validateForm) {
+            UserProfileService.editPassword(
+              JSON.stringify(payload),
+              self.children
+            );
+          }
+        },
       },
     });
+
+    const self = this;
   }
 
   render() {

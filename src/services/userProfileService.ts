@@ -11,6 +11,7 @@ import ChatList from "../components/ChatListComponent";
 import { PropsType } from "../types";
 
 import { BASE_URL_RESOUCES } from "../core/HTTP";
+import EditablePicture from "../components/EditablePicture";
 
 class UserProfileService {
   editProfile(data: XMLHttpRequestBodyInit) {
@@ -44,9 +45,15 @@ class UserProfileService {
         if (result.status === 200) {
           // show a success message;
           // a block component for pictures.
+          const uploadAvatar = new EditablePicture({});
+          uploadAvatar.setProps({
+            avatar: BASE_URL_RESOUCES + JSON.parse(result.response).avatar,
+          });
         } else {
           // you can show a message here
         }
+
+        console.log(result);
 
         return result;
       })
@@ -128,7 +135,6 @@ class UserProfileService {
   }
 
   findUserById(id: string) {
-   
     if (!id) return;
 
     UserProfileAPI.getUserById(id)

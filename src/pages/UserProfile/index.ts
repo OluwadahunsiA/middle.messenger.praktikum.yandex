@@ -1,21 +1,27 @@
 import template from "./UserProfileTemplate";
-import UserProfileContent from "../../components/UserProfileContent";
+// import UserProfileContent from "../../components/UserProfileContent";
 import ExitButton from "../../components/ExitButtonComponent";
 import Button from "../../components/ButtonComponent";
 import Block from "../../core/Block";
 import Input from "../../components/InputComponent";
-import { avatar } from "../../mock-data/avatar";
-import { profile } from "../../mock-data/profile";
+import { avatar as mockPicture } from "../../mock-data/avatar";
+// import { profile } from "../../mock-data/profile";
 import { PropsType } from "../../types";
 import AuthenticationService from "../../services/authentication";
 import Link from "../../components/Link";
 import ValidateForm from "../../core/ValidateForms";
 import UserProfileService from "../../services/userProfileService";
 import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
+import EditablePicture from "../../components/EditablePicture";
+import { BASE_URL_RESOUCES } from "../../core/HTTP";
 
 class UserProfile extends Block {
   constructor(props: PropsType) {
-    
+    const defaultPicture = mockPicture[0].avatar;
+    const userPicture = new EditablePicture({
+      avatar: props.avatar ? BASE_URL_RESOUCES + props.avatar : defaultPicture,
+    });
+
     const exitButton = new ExitButton({
       path: "/messenger",
     });
@@ -97,6 +103,7 @@ class UserProfile extends Block {
       button,
       linkToPassword,
       logout,
+      userPicture,
 
       events: {
         submit: (event: Event) => {

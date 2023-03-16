@@ -50,9 +50,6 @@ class MessageService {
 
     const currentMessages = (Store.getState().messages || {})[chatId] || [];
 
-    console.log(newMessages, currentMessages);
-
-
     if (newMessages.length === 1) {
       newMessages = [...currentMessages, ...newMessages];
     } else if (newMessages.length > 1 && currentMessages.length === 0) {
