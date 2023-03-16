@@ -1,22 +1,161 @@
-import template from "../../components/UserInformationComponent/UserInformationTemplate";
+import template from "./UserProfileTemplate";
 import UserProfileContent from "../../components/UserProfileContent";
 import ExitButton from "../../components/ExitButtonComponent";
+import Button from "../../components/ButtonComponent";
 import Block from "../../core/Block";
+import Input from "../../components/InputComponent";
 import { avatar } from "../../mock-data/avatar";
 import { profile } from "../../mock-data/profile";
+import { PropsType } from "../../types";
+import AuthenticationService from "../../services/authentication";
+import Link from "../../components/Link";
+import ValidateForm from "../../core/ValidateForms";
+import UserProfileService from "../../services/userProfileService";
+import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
 
-export default class UserProfile extends Block {
-  constructor() {
+class UserProfile extends Block {
+  constructor(props: PropsType) {
+    
     const exitButton = new ExitButton({
-      href: "/chats",
+      path: "/messenger",
     });
-    const content = new UserProfileContent();
-    const name = "person"
 
-    super({ exitButton, avatar, name, profile, content });
+    const email = new Input({
+      label: "Email",
+      id: "email",
+      name: "email",
+      type: "email",
+      value: props.email,
+      error: "",
+    });
+    const login = new Input({
+      label: "Login",
+      id: "login",
+      name: "login",
+      type: "text",
+      value: props.login,
+      error: "",
+    });
+    const firstName = new Input({
+      label: "First Name",
+      id: "firstName",
+      name: "first_name",
+      type: "text",
+      value: props.first_name,
+      error: "",
+    });
+    const secondName = new Input({
+      label: "Second Name",
+      id: "secondName",
+      name: "second_name",
+      type: "text",
+      value: props.second_name,
+      error: "",
+    });
+    const phone = new Input({
+      label: "Phone",
+      id: "phone",
+      name: "phone",
+      type: "tel",
+      value: props.phone,
+      error: "",
+    });
+    const button = new Button({
+      type: "",
+      name: "save",
+    });
+
+    const logout = new Button(
+      {
+        type: "",
+        name: "logout",
+      },
+      {
+        click: (event: Event) => {
+          event.preventDefault();
+          console.log(event);
+          AuthenticationService.logout();
+        },
+      }
+    );
+
+    const linkToPassword = new Link({
+      name: "Change Password",
+      path: "/settings/password",
+    });
+
+    super({
+      ...props,
+
+      name: props.display_name,
+      exitButton,
+      email,
+      login,
+      firstName,
+      secondName,
+      phone,
+      button,
+      linkToPassword,
+      logout,
+
+      events: {
+        submit: (event: Event) => {
+          event.preventDefault();
+
+          const form = event.target as HTMLFormElement;
+
+          const validateInputs = ValidateForm.validateSubmit(form);
+
+          const payload: PropsType = {
+            first_name: "",
+            second_name: "",
+            display_name: "",
+            login: "",
+            email: "",
+            password: "",
+            phone: "",
+          };
+
+          Object.values(this.children).forEach((element) => {
+            payload[element.props.name] = String(element.props.value);
+          });
+
+          if (validateInputs) {
+            UserProfileService.editProfile(JSON.stringify(payload));
+          }
+        },
+      },
+    });
   }
 
   render() {
     return this.compile(template);
   }
 }
+
+function addStateToProps(state: PropsType) {
+  const { user } = state;
+  if (user) {
+    return {
+      login: user.login,
+      email: user.email,
+      first_name: user.first_name,
+      second_name: user.second_name,
+      display_name: `${user.first_name} ${user.second_name} `,
+      phone: user.phone,
+      avatar: user.avatar,
+    };
+  } else {
+    return {
+      login: null,
+      email: null,
+      first_name: null,
+      second_name: null,
+      display_name: null,
+      phone: null,
+      avatar: null,
+    };
+  }
+}
+
+export default AddStoreToBlock(UserProfile, addStateToProps);

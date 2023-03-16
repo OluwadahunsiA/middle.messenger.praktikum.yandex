@@ -39,7 +39,7 @@ class Chats extends Block {
   }
 }
 
-// export default Chats
+
 
 function addStateToProps(state: PropsType) {
   if (state.chats) {
