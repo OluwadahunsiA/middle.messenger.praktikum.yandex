@@ -1,5 +1,4 @@
 import template from "./UserProfileTemplate";
-// import UserProfileContent from "../../components/UserProfileContent";
 import ExitButton from "../../components/ExitButtonComponent";
 import Button from "../../components/ButtonComponent";
 import Block from "../../core/Block";
