@@ -108,7 +108,7 @@ class ChatService extends GeneralService {
           Store.setState("currentChat", {
             id: Number(chatId),
             title: chatTitle,
-            avatar: selectedUserAvatar || null,
+            avatar: null,
             groupChat,
           });
         }
