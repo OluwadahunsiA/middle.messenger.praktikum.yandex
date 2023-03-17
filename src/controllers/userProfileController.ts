@@ -3,10 +3,7 @@ import UserProfileAPI from "../api/userProfile";
 import Store from "../core/Store";
 import Block from "../core/Block";
 
-// pictures might go here
 import ChatList from "../components/ChatListComponent";
-
-// tooltip might go here
 
 import { PropsType } from "../types";
 
@@ -15,26 +12,20 @@ import EditablePicture from "../components/EditablePicture";
 
 class UserProfileController {
   editProfile(data: XMLHttpRequestBodyInit) {
-    // you can add a spinner here
 
     UserProfileAPI.changeProfile(data)
       .then((result) => {
         if (result.status === 200) {
-          // you can show a message here
 
           Store.setState("user", JSON.parse(result.response));
-        } else {
-          // you can show a message here
         }
       })
       .catch((error) => {
-        //you can show a message here;
+       
 
         console.log("error", error);
       })
-      .finally(() => {
-        // you can show a spinner here
-      });
+
   }
 
   editAvatar(data: XMLHttpRequestBodyInit) {
@@ -45,8 +36,6 @@ class UserProfileController {
           uploadAvatar.setProps({
             avatar: BASE_URL_RESOUCES + JSON.parse(result.response).avatar,
           });
-        } else {
-          // you can show a message here
         }
 
         return result;
@@ -60,34 +49,26 @@ class UserProfileController {
   }
 
   editPassword(data: XMLHttpRequestBodyInit, inputs: PropsType) {
-    //show spinner
+  
 
     UserProfileAPI.changePassword(data)
       .then((result) => {
         if (result.status === 200) {
-          //show the tooltip here.
 
           Object.values(inputs).forEach((element) => {
             if (element.props.value !== undefined) {
               element.setProps({ value: "", error: "" });
             }
           });
-        } else {
-          //show error
         }
       })
       .catch((error) => {
-        //show error
 
         console.log("error", error);
       })
-      .finally(() => {
-        //set spinner here.
-      });
   }
 
   searchUserByLogin(data: string, Component?: Block) {
-    // you can show a spinner here;
 
     UserProfileAPI.searchUserByLogin(data)
       .then((result) => {
@@ -110,17 +91,11 @@ class UserProfileController {
               isNotFoundUser,
             });
           }
-        } else {
-          //display error message
         }
       })
       .catch((error) => {
-        //show error
         console.log("error", error);
       })
-      .finally(() => {
-        //show spinner or something.
-      });
   }
 
   findUserById(id: string) {
@@ -141,8 +116,6 @@ class UserProfileController {
             displayName,
             avatar: user.avatar,
           });
-        } else {
-          // error message
         }
       })
       .catch((error) => {

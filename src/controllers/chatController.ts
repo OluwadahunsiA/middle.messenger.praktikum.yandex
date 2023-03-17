@@ -1,11 +1,8 @@
 import ChatsAPI from "../api/chats";
 import Store from "../core/Store";
-
 import MessageController from "./messageController";
-
 import ChatListComponent from "../components/ChatListComponent";
 import SearchedUsers from "../components/SearchedUsersComponent";
-
 import { PropsType } from "../types";
 import { convertDate } from "../utils/helper";
 import AddUsers from "../components/AddUsers";
@@ -36,7 +33,8 @@ class ChatController extends GeneralController {
 
           this.startChating(chatId, chatTitle, isGroupChat);
         } else {
-          const errorReason = JSON.parse(result.responseText).reason;
+          const error = JSON.parse(result.responseText).reason;
+          console.log(error);
         }
       })
       .then(() => this.getChats())
@@ -55,8 +53,6 @@ class ChatController extends GeneralController {
 
           const chats = this.mapChats(chatsData, userId);
 
-         
-
           ChatListComponent.setProps({
             chats,
             isChats: true,
@@ -67,7 +63,7 @@ class ChatController extends GeneralController {
         }
       })
       .catch((error) => {
-    
+        console.log(error);
       });
   }
 
@@ -131,14 +127,14 @@ class ChatController extends GeneralController {
 
           Store.setState("activeChat", null);
         } else {
-          const errorReason = JSON.parse(result.responseText).reason;
+          const error = JSON.parse(result.responseText).reason;
+          console.log(error);
         }
       })
       .then(() => {
         this.getChats();
       })
       .catch((error) => {
-
         console.log("error", error);
       });
   }
@@ -147,19 +143,16 @@ class ChatController extends GeneralController {
     ChatsAPI.addUserToChat(data)
       .then((result) => {
         if (result.status === 200) {
-        
           AddUsers.setProps({
             openedPop: false,
           });
-    
         } else {
-          const errorReason = JSON.parse(result.responseText).reason;
-
+          const error = JSON.parse(result.responseText).reason;
+          console.log(error);
         }
       })
       .catch((error) => {
         console.log(error);
-
       });
   }
 
@@ -188,12 +181,12 @@ class ChatController extends GeneralController {
             Store.setState("activeChat", null);
           }
         } else {
-          const errorReason = JSON.parse(result.responseText).reason;
+          const error = JSON.parse(result.responseText).reason;
+          console.log(error);
         }
       })
       .catch((error) => {
         console.log(error);
-
       });
   }
 
@@ -209,7 +202,6 @@ class ChatController extends GeneralController {
             isUsers: true,
             users,
           });
-
         }
       })
       .catch((error) => {
