@@ -68,7 +68,6 @@ class AddUser extends Block {
           });
 
           ChatController.addUsersToChat(request);
-          //create chat should also be closed in chatController
         },
       },
     });

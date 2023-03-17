@@ -98,34 +98,7 @@ export default class Registration extends Block {
       button,
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
-        // change: (event: Event) => {
-        //   event.preventDefault();
-
-        //   let checkFormValidity = false;
-
-        //   setTimeout(() => {
-        //     const children: { [key: string]: any } = Object.values(
-        //       // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        //       self.children
-        //     );
-
-        //     for (let i = 0; i < children.length; i += 1) {
-        //       if (children[i].props.error !== undefined) {
-        //         if (
-        //           children[i].props.value.length > 0 &&
-        //           children[i].props.error.length === 0
-        //         ) {
-        //           checkFormValidity = true;
-        //         } else {
-        //           checkFormValidity = false;
-        //           break;
-        //         }
-        //       }
-        //     }
-        //   }, 100);
-        // },
         submit: (event: Event) => {
-          // formEvents.submit(event, state);
           event.preventDefault();
 
           const form = event.target as HTMLFormElement;

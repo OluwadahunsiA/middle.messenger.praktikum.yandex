@@ -4,7 +4,6 @@ import Button from "../../components/ButtonComponent";
 import Block from "../../core/Block";
 import Input from "../../components/InputComponent";
 import { avatar as mockPicture } from "../../mock-data/avatar";
-// import { profile } from "../../mock-data/profile";
 import { PropsType } from "../../types";
 import AuthenticationController from "../../controllers/authenticationController";
 import Link from "../../components/Link";

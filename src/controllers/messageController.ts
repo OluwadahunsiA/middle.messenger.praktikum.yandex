@@ -48,7 +48,6 @@ class MessageController {
 
     const currentMessages = (Store.getState().messages || {})[chatId] || [];
 
-    // newMessages = [...currentMessages, ...newMessages];
 
     if (newMessages.length === 1 && currentMessages.length !== 1) {
       newMessages = [...currentMessages, ...newMessages];

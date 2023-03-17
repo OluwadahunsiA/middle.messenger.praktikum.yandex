@@ -56,7 +56,6 @@ export default class ChangePassword extends Block {
       repeatNewPassword,
       changePassword,
       events: {
-        // input: (event: Event) => formEvents.getInput(event, state),
         submit: (event: Event) => {
           event.preventDefault();
 

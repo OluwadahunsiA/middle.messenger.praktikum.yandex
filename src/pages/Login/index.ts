@@ -51,7 +51,6 @@ export default class Login extends Block {
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
         submit: (event: Event) => {
-          // formEvents.submit(event, state);
 
           event.preventDefault();
 
