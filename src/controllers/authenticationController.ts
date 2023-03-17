@@ -2,13 +2,13 @@ import Authentication from "../api/authentication";
 
 import Store from "../core/Store";
 
-import ChatService from "./chatService";
-import MessageService from "./messageService";
-import GeneralService from "./general";
+import ChatController from "./chatController";
+import MessageController from "./messageController";
+import GeneralController from "./generalController";
 
 import { PropsType } from "../types";
 
-class AuthenticationService extends GeneralService {
+class AuthenticationController extends GeneralController {
   constructor() {
     super();
   }
@@ -96,7 +96,7 @@ class AuthenticationService extends GeneralService {
 
           Store.setState("isAuth", true);
 
-          ChatService.getChats();
+          ChatController.getChats();
         } else {
           const { isAuth } = Store.getState();
 
@@ -121,7 +121,7 @@ class AuthenticationService extends GeneralService {
       .then(() => {
         this.redirect("/", 0);
 
-        MessageService.close();
+        MessageController.close();
 
         Store.removeState();
       })
@@ -133,4 +133,4 @@ class AuthenticationService extends GeneralService {
   }
 }
 
-export default new AuthenticationService();
+export default new AuthenticationController();

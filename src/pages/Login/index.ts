@@ -6,7 +6,7 @@ import Input from "../../components/InputComponent";
 import { formEvents } from "../../core/formEvents";
 import Button from "../../components/ButtonComponent";
 import Link from "../../components/Link";
-import AuthenticationService from "../../services/authentication";
+import AuthenticationController from "../../controllers/authenticationController";
 import ValidateForm from "../../core/ValidateForms";
 
 export default class Login extends Block {
@@ -68,10 +68,10 @@ export default class Login extends Block {
             payload[element.props.name] = element.props.value;
           });
 
-          const dataToString = JSON.stringify(payload)
+          const dataToString = JSON.stringify(payload);
 
           if (validateForm) {
-            AuthenticationService.signin(dataToString, self.children);
+            AuthenticationController.signin(dataToString, self.children);
           }
         },
       },

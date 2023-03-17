@@ -4,7 +4,7 @@ import Router from "../core/Router";
 
 import { PropsType } from "../types";
 
-export default class GeneralService {
+export default class GeneralController {
   //you might need a spinner later.
 
   redirect(pathname: string, time: number) {

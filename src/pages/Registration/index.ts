@@ -6,7 +6,7 @@ import { formEvents } from "../../core/formEvents";
 import template from "./registrationTemplate";
 import Link from "../../components/Link";
 import ValidateForm from "../../core/ValidateForms";
-import AuthenticationService from "../../services/authentication";
+import AuthenticationController from "../../controllers/authenticationController";
 
 export default class Registration extends Block {
   constructor() {
@@ -144,11 +144,11 @@ export default class Registration extends Block {
           Object.values(self.children).forEach((element) => {
             payload[element.props.name] = element.props.value;
           });
-          
+
           const dataToString = JSON.stringify(payload);
 
           if (validateForm) {
-            AuthenticationService.signup(dataToString, self.children);
+            AuthenticationController.signup(dataToString, self.children);
           }
         },
       },

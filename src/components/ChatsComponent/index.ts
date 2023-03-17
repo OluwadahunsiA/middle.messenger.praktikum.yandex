@@ -12,7 +12,7 @@ import SelectChat from "../SelectChat";
 import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
 import MessageComponent from "../Message";
 import { toDate } from "../../utils/helper";
-import ChatService from "../../services/chatService";
+import ChatController from "../../controllers/chatController";
 import AddUsers from "../AddUsers";
 import SearchedUsers from "../SearchedUsersComponent";
 import DeleteUsers from "../DeleteUsers";
@@ -40,7 +40,7 @@ class ChatsComponent extends Block {
       events: {
         click: (event: Event) => {
           if ((event.target as Element).classList.contains("delete-chat")) {
-            ChatService.deleteChat(
+            ChatController.deleteChat(
               JSON.stringify({ chatId: this.props.currentChat.id })
             );
           }
@@ -51,7 +51,7 @@ class ChatsComponent extends Block {
               selectedUsers: [],
             });
 
-            ChatService.getChatUsers();
+            ChatController.getChatUsers();
 
             DeleteUsers.setProps({
               openedPop: true,
@@ -96,14 +96,12 @@ class ChatsComponent extends Block {
   }
 
   createMessages(props: PropsType) {
-    
     return props?.messages?.map((messages: Message) => {
-        return new MessageComponent({
-          content: messages.content,
-          type: messages.user_id === props.userId ? "send" : "receive",
-          time: toDate(messages.time),
-        });
-
+      return new MessageComponent({
+        content: messages.content,
+        type: messages.user_id === props.userId ? "send" : "receive",
+        time: toDate(messages.time),
+      });
     });
   }
 

@@ -8,7 +8,7 @@ import Input from "../../components/InputComponent";
 
 import ValidateForm from "../../core/ValidateForms";
 import { PropsType } from "../../types";
-import UserProfileService from "../../services/userProfileService";
+import UserProfileController from "../../controllers/userProfileController";
 
 export default class ChangePassword extends Block {
   constructor() {
@@ -73,7 +73,7 @@ export default class ChangePassword extends Block {
           });
 
           if (validateForm) {
-            UserProfileService.editPassword(
+            UserProfileController.editPassword(
               JSON.stringify(payload),
               self.children
             );

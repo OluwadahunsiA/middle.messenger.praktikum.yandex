@@ -8,8 +8,8 @@ import Input from "../InputComponent";
 
 import Button from "../ButtonComponent";
 
-import UserProfileService from "../../services/userProfileService";
-import ChatService from "../../services/chatService";
+import UserProfileController from "../../controllers/userProfileController";
+import ChatController from "../../controllers/chatController";
 import SearchedUsers from "../SearchedUsersComponent";
 
 import { PropsType } from "../../types";
@@ -38,7 +38,6 @@ class AddUser extends Block {
       events: {
         click: (event: Event) => {
           if ((event.target! as Element).classList.contains("opened")) {
-
             this.setProps({ openedPop: false });
           }
         },
@@ -48,7 +47,7 @@ class AddUser extends Block {
 
             const { value } = element;
 
-            UserProfileService.searchUserByLogin(
+            UserProfileController.searchUserByLogin(
               JSON.stringify({ login: value }),
               SearchedUsers
             );
@@ -68,8 +67,8 @@ class AddUser extends Block {
             chatId,
           });
 
-          ChatService.addUsersToChat(request);
-          //create chat should also be closed in chatService
+          ChatController.addUsersToChat(request);
+          //create chat should also be closed in chatController
         },
       },
     });

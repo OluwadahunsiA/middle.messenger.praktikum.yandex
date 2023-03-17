@@ -6,10 +6,10 @@ import Input from "../../components/InputComponent";
 import { avatar as mockPicture } from "../../mock-data/avatar";
 // import { profile } from "../../mock-data/profile";
 import { PropsType } from "../../types";
-import AuthenticationService from "../../services/authentication";
+import AuthenticationController from "../../controllers/authenticationController";
 import Link from "../../components/Link";
 import ValidateForm from "../../core/ValidateForms";
-import UserProfileService from "../../services/userProfileService";
+import UserProfileController from "../../controllers/userProfileController";
 import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
 import EditablePicture from "../../components/EditablePicture";
 import { BASE_URL_RESOUCES } from "../../core/HTTP";
@@ -78,7 +78,7 @@ class UserProfile extends Block {
       {
         click: (event: Event) => {
           event.preventDefault();
-          AuthenticationService.logout();
+          AuthenticationController.logout();
         },
       }
     );
@@ -126,7 +126,7 @@ class UserProfile extends Block {
           });
 
           if (validateInputs) {
-            UserProfileService.editProfile(JSON.stringify(payload));
+            UserProfileController.editProfile(JSON.stringify(payload));
           }
         },
       },

@@ -6,7 +6,7 @@ import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
 
 import Button from "../ButtonComponent";
 
-import ChatService from "../../services/chatService";
+import ChatController from "../../controllers/chatController";
 
 import { BASE_URL_RESOUCES } from "../../core/HTTP";
 
@@ -21,7 +21,7 @@ class SelectChat extends Block {
       },
       {
         click: async () => {
-          await ChatService.createChat(
+          await ChatController.createChat(
             JSON.stringify({
               title: `${this.props.selectedUser.displayName} and ${this.props.user.first_name} ${this.props.user.second_name}`,
             }),

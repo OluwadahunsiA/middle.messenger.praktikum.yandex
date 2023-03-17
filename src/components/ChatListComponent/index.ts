@@ -3,8 +3,8 @@
 import Block from "../../core/Block";
 import template from "./ChatListTemplate";
 
-import UserProfileService from "../../services/userProfileService";
-import ChatService from "../../services/chatService";
+import UserProfileController from "../../controllers/userProfileController";
+import ChatController from "../../controllers/chatController";
 
 import { BASE_URL_RESOUCES } from "../../core/HTTP";
 
@@ -34,7 +34,7 @@ class ChatList extends Block {
           if (clickedUserInfo && clickedUserInfo.dataset) {
             const id = clickedUserInfo.dataset.userId as string;
 
-            UserProfileService.findUserById(id);
+            UserProfileController.findUserById(id);
           }
 
           const selectChat = clickedUser.closest(
@@ -48,7 +48,7 @@ class ChatList extends Block {
               ".chats-list__single-sender-name"
             )!.textContent;
 
-            ChatService.startChating(id, title);
+            ChatController.startChating(id, title);
           }
         },
       },
@@ -56,7 +56,6 @@ class ChatList extends Block {
   }
 
   render() {
-   
     return this.compile(template);
   }
 }

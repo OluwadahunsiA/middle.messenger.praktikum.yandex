@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Store from "../core/Store";
 import UseWebSocket from "../core/WS";
-import ChatService from "./chatService";
+import ChatController from "./chatController";
 
 import { WWS_URL } from "../core/HTTP";
 import { Message, StoreInterface } from "../types";
 
-class MessageService {
+class MessageController {
   socket: UseWebSocket;
 
   sockets: { [id: string]: UseWebSocket } = {};
@@ -68,7 +68,7 @@ class MessageService {
 
     Store.setState(`messages.${chatId}`, newMessages);
 
-    ChatService.getChats();
+    ChatController.getChats();
   }
 
   close() {
@@ -96,4 +96,4 @@ class MessageService {
   }
 }
 
-export default new MessageService();
+export default new MessageController();

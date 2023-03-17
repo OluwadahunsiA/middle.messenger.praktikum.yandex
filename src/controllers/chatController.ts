@@ -1,7 +1,7 @@
 import ChatsAPI from "../api/chats";
 import Store from "../core/Store";
-import GeneralService from "./general";
-import MessageService from "./messageService";
+
+import MessageController from "./messageController";
 
 //To be completed with other components
 import ChatListComponent from "../components/ChatListComponent";
@@ -12,8 +12,9 @@ import { toDate } from "../utils/helper";
 import AddUsers from "../components/AddUsers";
 import DeleteUsers from "../components/DeleteUsers";
 import ChatsComponent from "../components/ChatsComponent";
+import GeneralController from "./generalController";
 
-class ChatService extends GeneralService {
+class ChatController extends GeneralController {
   constructor() {
     super();
   }
@@ -91,13 +92,13 @@ class ChatService extends GeneralService {
           const { token } = JSON.parse(result.responseText);
           const chatIdToNumber = Number(chatId);
 
-          await MessageService.close();
+          await MessageController.close();
 
-          await MessageService.connect(chatIdToNumber, token, "0");
+          await MessageController.connect(chatIdToNumber, token, "0");
 
           const selectedUserAvatar = Store.getState()?.selectedUser?.avatar;
 
-          console.log("from chat service", selectedUserAvatar);
+          console.log("from chat Controller", selectedUserAvatar);
 
           Store.setState("selectedUser", null);
 
@@ -144,8 +145,8 @@ class ChatService extends GeneralService {
     ChatsAPI.deleteChat(data)
       .then(async (result) => {
         if (result.status === 200) {
-          //You will need to close message service here
-          MessageService.close();
+          //You will need to close message Controller here
+          MessageController.close();
 
           Store.setState("selectedUser", null);
 
@@ -297,4 +298,4 @@ class ChatService extends GeneralService {
   }
 }
 
-export default new ChatService();
+export default new ChatController();

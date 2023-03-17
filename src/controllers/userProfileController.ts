@@ -13,7 +13,7 @@ import { PropsType } from "../types";
 import { BASE_URL_RESOUCES } from "../core/HTTP";
 import EditablePicture from "../components/EditablePicture";
 
-class UserProfileService {
+class UserProfileController {
   editProfile(data: XMLHttpRequestBodyInit) {
     // you can add a spinner here
 
@@ -159,4 +159,4 @@ class UserProfileService {
   }
 }
 
-export default new UserProfileService();
+export default new UserProfileController();

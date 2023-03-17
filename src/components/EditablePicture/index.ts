@@ -1,6 +1,6 @@
 import template from "./EditablePictureTemplate";
 import Block from "../../core/Block";
-import UserProfileService from "../../services/userProfileService";
+import UserProfileController from "../../controllers/userProfileController";
 import { PropsType } from "../../types";
 import Button from "../ButtonComponent";
 
@@ -20,7 +20,6 @@ export default class EditablePicture extends Block {
 
           if (files) {
             const fileReader = new FileReader();
-
 
             fileReader.readAsDataURL(files[0]);
 
@@ -42,7 +41,7 @@ export default class EditablePicture extends Block {
           event.preventDefault();
           const form = event.target as HTMLFormElement;
           const data = new FormData(form);
-          UserProfileService.editAvatar(data);
+          UserProfileController.editAvatar(data);
         },
       },
     });

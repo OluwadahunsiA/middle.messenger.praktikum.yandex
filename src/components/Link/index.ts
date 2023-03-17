@@ -1,5 +1,5 @@
 import template from "./LinkTemplate";
-import ChatService from "../../services/chatService";
+import ChatController from "../../controllers/chatController";
 
 import Block from "../../core/Block";
 import Router from "../../core/Router";
@@ -13,9 +13,8 @@ export default class Link extends Block {
           event.preventDefault();
           Router.go(props.path);
 
-
           if (props.path === "/messenger") {
-            ChatService.leaveChatPage();
+            ChatController.leaveChatPage();
           }
         },
       },

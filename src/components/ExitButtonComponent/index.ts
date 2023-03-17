@@ -1,7 +1,7 @@
 import template from "./ExitButtonTemplate";
 import Block from "../../core/Block";
 import backIcon from "../../assets/images/back.svg";
-import ChatService from "../../services/chatService";
+import ChatController from "../../controllers/chatController";
 import Router from "../../core/Router";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,7 +16,7 @@ export default class ExitButton extends Block {
         click: (event: Event) => {
           event.preventDefault();
           Router.go(props.path);
-          ChatService.leaveChatPage();
+          ChatController.leaveChatPage();
         },
       },
     });

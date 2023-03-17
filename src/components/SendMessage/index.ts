@@ -1,7 +1,7 @@
 import Block from "../../core/Block";
 import template from "./SendMessageTemplate";
 // import { formEvents } from "../../core/formEvents";
-import MessageService from "../../services/messageService";
+import MessageController from "../../controllers/messageController";
 import ValidateForm from "../../core/ValidateForms";
 
 export default class SendMessage extends Block {
@@ -27,7 +27,7 @@ export default class SendMessage extends Block {
           const { error } = ValidateForm.verifyElement(input);
 
           if (validateForm) {
-            MessageService.sendMessage(input.value);
+            MessageController.sendMessage(input.value);
 
             this.setProps({
               value: "",

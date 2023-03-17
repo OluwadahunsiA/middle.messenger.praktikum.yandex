@@ -1,6 +1,6 @@
 import Block from "../../core/Block";
 import template from "./ChatSearchInputTemplate";
-import UserProfileService from "../../services/userProfileService";
+import UserProfileController from "../../controllers/userProfileController";
 import Button from "../ButtonComponent";
 
 export default class ChatSearchInput extends Block {
@@ -15,10 +15,10 @@ export default class ChatSearchInput extends Block {
       events: {
         input: (event: Event) => {
           const element = event.target as HTMLInputElement;
-          
+
           const searchedLogin = element.value;
 
-          UserProfileService.searchUserByLogin(
+          UserProfileController.searchUserByLogin(
             JSON.stringify({ login: searchedLogin })
           );
         },

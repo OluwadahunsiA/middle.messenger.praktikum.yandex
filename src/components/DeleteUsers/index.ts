@@ -3,7 +3,7 @@ import template from "./DeleteUsersTemplate";
 import Block from "../../core/Block";
 import SearchedUsers from "../SearchedUsersComponent";
 import Button from "../ButtonComponent";
-import ChatService from "../../services/chatService";
+import ChatController from "../../controllers/chatController";
 import { PropsType } from "../../types";
 
 class DeleteUsers extends Block {
@@ -33,7 +33,7 @@ class DeleteUsers extends Block {
             (user: PropsType) => user.id
           );
 
-          ChatService.deleteUsersFromChat(userIds);
+          ChatController.deleteUsersFromChat(userIds);
         },
       },
     });
