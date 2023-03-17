@@ -114,7 +114,7 @@ export function isEqual(lhs: PlainObject, rhs: PlainObject) {
   return true;
 }
 
-export const toDate = (date: string) =>
+export const convertDate = (date: string) =>
   new Intl.DateTimeFormat("en", {
     day: "2-digit",
     month: "short",

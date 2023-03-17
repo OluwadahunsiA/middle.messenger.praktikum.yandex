@@ -90,7 +90,6 @@ class UserProfile extends Block {
 
     super({
       ...props,
-
       name: props.display_name,
       exitButton,
       email,

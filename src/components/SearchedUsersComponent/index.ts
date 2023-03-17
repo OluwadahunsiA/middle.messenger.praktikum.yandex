@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import template from "./SearchedUsersTemplate";
 import Block from "../../core/Block";
 

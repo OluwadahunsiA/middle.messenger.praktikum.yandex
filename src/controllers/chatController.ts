@@ -8,7 +8,7 @@ import ChatListComponent from "../components/ChatListComponent";
 import SearchedUsers from "../components/SearchedUsersComponent";
 
 import { PropsType } from "../types";
-import { toDate } from "../utils/helper";
+import { convertDate } from "../utils/helper";
 import AddUsers from "../components/AddUsers";
 import DeleteUsers from "../components/DeleteUsers";
 import ChatsComponent from "../components/ChatsComponent";
@@ -268,7 +268,7 @@ class ChatController extends GeneralController {
       delete chat.last_message;
 
       if (lastMessages) {
-        const newTime = toDate(lastMessages.time);
+        const newTime = convertDate(lastMessages.time);
 
         lastMessages.time = newTime;
 

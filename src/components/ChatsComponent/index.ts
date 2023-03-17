@@ -11,7 +11,7 @@ import { BASE_URL_RESOUCES } from "../../core/HTTP";
 import SelectChat from "../SelectChat";
 import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
 import MessageComponent from "../Message";
-import { toDate } from "../../utils/helper";
+import { convertDate } from "../../utils/helper";
 import ChatController from "../../controllers/chatController";
 import AddUsers from "../AddUsers";
 import SearchedUsers from "../SearchedUsersComponent";
@@ -100,7 +100,7 @@ class ChatsComponent extends Block {
       return new MessageComponent({
         content: messages.content,
         type: messages.user_id === props.userId ? "send" : "receive",
-        time: toDate(messages.time),
+        time: convertDate(messages.time),
       });
     });
   }
