@@ -1,10 +1,10 @@
 import EventBus from "./EventBus";
 import { set, parseInternalJSON } from "../utils/helper";
 
-import { StoreInterface } from "../types";
+import { StateInterface } from "../types";
 
 class Store extends EventBus {
-  appState: StoreInterface = {
+  appState: StateInterface = {
     isAuth: false,
     user: null,
     emptyChat: true,

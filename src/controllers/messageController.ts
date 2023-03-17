@@ -4,7 +4,7 @@ import UseWebSocket from "../core/WS";
 import ChatController from "./chatController";
 
 import { WWS_URL } from "../core/HTTP";
-import { Message, StoreInterface } from "../types";
+import { Message, StateInterface } from "../types";
 
 class MessageController {
   socket: UseWebSocket;
@@ -14,7 +14,7 @@ class MessageController {
   async connect(chatId: number, token: string, newMessages: string) {
     this.close();
 
-    const store = Store.getState() as StoreInterface;
+    const store = Store.getState() as StateInterface;
 
     const userId = store.user!.id;
 

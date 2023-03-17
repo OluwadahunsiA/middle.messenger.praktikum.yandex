@@ -1,11 +1,10 @@
 import Router from "../core/Router";
 
-//check if you need tooltip and maybe spinner.
 
 import { PropsType } from "../types";
 
 export default class GeneralController {
-  //you might need a spinner later.
+
 
   redirect(pathname: string, time: number) {
     setTimeout(() => Router.go(pathname), time);

@@ -10,7 +10,7 @@ import { BASE_URL_RESOUCES } from "../../core/HTTP";
 
 //@ts-ignore
 import avatar from "../../assets/images/avatar.avif";
-import { StoreInterface } from "../../types";
+import { StateInterface } from "../../types";
 import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
 
 type ChatListProps = { [key: string]: string };
@@ -60,7 +60,7 @@ class ChatList extends Block {
   }
 }
 
-function addStateToProps(state: StoreInterface) {
+function addStateToProps(state: StateInterface) {
   let isChats;
 
   if (state.chats?.length > 0) {

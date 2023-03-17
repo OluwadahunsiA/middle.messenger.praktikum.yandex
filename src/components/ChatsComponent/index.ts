@@ -6,7 +6,7 @@ import userPicture from "../../assets/images/avatar.avif";
 import moreOptions from "../../assets/images/dots.svg";
 import SendMessage from "../SendMessage";
 import NoSelectedChat from "../NoSelectedChatComponent";
-import { PropsType, Message, StoreInterface } from "../../types";
+import { PropsType, Message, StateInterface } from "../../types";
 import { BASE_URL_RESOUCES } from "../../core/HTTP";
 import SelectChat from "../SelectChat";
 import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
@@ -110,7 +110,7 @@ class ChatsComponent extends Block {
   }
 }
 
-function addStateToProps(state: StoreInterface) {
+function addStateToProps(state: StateInterface) {
   const { currentChat } = state;
 
   const { selectedUser } = state;

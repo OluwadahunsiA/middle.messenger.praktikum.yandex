@@ -10,7 +10,7 @@ import ChatController from "../../controllers/chatController";
 
 import { BASE_URL_RESOUCES } from "../../core/HTTP";
 
-import { PropsType, StoreInterface } from "../../types";
+import { PropsType, StateInterface } from "../../types";
 
 class SelectChat extends Block {
   constructor(props: PropsType) {
@@ -45,7 +45,7 @@ class SelectChat extends Block {
   }
 }
 
-function addStateToProps(state: StoreInterface) {
+function addStateToProps(state: StateInterface) {
   return {
     selectedUser: state.selectedUser,
     user: state.user,

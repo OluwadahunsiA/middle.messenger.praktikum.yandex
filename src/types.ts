@@ -58,7 +58,7 @@ interface CurrentChat {
   groupChat: boolean;
 }
 
-export interface StoreInterface {
+export interface StateInterface {
   isAuth: boolean;
   user: null | User;
   chats: Chat[];

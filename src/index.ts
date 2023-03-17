@@ -3,7 +3,7 @@ import renderDOM from "./core/renderDOM";
 import Registration from "./pages/Registration";
 import Chats from "./pages/Chat";
 import UserProfile from "./pages/UserProfile";
-import EditProfile from "./pages/EditProfile";
+
 import ChangePassword from "./pages/ChangePassword";
 import ChangePicture from "./pages/ChangePicture";
 import Error404 from "./pages/Error404";
@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // const registration = new Registration();
 // const chats = new Chats();
 // const profile = new UserProfile();
-// const editProfile = new EditProfile();
+
 // const changePassword = new ChangePassword();
 // const changePicture = new ChangePicture();
 // const error404 = new Error404();
@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", () => {
 //   "/chats": chats,
 //   "/chats/id": chats,
 //   "/user-profile": profile,
-//   "/user-profile/edit-profile": editProfile,
+
 //   "/user-profile/change-password": changePassword,
 //   "/user-profile/change-picture": changePicture,
 //   "/error404": error404,
