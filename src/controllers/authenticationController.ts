@@ -1,4 +1,4 @@
-import Authentication from "../api/authentication";
+import AuthenticationAPI from "../api/authentication";
 
 import Store from "../core/Store";
 
@@ -14,7 +14,7 @@ class AuthenticationController extends GeneralController {
   }
 
   signup(data: XMLHttpRequestBodyInit, inputs: PropsType) {
-    Authentication.signup(data)
+    AuthenticationAPI.signup(data)
       .then((result) => {
         if (result.status === 200) {
           const successResponse = JSON.parse(result.responseText).id;
@@ -40,7 +40,7 @@ class AuthenticationController extends GeneralController {
   }
 
   signin(data: XMLHttpRequestBodyInit, inputs: PropsType) {
-    Authentication.signin(data)
+    AuthenticationAPI.signin(data)
       .then((result) => {
         if (result.status === 200) {
           this.clearInput(inputs);
@@ -63,7 +63,7 @@ class AuthenticationController extends GeneralController {
   }
 
   getUser() {
-    Authentication.user()
+    AuthenticationAPI.user()
       .then((data: XMLHttpRequest) => {
         if (data.status === 200) {
           const userData = JSON.parse(data.response);
@@ -80,13 +80,12 @@ class AuthenticationController extends GeneralController {
         }
       })
       .catch((error) => {
-        
         console.log("error", error);
       });
   }
 
   logout() {
-    Authentication.logout()
+    AuthenticationAPI.logout()
       .then(() => {
         this.redirect("/", 0);
 

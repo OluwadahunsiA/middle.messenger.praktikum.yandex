@@ -1,6 +1,6 @@
 import http from "../core/HTTP";
 
-class Authentication {
+class AuthenticationAPI {
   signup(data: XMLHttpRequestBodyInit) {
     return http.post("auth/signup", {
       headers: { "Content-Type": "application/json" },
@@ -28,4 +28,4 @@ class Authentication {
   }
 }
 
-export default new Authentication();
+export default new AuthenticationAPI();
