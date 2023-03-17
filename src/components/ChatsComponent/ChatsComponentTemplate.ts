@@ -3,15 +3,15 @@ export default `
 <div class="messages">
     {{#if activeChat}}
 
-      <div class="messages__display">
+      <div class="messages-display">
 
-        <div  class="messages__display-heading">
-          <div class="messages__display-heading-info">
+        <div  class="messages-display-heading">
+          <div class="messages-display-heading-info">
             <img {{#if activeChat.avatar}}src="https://ya-praktikum.tech/api/v2/resources{{activeChat.avatar}}" {{else}} src={{defaultPicture}} {{/if}} alt="user picture" />
             <p> {{activeChat.title}}</p>
           </div>
 
-          <div class="messages__display-heading-dots">
+          <div class="messages-display-heading-dots">
             
               <img src="{{moreOptions}}" alt="three dots" />
               <input type="checkbox">
@@ -31,9 +31,9 @@ export default `
         </div>
 
         
-        <div class="messages__display-content"> 
+        <div class="messages-display-content"> 
 
-          <p class="messages__display-content-created"> Chat created </p>
+          <p class="messages-display-content-created"> Chat created </p>
 
             {{#each messages}}
 
