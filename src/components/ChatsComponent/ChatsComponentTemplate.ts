@@ -1,14 +1,14 @@
 export default `
 
 <div class="messages">
-    {{#if currentChat}}
+    {{#if activeChat}}
 
       <div class="messages__display">
 
         <div  class="messages__display-heading">
           <div class="messages__display-heading-info">
-            <img {{#if currentChat.avatar}}src="https://ya-praktikum.tech/api/v2/resources{{currentChat.avatar}}" {{else}} src={{defaultPicture}} {{/if}} alt="user picture" />
-            <p> {{currentChat.title}}</p>
+            <img {{#if activeChat.avatar}}src="https://ya-praktikum.tech/api/v2/resources{{activeChat.avatar}}" {{else}} src={{defaultPicture}} {{/if}} alt="user picture" />
+            <p> {{activeChat.title}}</p>
           </div>
 
           <div class="messages__display-heading-dots">

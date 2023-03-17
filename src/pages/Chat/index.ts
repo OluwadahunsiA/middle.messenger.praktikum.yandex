@@ -12,7 +12,7 @@ import DeleteUsers from "../../components/DeleteUsers";
 
 class Chats extends Block {
   constructor() {
-    Store.setState("currentChat", null);
+    Store.setState("activeChat", null);
 
     const link = new Link({
       path: "/settings",

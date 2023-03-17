@@ -80,7 +80,6 @@ class ChatController extends GeneralController {
       })
       .catch((error) => {
         // show the tooltip for error here.
-
         // console.log("error", error);
       });
   }
@@ -92,21 +91,15 @@ class ChatController extends GeneralController {
           const { token } = JSON.parse(result.responseText);
           const chatIdToNumber = Number(chatId);
 
-          await MessageController.close();
+          MessageController.close();
 
           await MessageController.connect(chatIdToNumber, token, "0");
-
-          const selectedUserAvatar = Store.getState()?.chosenUser?.avatar;
-
-          console.log("from chat Controller", selectedUserAvatar);
 
           Store.setState("chosenUser", null);
 
           Store.setState("noChats", false);
 
-          Store.setState("currentChatImage", selectedUserAvatar);
-
-          Store.setState("currentChat", {
+          Store.setState("activeChat", {
             id: Number(chatId),
             title: chatTitle,
             avatar: null,
@@ -138,25 +131,25 @@ class ChatController extends GeneralController {
   leaveChatPage() {
     Store.setState("noChats", true);
     Store.setState("chosenUser", null);
-    Store.setState("currentChat", null);
+    Store.setState("activeChat", null);
   }
 
   deleteChat(data: XMLHttpRequestBodyInit) {
     ChatsAPI.deleteChat(data)
       .then(async (result) => {
         if (result.status === 200) {
-          //You will need to close message Controller here
+    
           MessageController.close();
 
           Store.setState("chosenUser", null);
 
-          Store.setState("noChats", true);
+          // Store.setState("noChats", true);
 
-          Store.setState("currentChat", null);
+          Store.setState("activeChat", null);
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
 
-          //you can display a tooltip here to warn about error
+        
         }
       })
       .then(() => {
@@ -193,7 +186,7 @@ class ChatController extends GeneralController {
   }
 
   deleteUsersFromChat(userId: number[]) {
-    const chatId = Store.getState().currentChat.id;
+    const chatId = Store.getState().activeChat.id;
 
     const request = JSON.stringify({ users: [...userId], chatId });
 
@@ -214,7 +207,7 @@ class ChatController extends GeneralController {
             });
 
             this.getChats();
-            Store.setState("currentChat", null);
+            Store.setState("activeChat", null);
           }
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
@@ -228,7 +221,7 @@ class ChatController extends GeneralController {
   }
 
   getChatUsers() {
-    const chatId = Store.getState().currentChat.id;
+    const chatId = Store.getState().activeChat.id;
 
     ChatsAPI.getChatUsers(String(chatId))
       .then((result) => {

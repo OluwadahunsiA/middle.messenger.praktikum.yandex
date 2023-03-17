@@ -9,7 +9,7 @@ class Store extends EventBus {
     user: null,
     noChats: true,
     chosenUser: null,
-    currentChat: null,
+    activeChat: null,
     messages: {},
     chats: [],
   };
@@ -36,7 +36,7 @@ class Store extends EventBus {
       user: null,
       noChats: true,
       chosenUser: null,
-      currentChat: null,
+      activeChat: null,
       messages: {},
       chats: [],
     };
@@ -48,8 +48,6 @@ class Store extends EventBus {
     const updatedState = set(this.appState, path, value);
 
     localStorage.setItem("currentState", JSON.stringify(updatedState));
-
-   
 
     this.emit("set-state", updatedState);
   }

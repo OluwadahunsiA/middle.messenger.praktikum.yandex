@@ -136,7 +136,7 @@ class UserProfileController {
           const displayName = `${user.first_name} ${user.second_name}`;
 
           Store.setState("noChats", false);
-          Store.setState("currentChat", null);
+          Store.setState("activeChat", null);
 
           Store.setState("chosenUser", {
             id: user.id,

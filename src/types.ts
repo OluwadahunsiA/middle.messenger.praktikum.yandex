@@ -14,7 +14,7 @@ interface User {
   avatar: string | null;
 }
 
-interface SelectedUser {
+interface ChosenUser {
   id: number;
   display_name: string;
   avatar: string | null;
@@ -50,7 +50,7 @@ export interface Message {
   };
 }
 
-interface CurrentChat {
+interface ActiveChat {
   id: number;
   title: string;
   avatar: string | null;
@@ -63,7 +63,7 @@ export interface StateInterface {
   user: null | User;
   chats: Chat[];
   messages: { [key: string]: Message[] };
-  currentChat: null | CurrentChat;
-  chosenUser: null | SelectedUser;
+  activeChat: null | ActiveChat;
+  chosenUser: null | ChosenUser;
   noChats: boolean;
 }

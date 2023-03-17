@@ -34,14 +34,14 @@ class ChatsComponent extends Block {
       noSelectedChat,
       messages: props?.messages,
       baseUrl: BASE_URL_RESOUCES,
-      currentChat: props.currentChat,
+      activeChat: props.activeChat,
       chosenUser: props.chosenUser,
 
       events: {
         click: (event: Event) => {
           if ((event.target as Element).classList.contains("delete-chat")) {
             ChatController.deleteChat(
-              JSON.stringify({ chatId: this.props.currentChat.id })
+              JSON.stringify({ chatId: this.props.activeChat.id })
             );
           }
 
@@ -111,7 +111,7 @@ class ChatsComponent extends Block {
 }
 
 function addStateToProps(state: StateInterface) {
-  const { currentChat } = state;
+  const { activeChat } = state;
 
   const { chosenUser } = state;
 
@@ -119,26 +119,26 @@ function addStateToProps(state: StateInterface) {
     return {
       isEmptyChat: false,
       chosenUser: state.chosenUser,
-      currentChat: null,
+      activeChat: null,
       messages: [],
     };
   }
 
-  if (!currentChat && !chosenUser) {
+  if (!activeChat && !chosenUser) {
     return {
       isEmptyChat: true,
       chosenUser: null,
-      currentChat: null,
+      activeChat: null,
       messages: [],
     };
   }
 
-  const chatId = state.currentChat!.id;
+  const chatId = state.activeChat!.id;
 
   return {
     isEmptyChat: false,
     chosenUser: null,
-    currentChat,
+    activeChat,
     messages: ((state.messages as any) || {})[chatId] || [],
     userId: state.user!.id,
   };
