@@ -113,14 +113,14 @@
 
               li {
                 font-size: 13px;
-                padding: 10px 0px;
+                padding: 10px 0;
               }
             }
           }
         }
 
         input[type="checkbox"]:checked
-          ~ .messages__display-heading-dots-dropdown {
+          ~ .messages-display-heading-dots-dropdown {
           display: block;
         }
       }

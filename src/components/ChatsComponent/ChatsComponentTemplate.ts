@@ -16,7 +16,7 @@ export default `
               <img src="{{moreOptions}}" alt="three dots" />
               <input type="checkbox">
 
-              <div class="messages__display-heading-dots-dropdown">
+              <div class="messages-display-heading-dots-dropdown">
                 <ul>
                   <li class="delete-chat">Delete chat</li>
                   <li class="delete-user">Delete Users</li>
