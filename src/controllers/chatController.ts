@@ -211,16 +211,13 @@ class ChatController extends GeneralController {
 
             ChatListComponent.setProps({
               isChats: false,
-              chats: [],
             });
 
-            Store.setState("chats", []);
+            this.getChats();
             Store.setState("currentChat", null);
           }
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
-
-          // show error message;
         }
       })
       .catch((error) => {
