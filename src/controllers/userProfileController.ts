@@ -38,11 +38,9 @@ class UserProfileController {
   }
 
   editAvatar(data: XMLHttpRequestBodyInit) {
-
     UserProfileAPI.changeAvatar(data)
       .then((result) => {
         if (result.status === 200) {
-    
           const uploadAvatar = new EditablePicture({});
           uploadAvatar.setProps({
             avatar: BASE_URL_RESOUCES + JSON.parse(result.response).avatar,
@@ -144,17 +142,12 @@ class UserProfileController {
             avatar: user.avatar,
           });
         } else {
-          // you can show error message
+          // error message
         }
       })
       .catch((error) => {
-        //add tooltips here
-
         Store.setState("noChats", true);
         console.log("error", error);
-      })
-      .finally(() => {
-        //show spinner
       });
   }
 }

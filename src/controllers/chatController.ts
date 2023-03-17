@@ -3,7 +3,6 @@ import Store from "../core/Store";
 
 import MessageController from "./messageController";
 
-//To be completed with other components
 import ChatListComponent from "../components/ChatListComponent";
 import SearchedUsers from "../components/SearchedUsersComponent";
 
@@ -20,13 +19,9 @@ class ChatController extends GeneralController {
   }
 
   createChat(data: XMLHttpRequestBodyInit, userId: number[]) {
-    // this is where you can stop a loading spinner or something.
-
     ChatsAPI.createChat(data)
       .then(async (result) => {
         if (result.status === 200) {
-          // you can show a success message here
-
           const chatId = JSON.parse(result.response).id;
 
           const request = JSON.stringify({ users: [...userId], chatId });
@@ -42,18 +37,11 @@ class ChatController extends GeneralController {
           this.startChating(chatId, chatTitle, isGroupChat);
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
-
-          /// display error message here using tooltip maybe?
         }
       })
       .then(() => this.getChats())
       .catch((error) => {
         console.log("error", error);
-
-        // you can show error through a tooltip
-      })
-      .finally(() => {
-        // in case you use a spinner later
       });
   }
 
@@ -67,7 +55,7 @@ class ChatController extends GeneralController {
 
           const chats = this.mapChats(chatsData, userId);
 
-          // you can load data for all your chat list here.
+         
 
           ChatListComponent.setProps({
             chats,
@@ -79,8 +67,7 @@ class ChatController extends GeneralController {
         }
       })
       .catch((error) => {
-        // show the tooltip for error here.
-        // console.log("error", error);
+    
       });
   }
 
@@ -138,25 +125,19 @@ class ChatController extends GeneralController {
     ChatsAPI.deleteChat(data)
       .then(async (result) => {
         if (result.status === 200) {
-    
           MessageController.close();
 
           Store.setState("chosenUser", null);
 
-          // Store.setState("noChats", true);
-
           Store.setState("activeChat", null);
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
-
-        
         }
       })
       .then(() => {
         this.getChats();
       })
       .catch((error) => {
-        // you can display a tooltip to warn about error;
 
         console.log("error", error);
       });
@@ -166,22 +147,19 @@ class ChatController extends GeneralController {
     ChatsAPI.addUserToChat(data)
       .then((result) => {
         if (result.status === 200) {
-          //create chat should also be closed
+        
           AddUsers.setProps({
             openedPop: false,
           });
-          // you could close pop ups here or just switch to other pages.
-          // you can display a tooltip here to indicate that it was successful.
+    
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
 
-          // you can add a tooltip to show error here.
         }
       })
       .catch((error) => {
         console.log(error);
 
-        // you can add a tooltip to show error here.
       });
   }
 
@@ -216,7 +194,6 @@ class ChatController extends GeneralController {
       .catch((error) => {
         console.log(error);
 
-        // you can display a tooltip here.
       });
   }
 
@@ -233,7 +210,6 @@ class ChatController extends GeneralController {
             users,
           });
 
-          // something about searching for users here.
         }
       })
       .catch((error) => {
