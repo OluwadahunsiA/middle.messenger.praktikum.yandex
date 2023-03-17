@@ -7,7 +7,7 @@ export default `
 
         <div  class="messages__display-heading">
           <div class="messages__display-heading-info">
-            <img src="{{#if currentChat.avatar}}{{baseUrl}}{{currrentChat.avatar}}{{else}}{{defaultPicture}}{{/if}}" alt="user picture" />
+            <img {{#if currentChat.avatar}}src="https://ya-praktikum.tech/api/v2/resources{{currentChat.avatar}}" {{else}} src={{defaultPicture}} {{/if}} alt="user picture" />
             <p> {{currentChat.title}}</p>
           </div>
 
