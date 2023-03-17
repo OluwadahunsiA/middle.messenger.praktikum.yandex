@@ -81,7 +81,7 @@ class ChatController extends GeneralController {
       .catch((error) => {
         // show the tooltip for error here.
 
-        console.log("error", error);
+        // console.log("error", error);
       });
   }
 

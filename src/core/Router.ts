@@ -71,9 +71,9 @@ class Router {
   }
 
   getRoute(pathname: string) {
-    return this.routes.find(
-      (route) =>
-        route.match(pathname) || this.routes.find((route) => route.match("*"))
+    return (
+      this.routes.find((route) => route.match(pathname)) ||
+      this.routes.find((route) => route.match("?"))
     );
   }
 

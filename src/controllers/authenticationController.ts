@@ -14,20 +14,17 @@ class AuthenticationController extends GeneralController {
   }
 
   signup(data: XMLHttpRequestBodyInit, inputs: PropsType) {
-
     Authentication.signup(data)
       .then((result) => {
         if (result.status === 200) {
           const successResponse = JSON.parse(result.responseText).id;
           console.log(successResponse);
 
-
           this.clearInput(inputs);
 
           this.redirect("/messenger", 1000);
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
-
 
           if (errorReason === "User already in system") {
             this.redirect("/messenger", 1000);
@@ -38,28 +35,19 @@ class AuthenticationController extends GeneralController {
         this.getUser();
       })
       .catch((error) => {
-   
-
         console.log("error", error);
-      })
-     
+      });
   }
 
   signin(data: XMLHttpRequestBodyInit, inputs: PropsType) {
-    
-
     Authentication.signin(data)
       .then((result) => {
         if (result.status === 200) {
-        
-
           this.clearInput(inputs);
 
           this.redirect("/messenger", 1000);
         } else {
           const errorReason = JSON.parse(result.responseText).reason;
-
-     
 
           if (errorReason === "User already in system") {
             this.redirect("/messenger", 1000);
@@ -70,11 +58,8 @@ class AuthenticationController extends GeneralController {
         this.getUser();
       })
       .catch((error) => {
-      
-
         console.log("error", error);
-      })
-     
+      });
   }
 
   getUser() {
@@ -91,12 +76,11 @@ class AuthenticationController extends GeneralController {
 
           ChatController.getChats();
         } else {
-
           Store.initState();
         }
       })
       .catch((error) => {
-
+        
         console.log("error", error);
       });
   }
@@ -111,8 +95,6 @@ class AuthenticationController extends GeneralController {
         Store.removeState();
       })
       .catch((error) => {
-
-
         console.log("error", error);
       });
   }
