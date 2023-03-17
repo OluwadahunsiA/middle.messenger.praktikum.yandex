@@ -4,9 +4,7 @@ import UseWebSocket from "../core/WS";
 import ChatService from "./chatService";
 
 import { WWS_URL } from "../core/HTTP";
-import { Message, PropsType, StoreInterface } from "../types";
-import { isEqual } from "../utils/helper";
-import { equal } from "assert";
+import { Message, StoreInterface } from "../types";
 
 class MessageService {
   socket: UseWebSocket;
@@ -50,7 +48,7 @@ class MessageService {
 
     const currentMessages = (Store.getState().messages || {})[chatId] || [];
 
-    if (newMessages.length === 1) {
+    if (newMessages.length === 1 && currentMessages.length !== 1) {
       newMessages = [...currentMessages, ...newMessages];
     } else if (newMessages.length > 1 && currentMessages.length === 0) {
       newMessages = [...newMessages];

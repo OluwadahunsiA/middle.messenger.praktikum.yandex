@@ -92,6 +92,8 @@ class ChatService extends GeneralService {
           const { token } = JSON.parse(result.responseText);
           const chatIdToNumber = Number(chatId);
 
+          await MessageService.close();
+
           await MessageService.connect(chatIdToNumber, token, "0");
 
           Store.setState("selectedUser", null);

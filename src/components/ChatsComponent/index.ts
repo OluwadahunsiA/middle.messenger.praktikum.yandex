@@ -129,7 +129,7 @@ function addStateToProps(state: StoreInterface) {
       isEmptyChat: true,
       selectedUser: null,
       currentChat: null,
-      messages: null,
+      messages: [],
     };
   }
 
