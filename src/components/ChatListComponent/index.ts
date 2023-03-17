@@ -12,7 +12,6 @@ import { BASE_URL_RESOUCES } from "../../core/HTTP";
 import avatar from "../../assets/images/avatar.avif";
 import { StoreInterface } from "../../types";
 import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
-// import SelectChatComponent from "../SelectChat/SelectChatComponent";
 
 type ChatListProps = { [key: string]: string };
 class ChatList extends Block {
@@ -57,6 +56,7 @@ class ChatList extends Block {
   }
 
   render() {
+   
     return this.compile(template);
   }
 }

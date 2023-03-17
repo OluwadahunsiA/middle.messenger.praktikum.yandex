@@ -21,7 +21,6 @@ export default class EditablePicture extends Block {
           if (files) {
             const fileReader = new FileReader();
 
-            // console.log(fileReader)
 
             fileReader.readAsDataURL(files[0]);
 
@@ -43,7 +42,6 @@ export default class EditablePicture extends Block {
           event.preventDefault();
           const form = event.target as HTMLFormElement;
           const data = new FormData(form);
-          console.log(data);
           UserProfileService.editAvatar(data);
         },
       },

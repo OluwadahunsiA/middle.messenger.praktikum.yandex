@@ -39,14 +39,12 @@ class Chats extends Block {
   }
 }
 
-
-
 function addStateToProps(state: PropsType) {
   if (state.chats) {
     const { chats } = state;
-
     return {
       chats,
+     
     };
   } else {
     return {

@@ -38,13 +38,11 @@ class UserProfileService {
   }
 
   editAvatar(data: XMLHttpRequestBodyInit) {
-    // you can show a spinner here;
 
     UserProfileAPI.changeAvatar(data)
       .then((result) => {
         if (result.status === 200) {
-          // show a success message;
-          // a block component for pictures.
+    
           const uploadAvatar = new EditablePicture({});
           uploadAvatar.setProps({
             avatar: BASE_URL_RESOUCES + JSON.parse(result.response).avatar,
@@ -53,20 +51,13 @@ class UserProfileService {
           // you can show a message here
         }
 
-        console.log(result);
-
         return result;
       })
       .then((result) => {
         Store.setState("user", JSON.parse(result.response));
       })
       .catch((error) => {
-        // set error here
-
         console.log("error", error);
-      })
-      .finally(() => {
-        //show a spinner
       });
   }
 

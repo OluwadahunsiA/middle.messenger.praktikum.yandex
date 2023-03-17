@@ -78,7 +78,6 @@ class UserProfile extends Block {
       {
         click: (event: Event) => {
           event.preventDefault();
-          console.log(event);
           AuthenticationService.logout();
         },
       }

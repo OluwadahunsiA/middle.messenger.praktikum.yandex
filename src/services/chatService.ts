@@ -32,8 +32,7 @@ class ChatService extends GeneralService {
 
           const { title } = JSON.parse(data as string);
 
-          const chatTitle =
-            userId.length === 1 ? title.split("and")[0] : title;
+          const chatTitle = userId.length === 1 ? title.split("and")[0] : title;
 
           const isGroupChat = userId.length > 2;
 
@@ -92,18 +91,24 @@ class ChatService extends GeneralService {
           const { token } = JSON.parse(result.responseText);
           const chatIdToNumber = Number(chatId);
 
-          await MessageService.close()
+          await MessageService.close();
 
           await MessageService.connect(chatIdToNumber, token, "0");
+
+          const selectedUserAvatar = Store.getState()?.selectedUser?.avatar;
+
+          console.log("from chat service", selectedUserAvatar);
 
           Store.setState("selectedUser", null);
 
           Store.setState("emptyChat", false);
 
+          Store.setState("currentChatImage", selectedUserAvatar);
+
           Store.setState("currentChat", {
             id: Number(chatId),
             title: chatTitle,
-            avatar: null,
+            avatar: selectedUserAvatar || null,
             groupChat,
           });
         }
@@ -139,7 +144,6 @@ class ChatService extends GeneralService {
     ChatsAPI.deleteChat(data)
       .then(async (result) => {
         if (result.status === 200) {
-        
           //You will need to close message service here
           MessageService.close();
 
