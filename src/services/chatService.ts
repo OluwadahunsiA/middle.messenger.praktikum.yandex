@@ -33,7 +33,7 @@ class ChatService extends GeneralService {
           const { title } = JSON.parse(data as string);
 
           const chatTitle =
-            userId.length === 1 ? title.split("connecting...")[0] : title;
+            userId.length === 1 ? title.split("and")[0] : title;
 
           const isGroupChat = userId.length > 2;
 
@@ -92,7 +92,7 @@ class ChatService extends GeneralService {
           const { token } = JSON.parse(result.responseText);
           const chatIdToNumber = Number(chatId);
 
-          await MessageService.close();
+          await MessageService.close()
 
           await MessageService.connect(chatIdToNumber, token, "0");
 
@@ -139,8 +139,7 @@ class ChatService extends GeneralService {
     ChatsAPI.deleteChat(data)
       .then(async (result) => {
         if (result.status === 200) {
-          // you can display something with a tooltip.
-
+        
           //You will need to close message service here
           MessageService.close();
 
@@ -249,7 +248,7 @@ class ChatService extends GeneralService {
 
   displayTitle(isCommonChat: boolean, chat: PropsType, isCreator: boolean) {
     if (isCommonChat) {
-      const [first, second] = chat.title.split("connecting...");
+      const [first, second] = chat.title.split("and");
 
       const newTitle = isCreator ? first : second;
 
@@ -263,7 +262,7 @@ class ChatService extends GeneralService {
     return chats.map((chat: PropsType) => {
       const isCreator = userId === chat.created_by;
 
-      const commonChat = chat.title.includes("connecting...");
+      const commonChat = chat.title.includes("and");
 
       const title = this.displayTitle(commonChat, chat, isCreator);
 

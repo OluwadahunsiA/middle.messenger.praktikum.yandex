@@ -23,7 +23,7 @@ class SelectChat extends Block {
         click: async () => {
           await ChatService.createChat(
             JSON.stringify({
-              title: `${this.props.selectedUser.displayName} connecting... ${this.props.user.first_name} ${this.props.user.second_name}`,
+              title: `${this.props.selectedUser.displayName} and ${this.props.user.first_name} ${this.props.user.second_name}`,
             }),
             [Number(this.props.selectedUser.id)]
           );

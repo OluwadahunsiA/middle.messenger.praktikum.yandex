@@ -48,7 +48,17 @@ class MessageService {
 
     const currentMessages = (Store.getState().messages || {})[chatId] || [];
 
+    // newMessages = [...currentMessages, ...newMessages];
+
     if (newMessages.length === 1 && currentMessages.length !== 1) {
+      newMessages = [...currentMessages, ...newMessages];
+    } else if (newMessages.length !== 1 && currentMessages.length === 1) {
+      newMessages = [...currentMessages, ...newMessages];
+    } else if (
+      newMessages.length === 1 &&
+      currentMessages.length === 1 &&
+      newMessages[0].id !== currentMessages[0].id
+    ) {
       newMessages = [...currentMessages, ...newMessages];
     } else if (newMessages.length > 1 && currentMessages.length === 0) {
       newMessages = [...newMessages];

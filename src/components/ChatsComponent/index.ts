@@ -96,12 +96,14 @@ class ChatsComponent extends Block {
   }
 
   createMessages(props: PropsType) {
+    
     return props?.messages?.map((messages: Message) => {
-      return new MessageComponent({
-        content: messages.content,
-        type: messages.user_id === props.userId ? "send" : "receive",
-        time: toDate(messages.time),
-      });
+        return new MessageComponent({
+          content: messages.content,
+          type: messages.user_id === props.userId ? "send" : "receive",
+          time: toDate(messages.time),
+        });
+
     });
   }
 
