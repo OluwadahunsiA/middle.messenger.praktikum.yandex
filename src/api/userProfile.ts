@@ -8,10 +8,6 @@ class UserProfileAPI {
     });
   }
 
-  changeAvatar(data: XMLHttpRequestBodyInit) {
-    return http.put("user/profile/avatar", { data });
-  }
-
   changePassword(data: XMLHttpRequestBodyInit) {
     return http.put("user/password", {
       headers: { "Content-Type": "application/json" },
@@ -19,8 +15,8 @@ class UserProfileAPI {
     });
   }
 
-  getUserById(id: string) {
-    return http.get(`user/${id}`);
+  changeAvatar(data: XMLHttpRequestBodyInit) {
+    return http.put("user/profile/avatar", { data });
   }
 
   searchUserByLogin(data: string) {
@@ -28,6 +24,10 @@ class UserProfileAPI {
       headers: { "Content-Type": "application/json" },
       data,
     });
+  }
+
+  getUserById(id: string) {
+    return http.get(`user/${id}`);
   }
 }
 
