@@ -135,10 +135,10 @@ class UserProfileController {
 
           const displayName = `${user.first_name} ${user.second_name}`;
 
-          Store.setState("emptyChat", false);
+          Store.setState("noChats", false);
           Store.setState("currentChat", null);
 
-          Store.setState("selectedUser", {
+          Store.setState("chosenUser", {
             id: user.id,
             displayName,
             avatar: user.avatar,
@@ -150,7 +150,7 @@ class UserProfileController {
       .catch((error) => {
         //add tooltips here
 
-        Store.setState("emptyChat", true);
+        Store.setState("noChats", true);
         console.log("error", error);
       })
       .finally(() => {

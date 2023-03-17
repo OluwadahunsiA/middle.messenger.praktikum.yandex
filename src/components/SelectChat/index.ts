@@ -23,9 +23,9 @@ class SelectChat extends Block {
         click: async () => {
           await ChatController.createChat(
             JSON.stringify({
-              title: `${this.props.selectedUser.displayName} and ${this.props.user.first_name} ${this.props.user.second_name}`,
+              title: `${this.props.chosenUser.displayName} and ${this.props.user.first_name} ${this.props.user.second_name}`,
             }),
-            [Number(this.props.selectedUser.id)]
+            [Number(this.props.chosenUser.id)]
           );
         },
       }
@@ -35,7 +35,7 @@ class SelectChat extends Block {
       ...props,
       baseUrl: BASE_URL_RESOUCES,
       startChatButton,
-      selectedUser: props.selectedUser,
+      chosenUser: props.chosenUser,
       user: props.user,
     });
   }
@@ -47,7 +47,7 @@ class SelectChat extends Block {
 
 function addStateToProps(state: StateInterface) {
   return {
-    selectedUser: state.selectedUser,
+    chosenUser: state.chosenUser,
     user: state.user,
   };
 }

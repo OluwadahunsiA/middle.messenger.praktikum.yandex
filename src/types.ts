@@ -64,6 +64,6 @@ export interface StateInterface {
   chats: Chat[];
   messages: { [key: string]: Message[] };
   currentChat: null | CurrentChat;
-  selectedUser: null | SelectedUser;
-  emptyChat: boolean;
+  chosenUser: null | SelectedUser;
+  noChats: boolean;
 }

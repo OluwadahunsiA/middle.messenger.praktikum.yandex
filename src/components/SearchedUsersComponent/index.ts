@@ -24,7 +24,7 @@ class SearchedUsers extends Block {
 
             const selectUserId = Number(user.dataset.userId);
 
-            const selectedUser = this.props.users.filter(
+            const chosenUser = this.props.users.filter(
               (user: PropsType) => selectUserId === user.id
             );
 
@@ -35,7 +35,7 @@ class SearchedUsers extends Block {
             if (!isSelected) {
               const selectedUsers = [
                 ...this.props.selectedUsers,
-                ...selectedUser,
+                ...chosenUser,
               ];
 
               this.setProps({
@@ -54,7 +54,7 @@ class SearchedUsers extends Block {
 
             const selectUserId = Number(user.dataset.userId);
 
-            const selectedUser = this.props.selectedUsers.filter(
+            const chosenUser = this.props.selectedUsers.filter(
               (user: PropsType) => selectUserId === user.id
             );
 
@@ -63,7 +63,7 @@ class SearchedUsers extends Block {
             );
 
             const selectedUsers = [...unSelectedUsers];
-            const users = [...selectedUser, ...this.props.users];
+            const users = [...chosenUser, ...this.props.users];
 
             this.setProps({
               selectedUsers,

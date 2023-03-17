@@ -50,7 +50,7 @@ export default `
 
     {{/if}}
 
-    {{#if selectedUser}}
+    {{#if chosenUser}}
 
       {{{selectChatWithUser}}}
 

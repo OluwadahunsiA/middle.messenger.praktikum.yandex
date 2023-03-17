@@ -1,8 +1,8 @@
 export default `
-<div class="select-chat" data-user-id="{{selectedUser.id}}">
+<div class="select-chat" data-user-id="{{chosenUser.id}}">
 
 
-<p>{{selectedUser.displayName}}</p>
+<p>{{chosenUser.displayName}}</p>
 
 <div> 
 {{{startChatButton}}}

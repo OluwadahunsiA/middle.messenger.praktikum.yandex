@@ -21,7 +21,7 @@ class ChatsComponent extends Block {
     const defaultPicture = userPicture;
     const sendMessage = new SendMessage({});
     const noSelectedChat = new NoSelectedChat();
-    const isEmptyChat = props?.emptyChat === false ? props.emptyChat : true;
+    const isEmptyChat = props?.noChats === false ? props.noChats : true;
     const selectChatWithUser = new SelectChat();
 
     super({
@@ -35,7 +35,7 @@ class ChatsComponent extends Block {
       messages: props?.messages,
       baseUrl: BASE_URL_RESOUCES,
       currentChat: props.currentChat,
-      selectedUser: props.selectedUser,
+      chosenUser: props.chosenUser,
 
       events: {
         click: (event: Event) => {
@@ -113,21 +113,21 @@ class ChatsComponent extends Block {
 function addStateToProps(state: StateInterface) {
   const { currentChat } = state;
 
-  const { selectedUser } = state;
+  const { chosenUser } = state;
 
-  if (selectedUser) {
+  if (chosenUser) {
     return {
       isEmptyChat: false,
-      selectedUser: state.selectedUser,
+      chosenUser: state.chosenUser,
       currentChat: null,
       messages: [],
     };
   }
 
-  if (!currentChat && !selectedUser) {
+  if (!currentChat && !chosenUser) {
     return {
       isEmptyChat: true,
-      selectedUser: null,
+      chosenUser: null,
       currentChat: null,
       messages: [],
     };
@@ -137,7 +137,7 @@ function addStateToProps(state: StateInterface) {
 
   return {
     isEmptyChat: false,
-    selectedUser: null,
+    chosenUser: null,
     currentChat,
     messages: ((state.messages as any) || {})[chatId] || [],
     userId: state.user!.id,

@@ -7,8 +7,8 @@ class Store extends EventBus {
   appState: StateInterface = {
     isAuth: false,
     user: null,
-    emptyChat: true,
-    selectedUser: null,
+    noChats: true,
+    chosenUser: null,
     currentChat: null,
     messages: {},
     chats: [],
@@ -34,8 +34,8 @@ class Store extends EventBus {
     this.appState = {
       isAuth: false,
       user: null,
-      emptyChat: true,
-      selectedUser: null,
+      noChats: true,
+      chosenUser: null,
       currentChat: null,
       messages: {},
       chats: [],

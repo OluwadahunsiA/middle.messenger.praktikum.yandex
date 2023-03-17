@@ -96,13 +96,13 @@ class ChatController extends GeneralController {
 
           await MessageController.connect(chatIdToNumber, token, "0");
 
-          const selectedUserAvatar = Store.getState()?.selectedUser?.avatar;
+          const selectedUserAvatar = Store.getState()?.chosenUser?.avatar;
 
           console.log("from chat Controller", selectedUserAvatar);
 
-          Store.setState("selectedUser", null);
+          Store.setState("chosenUser", null);
 
-          Store.setState("emptyChat", false);
+          Store.setState("noChats", false);
 
           Store.setState("currentChatImage", selectedUserAvatar);
 
@@ -115,7 +115,7 @@ class ChatController extends GeneralController {
         }
       })
       .catch((error) => {
-        Store.setState("emptyChat", true);
+        Store.setState("noChats", true);
 
         console.log(error);
       });
@@ -136,8 +136,8 @@ class ChatController extends GeneralController {
   }
 
   leaveChatPage() {
-    Store.setState("emptyChat", true);
-    Store.setState("selectedUser", null);
+    Store.setState("noChats", true);
+    Store.setState("chosenUser", null);
     Store.setState("currentChat", null);
   }
 
@@ -148,9 +148,9 @@ class ChatController extends GeneralController {
           //You will need to close message Controller here
           MessageController.close();
 
-          Store.setState("selectedUser", null);
+          Store.setState("chosenUser", null);
 
-          Store.setState("emptyChat", true);
+          Store.setState("noChats", true);
 
           Store.setState("currentChat", null);
         } else {
