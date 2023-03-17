@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // /* eslint-disable @typescript-eslint/no-explicit-any */
 // /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Handlebars, { blockParams } from "handlebars";
+import Handlebars from "handlebars";
 import EventBus from "./EventBus";
 import { nanoid } from "nanoid";
 

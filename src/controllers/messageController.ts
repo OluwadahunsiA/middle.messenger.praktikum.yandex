@@ -86,11 +86,11 @@ class MessageController {
   }
 
   addEvents(chatId: number) {
-    this.socket.on("websocket-message", (message: Message | Message[]) => {
+    this.socket.on("new-websocket-message", (message: Message | Message[]) => {
       this.setMessages(chatId, message);
     });
 
-    this.socket.on("websocket-closed", () => {
+    this.socket.on("close-websocket", () => {
       this.close();
     });
   }

@@ -3,7 +3,7 @@ import EventBus from "./EventBus";
 export default class UseWebSocket extends EventBus {
   socket: WebSocket;
 
-  pingInterval = 5000;
+  pingInterval = 4000;
 
   url: string;
 
@@ -20,11 +20,11 @@ export default class UseWebSocket extends EventBus {
     this.ping();
 
     return new Promise((resolve, reject) => {
-      this.on("websocket-opened", () => {
+      this.on("open-websocket", () => {
         resolve();
       });
 
-      this.on("websocket-closed", () => {
+      this.on("close-websocket", () => {
         reject();
       });
     });
@@ -38,28 +38,28 @@ export default class UseWebSocket extends EventBus {
     this.socket.send(JSON.stringify(data));
   }
 
-  close() {
-    this.socket.close();
-  }
-
   ping() {
     const ping = setInterval(() => {
       this.send({ type: "ping" });
     }, this.pingInterval);
 
-    this.on("websocket-closed", () => {
+    this.on("close-websocket", () => {
       clearInterval(ping);
       this.pingInterval = 0;
     });
   }
 
+  close() {
+    this.socket.close();
+  }
+
   addEvents() {
     this.socket.addEventListener("open", () => {
-      this.emit("websocket-opened");
+      this.emit("open-websocket");
     });
 
     this.socket.addEventListener("close", () => {
-      this.emit("websocket-closed");
+      this.emit("close-websocket");
     });
 
     this.socket.addEventListener("error", (error) => {
@@ -77,7 +77,7 @@ export default class UseWebSocket extends EventBus {
         return;
       }
 
-      this.emit("websocket-message", data);
+      this.emit("new-websocket-message", data);
     });
   }
 }
