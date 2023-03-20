@@ -203,38 +203,46 @@ export default class Block {
 
   compile(Incomingtemplate: string): DocumentFragment {
     const properties: any = { ...this.props };
+
     Object.entries(this.children).forEach(([key, value]) => {
-      properties[key] = `<div data-id="${value.id}"></div>`;
+      if (Array.isArray(value)) {
+        properties[key] = value.map(
+          (child) => `<div data-id="${child?.id}"></div>`
+        );
+      } else {
+        properties[key] = `<div data-id="${value?.id}"></div>`;
+      }
     });
     const createdTemplate = document.createElement("template");
 
     const compiledTemplate = Handlebars.compile(Incomingtemplate);
+
     createdTemplate.innerHTML = compiledTemplate({
-      ...this.props,
       children: this.children,
-      refs: this.references,
       ...properties,
     });
 
-    Object.entries(this.children).forEach(([, child]) => {
-      const selectedElement = createdTemplate.content.querySelector(
-        `[data-id="${child.id}"]`
+    const replaceCont = (blockComp: Block) => {
+      if (!blockComp) return;
+
+      const cont = createdTemplate.content.querySelector(
+        `[data-id="${blockComp?.id}"]`
       );
 
-      if (!selectedElement) {
+      if (!cont) {
         return;
       }
 
-      const selectedElementChildren = selectedElement.childNodes.length
-        ? selectedElement.childNodes
-        : [];
+      blockComp?.getContent().append(...Array.from(cont.childNodes));
 
-      const content = child.getContent();
-      selectedElement.replaceWith(content);
-      
-      const layoutContent = content?.querySelector('[data-layout="1"]');
-      if (layoutContent && selectedElementChildren.length) {
-        layoutContent.append(...selectedElementChildren);
+      cont.replaceWith(blockComp.getContent());
+    };
+
+    Object.entries(this.children).forEach(([, blockComp]) => {
+      if (Array.isArray(blockComp)) {
+        blockComp.forEach(replaceCont);
+      } else {
+        replaceCont(blockComp);
       }
     });
 

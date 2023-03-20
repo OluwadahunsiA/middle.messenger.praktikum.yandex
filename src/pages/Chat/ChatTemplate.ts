@@ -2,11 +2,9 @@ export default `
 <div class="content">
   <div class="chats">
 
-    <a class="chats__user" href="/user-profile">Profile ></a>
+    <span class="chats__user" href="/user-profile">{{{link}}}</span>
 
-    <div class="chats__input">
-      <input name="search" placeholder="search" />
-    </div>
+     {{{chatSearch}}}
 
     <div class="chats__content">
       
@@ -14,12 +12,12 @@ export default `
 
     </div>
 
-  </div>
-  {{{chatsContent}}}
+    
+    </div>
+    {{{AddUsers}}}
+    {{{DeleteUsers}}}
+    {{{chatsContent}}}
 
 </div>
 
 `;
-
-
-

@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import Button from "../../components/ButtonComponent";
 import Input from "../../components/InputComponent";
 import Block from "../../core/Block";
 import { formEvents } from "../../core/formEvents";
 import template from "./registrationTemplate";
+import Link from "../../components/Link";
+import ValidateForm from "../../core/ValidateForms";
+import AuthenticationController from "../../controllers/authenticationController";
 
 export default class Registration extends Block {
   constructor() {
@@ -77,7 +81,13 @@ export default class Registration extends Block {
       name: "Create account",
     });
 
+    const link = new Link({
+      path: "/",
+      name: "Sign In",
+    });
+
     super({
+      link,
       email,
       login,
       firstName,
@@ -88,9 +98,37 @@ export default class Registration extends Block {
       button,
       events: {
         input: (event: Event) => formEvents.getInput(event, state),
-        submit: (event: Event) => formEvents.submit(event, state),
+        submit: (event: Event) => {
+          event.preventDefault();
+
+          const form = event.target as HTMLFormElement;
+
+          const validateForm = ValidateForm.validateSubmit(form);
+
+          const payload: { [key: string]: string } = {
+            first_name: "",
+            second_name: "",
+            login: "",
+            email: "",
+            password: "",
+            phone: "",
+          };
+
+          Object.values(self.children).forEach((element) => {
+            payload[element.props.name] = element.props.value;
+          });
+
+          const dataToString = JSON.stringify(payload);
+
+          if (validateForm) {
+            AuthenticationController.signup(dataToString, self.children);
+          }
+        },
       },
     });
+
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const self = this;
   }
 
   render() {

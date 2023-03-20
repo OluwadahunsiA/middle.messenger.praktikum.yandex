@@ -1,6 +1,6 @@
 export default `
 <div class="input-field">
-  <label for="{{label}}">{{label}}:</label>
+  <label for="{{label}}">{{#if label}}{{label}}: {{else}} {{/if}}</label>
   <input
     id="{{id}}"
     name="{{name}}"

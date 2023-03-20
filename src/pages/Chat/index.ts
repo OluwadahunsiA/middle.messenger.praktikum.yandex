@@ -1,18 +1,36 @@
 import Block from "../../core/Block";
 import template from "./ChatTemplate";
 import ChatList from "../../components/ChatListComponent";
-import { messages } from "../../mock-data/messages";
 import ChatsComponent from "../../components/ChatsComponent";
+import { AddStoreToBlock } from "../../core/AddStoreToBlockComponent";
+import { PropsType } from "../../types";
+import ChatSearchInput from "../../components/ChatSearchInput";
+import Link from "../../components/Link";
+import Store from "../../core/Store";
+import AddUsers from "../../components/AddUsers";
+import DeleteUsers from "../../components/DeleteUsers";
 
-export default class Chats extends Block {
+class Chats extends Block {
   constructor() {
-    const chatList = new ChatList({ messages });
-  
+    Store.setState("activeChat", null);
 
-    const chatsContent = new ChatsComponent();
+    const link = new Link({
+      path: "/settings",
+      name: "Profile >",
+    });
+    const chatSearch = new ChatSearchInput();
+
+    const chatsContent = ChatsComponent;
+
+    const chatList = ChatList;
+
     super({
-      chatsContent,
+      link,
       chatList,
+      chatsContent,
+      chatSearch,
+      AddUsers,
+      DeleteUsers,
     });
   }
 
@@ -20,3 +38,19 @@ export default class Chats extends Block {
     return this.compile(template);
   }
 }
+
+function addStateToProps(state: PropsType) {
+  if (state.chats) {
+    const { chats } = state;
+    return {
+      chats,
+     
+    };
+  } else {
+    return {
+      chats: [],
+    };
+  }
+}
+
+export default AddStoreToBlock(Chats, addStateToProps);

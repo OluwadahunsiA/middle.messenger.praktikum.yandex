@@ -45,6 +45,8 @@ export default class ValidateForm {
     second_name: (value: string) => ValidateForm.validateName(value),
     password_repeat: (value: string) => ValidateForm.validatePassword(value),
     newPasswordRepeat: (value: string) => ValidateForm.validatePassword(value),
+    avatar: (value: string) => ValidateForm.validateName(value),
+    search: (value: string) => ValidateForm.validateSearch(value),
   };
 
   static validateInput(value: string | number, expression: RegExp) {
@@ -95,6 +97,11 @@ export default class ValidateForm {
     const expression = ValidateForm.regularExpresssions.message;
 
     return CheckValidity(value, expression, "Empty message");
+  }
+  static validateSearch(value: string) {
+    const expression = ValidateForm.regularExpresssions.message;
+
+    return CheckValidity(value, expression, "Empty");
   }
 
   static validatePhoneNumber(value: string) {

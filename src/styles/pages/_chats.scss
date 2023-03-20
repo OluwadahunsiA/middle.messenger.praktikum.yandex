@@ -2,12 +2,14 @@
   display: flex;
   font-size: $text-font-size;
   height: $innerheight;
+  position: relative;
 
   .chats {
     display: flex;
     flex-direction: column;
     width: 400px;
     border-right: 1px solid $dark-grey;
+    position: relative;
 
     &__user {
       align-self: flex-end;
@@ -29,6 +31,17 @@
       }
     }
 
+    &__button {
+      position: absolute;
+      right: 20;
+      top: 10;
+      width: 20%;
+
+      .login-form-button {
+        margin-top: 0;
+      }
+    }
+
     &__content {
       overflow: scroll;
 
@@ -44,13 +57,14 @@
     display: flex;
     flex-direction: column;
 
-    &__display {
+    &-display {
       height: 90%;
       display: flex;
       flex-direction: column;
 
       &-heading {
         display: flex;
+        position: relative;
         justify-content: space-between;
         height: 75px;
         width: 100%;
@@ -74,6 +88,40 @@
           align-self: center;
           justify-self: end;
           margin-right: 20px;
+
+          input[type="checkbox"] {
+            position: absolute;
+            cursor: pointer;
+            opacity: 0;
+            height: 30px;
+            width: 30px;
+            right: 16px;
+          }
+
+          &-dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 1px;
+            background-color: $general-white;
+            border: 2px solid $deep-green;
+            border-radius: 10px;
+            width: 150px;
+
+            ul {
+              list-style: none;
+
+              li {
+                font-size: 13px;
+                padding: 10px 0;
+              }
+            }
+          }
+        }
+
+        input[type="checkbox"]:checked
+          ~ .messages-display-heading-dots-dropdown {
+          display: block;
         }
       }
 
@@ -94,22 +142,34 @@
           color: $dark-grey;
         }
       }
+
+      &-content {
+        height: 100%;
+        overflow: scroll;
+
+        &-created {
+          align-self: flex-start;
+          margin-left: 40%;
+          width: max-content;
+          color: $dark-grey;
+        }
+      }
     }
 
     &__form {
       position: relative;
 
-      &-input{
+      &-input {
         margin-left: 90px;
       }
-  
+
       &-button {
         position: absolute;
         right: 40;
         top: 10;
         width: 10%;
 
-          .login-form-button {
+        .login-form-button {
           margin-top: 0;
         }
       }
@@ -135,6 +195,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 30%;
+      color: $dark-grey;
     }
   }
 }

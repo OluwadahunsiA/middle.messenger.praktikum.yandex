@@ -1,0 +1,36 @@
+.add-user-container {
+  display: none;
+  position: absolute;
+  width: 500px;
+  border: 2px solid $deep-green;
+  background: $general-white;
+  left: 45%;
+  height: 90%;
+  z-index: 100;
+  border-radius:10px;
+
+  p {
+    color: $dark-grey;
+    margin-left: 35%;
+    margin-bottom: 30px;
+  }
+
+  &-result {
+    height: 300px;
+    overflow: scroll;
+  }
+
+  &.opened {
+    display: block;
+  }
+
+  .input-field {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .login-form-button {
+    width: 60%;
+    margin-left: 20%;
+  }
+}

@@ -1,8 +1,12 @@
 @import "./base/variables";
 @import "./base/mixin";
+@import "./components/link";
 @import "./components/input-field";
 @import "./components/chat-list";
 @import "./components/user-information";
+@import "./components/add-user";
+@import "./components/message";
+@import "./components/select-chat";
 @import "pages/registration";
 @import "layouts/layout";
 @import "pages/index";

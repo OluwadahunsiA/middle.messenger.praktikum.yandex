@@ -1,8 +1,12 @@
-This is a chat app.
+This is a chat app built without any frameworks.
 
-This project uses TypeScript and linters. 
+In order have a full experience of the app, you will need to sign up.
 
-Now all the inputs are checked for validation.
+After signing in, you can search for a user and commence chatting. 
+
+A persistent connection, with a ping interval of 4 seconds, is enabled by using Websocket protocol.
+
+This project uses TypeScript and linters and it is a single page application. 
 
 The Block class that each page extends can be found in the core folder. 
 

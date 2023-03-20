@@ -13,6 +13,6 @@ export default `
 
     {{{button}}}
     </form>
-  <a href="/">Sign In</a>
+  {{{link}}}
 </div>
 `;
