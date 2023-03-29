@@ -2,16 +2,15 @@ import { expect } from "chai";
 
 import Block from "./Block";
 
-describe("Test Block", () => {
+describe("Block", () => {
   const handlebs = `
   <div class="test">
-    <h1>
-    {{title}}
-    </h1> 
+  <h1> {{ title }} </h1>
   </div>
   `;
 
   const tagName = "DIV";
+
   const props = { title: "title" };
 
   class Component extends Block {
