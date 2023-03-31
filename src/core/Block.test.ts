@@ -1,5 +1,5 @@
+/* eslint-disable import/no-named-as-default-member */
 import { expect } from "chai";
-
 import Block from "./Block";
 
 describe("Block", () => {
@@ -9,7 +9,7 @@ describe("Block", () => {
   </div>
   `;
 
-  const tagName = "DIV";
+  const tag = "DIV";
 
   const props = { title: "title" };
 
@@ -22,7 +22,7 @@ describe("Block", () => {
   const getComponent = () => new Component(props);
 
   it("should render an element", () => {
-    expect(getComponent().element?.tagName).to.eq(tagName);
+    expect(getComponent().element?.tagName).to.eq(tag);
   });
 
   it("should render correct props", () => {
