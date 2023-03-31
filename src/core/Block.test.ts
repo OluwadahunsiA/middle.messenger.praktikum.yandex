@@ -2,7 +2,7 @@
 import { expect } from "chai";
 import Block from "./Block";
 
-describe("Block", () => {
+describe("Test the Block class", () => {
   const handlebs = `
   <div class="test">
   <h1> {{ title }} </h1>
