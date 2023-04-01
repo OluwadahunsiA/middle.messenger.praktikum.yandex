@@ -63,10 +63,14 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "src/index.html",
-      // filename: "index.html",
-      filename: path.resolve(__dirname, "./index.html"),
+      filename: "index.html",
     }),
 
     new MiniCssExtractPlugin({}),
   ],
+
+  devServer: {
+    port: 3000,
+    historyApiFallback: true,
+  },
 };
