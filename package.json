@@ -9,7 +9,8 @@
     "build": "NODE_ENV=production webpack --mode production",
     "stylelint": "stylelint **/*.scss --fix",
     "eslint:fix": "eslint . --ext .js, .jsx, .ts, .tsx --fix",
-    "lint": "npm run eslint && npm run stylelint"
+    "lint": "npm run eslint && npm run stylelint",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
