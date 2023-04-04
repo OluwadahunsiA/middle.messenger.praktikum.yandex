@@ -8,8 +8,8 @@
     "dev": "NODE_ENV=development webpack-dev-server --mode development",
     "build": "NODE_ENV=production webpack --mode production",
     "stylelint": "stylelint **/*.scss --fix",
-    "eslint:fix": "eslint . --ext .js, .jsx, .ts, .tsx --fix",
-    "lint": "npm run eslint && npm run stylelint",
+    "eslint:fix": "eslint . --ext .js, .ts, .tsx --fix",
+    "lint": "npm run eslint:fix && npm run stylelint",
     "prepare": "husky install"
   },
   "repository": {
