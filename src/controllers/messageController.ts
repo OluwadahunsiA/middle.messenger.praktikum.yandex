@@ -38,6 +38,7 @@ class MessageController {
   }
 
   setMessages(chatId: number, messages: Message | Message[]) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let newMessages: any = [];
 
     if (Array.isArray(messages)) {

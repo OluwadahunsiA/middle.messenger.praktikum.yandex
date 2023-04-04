@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import "./styles/main.scss";
 import Registration from "./pages/Registration";
 import Chats from "./pages/Chat";
 import UserProfile from "./pages/UserProfile";
@@ -30,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
     .use(Routes.Profile, UserProfile, { isPrivateRoute: true })
     .use(Routes.Chat, Chats, { isPrivateRoute: true })
     .use(Routes.Password, ChangePassword, { isPrivateRoute: true })
-    .use(Routes.Server, Error500,{ isPrivateRoute: false })
+    .use(Routes.Server, Error500, { isPrivateRoute: false })
     .use(Routes.NotFound, Error404, { isPrivateRoute: false })
     .redirect("/");
 
