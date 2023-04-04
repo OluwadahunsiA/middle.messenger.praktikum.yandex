@@ -8,7 +8,7 @@ This project uses TypeScript and linters and it is a single page application.
 
 The Block class that each page extends can be found in the core folder. 
 
-This app is deployed on yandex cloud and can be found here <a href="https://bba2e3lduugvnivs5ce8.containers.yandexcloud.net/">"https://bba2e3lduugvnivs5ce8.containers.yandexcloud.net/</a>
+This app is deployed on yandex cloud and can be found here <a href="https://bba2e3lduugvnivs5ce8.containers.yandexcloud.net/" target="_blank"> https://bba2e3lduugvnivs5ce8.containers.yandexcloud.net/ </a>
 
 In order to start the project locally:
 

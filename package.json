@@ -8,7 +8,7 @@
     "dev": "NODE_ENV=development webpack-dev-server --mode development",
     "build": "NODE_ENV=production webpack --mode production",
     "stylelint": "stylelint **/*.scss --fix",
-    "eslint:fix":"eslint \"**/*.{ts,js,jsx,tsx}\" --fix",
+    "eslint:fix": "eslint \"**/*.{ts,js,jsx,tsx}\" --fix",
     "lint": "npm run eslint:fix && npm run stylelint",
     "prepare": "husky install"
   },
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars": "^1.0.2",
     "@parcel/transformer-sass": "2.8.3",
     "@types/chai": "4.3.4",
     "@types/mocha": "10.0.1",
