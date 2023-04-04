@@ -1,8 +1,6 @@
 This is a chat app built without any frameworks.
 
-In order have a full experience of the app, you will need to sign up.
-
-After signing in, you can search for a user and commence chatting. 
+In order have a full experience of the app, you will need to sign up. A successful sign up will automatically lead you to the chat page of the app. On this page, you can search for users by their logins and start chatting with them.
 
 A persistent connection, with a ping interval of 4 seconds, is enabled by using Websocket protocol.
 
@@ -10,10 +8,7 @@ This project uses TypeScript and linters and it is a single page application.
 
 The Block class that each page extends can be found in the core folder. 
 
-Site autodeploy can be found here <a href="https://fancy-sfogliatella-7f9139.netlify.app/">"https://fancy-sfogliatella-7f9139.netlify.app/</a>
-
-Starting this app leads you to the log in page where you can enter your details.
-Once you are logged in, you can navigate through the different pages of the app.
+This app is deployed on yandex cloud and can be found here <a href="https://bba2e3lduugvnivs5ce8.containers.yandexcloud.net/">"https://bba2e3lduugvnivs5ce8.containers.yandexcloud.net/</a>
 
 In order to start the project locally:
 
